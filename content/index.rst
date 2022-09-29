@@ -20,7 +20,7 @@ Intro
 
 .. toctree::
    :maxdepth: 1
-   :caption: The lesson
+   :caption: Sections
 
    basics
    switching
