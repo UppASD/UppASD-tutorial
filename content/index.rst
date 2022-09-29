@@ -1,5 +1,5 @@
-LESSON NAME
-===========
+UppASD tutorial
+===============
 
 Intro
 
@@ -22,6 +22,11 @@ Intro
    :maxdepth: 1
    :caption: The lesson
 
+   basics
+   switching
+   finitetemp
+   magnon
+   sld
 
 .. toctree::
    :maxdepth: 1
