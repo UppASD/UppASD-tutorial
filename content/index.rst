@@ -22,11 +22,11 @@ Intro
    :maxdepth: 2
    :caption: Sections
 
-   basics
-   switching
-   finitetemp
-   magnon
-   sld
+   basics/basics
+   switching/switching
+   finitetemp/finitetemp
+   magnon/magnon
+   sld/sld
 
 .. toctree::
    :maxdepth: 2
