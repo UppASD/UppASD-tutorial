@@ -19,7 +19,7 @@ Intro
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Sections
 
    basics
@@ -29,7 +29,7 @@ Intro
    sld
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Reference
 
    quick-reference
