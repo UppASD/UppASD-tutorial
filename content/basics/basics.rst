@@ -18,6 +18,16 @@ First simulations
 
 UppASD on supercomputers
 ------------------------
+UppASD can be run on supercomputers either on nodes allocated for interactive
+use, or as batch jobs.
+
+UppASD on Dardel
+^^^^^^^^^^^^^^^^
+
+To request 4 cores on the shared partition of Dardel for one hour, use the command
+``salloc -n 4 -t 1:00:00 -A <project name> -p shared``, where ``project name``
+needs to be replaced with the name of an active compute project.
+
 The code is parallelized over shared memory using OpenMP threading. In this
 exercise you will explore how the computational performance of UppASD depends
 on problem size and on the number of CPU cores. With weak scaling is meant the
