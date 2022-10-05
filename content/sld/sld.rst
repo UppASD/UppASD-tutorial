@@ -36,8 +36,8 @@ The ``mmlfile.nosym``
 
 .. literalinclude:: DimerSLD/DimerpuSLDcoupled/mmlfile.nosym
 
-Trimer
-------
+SLD simulation for trimer
+-------------------------
 TrimerSLD      # Trimer SLD, atomic units, with different MML coupling,
                # either of :math:`A_{iji}` type or of :math:`A_{ijk}` type.
                # optional use of point group symmetries for the couplings
