@@ -8,6 +8,34 @@ damping and zero Gilbert damping, using velocity-Verlet or fixed-point iteration
 implicit midpoint solver. The full expressions for the Hamiltonian, the effective magnetic
 fields, and the interatomic forces are contained in Eqs. 27-31 in Ref. [Hellsvik2019]_. 
 
+The main input file ``inpsd.dat``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/inpsd.dat
+
+the  ``posfile``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/posfile
+
+the ``momfile``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/momfile
+
+the ``jfile.nosym``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/jfile.nosym
+
+The ``phonfile``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/phonfile
+
+The ``llfile.nosym``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/llfile.nosym
+
+The ``mmlfile.nosym``
+
+.. literalinclude:: DimerSLD/DimerpuSLDcoupled/mmlfile.nosym
+
 Trimer
 ------
 TrimerSLD      # Trimer SLD, atomic units, with different MML coupling,
