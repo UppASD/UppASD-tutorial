@@ -1,5 +1,7 @@
 # UppASD-tutorial
 
+Tutorial for the [Uppsala Atomistic Spin Dynamics][1] program.
+
 ## About the document
 
 The contents of the UppASD tutorial are edited using the CodeRefinery template sphinx-lesson
@@ -15,3 +17,5 @@ computer to html files and tex files following the instructions in the readme of
 
 The tutorial can also be automatically built with Github actions and deployed to Github pages.
 This is how we eventually will web host the tutorial.
+
+[1]:https://github.com/UppASD/UppASD
