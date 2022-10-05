@@ -17,11 +17,11 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "LESSON NAME"
-copyright = "2020, The contributors"
+project = "UppASD Tutorial"
+copyright = "2022, Uppsala University"
 author = "The contributors"
-github_user = "coderefinery"
-github_repo_name = ""  # auto-detected from dirname if blank
+github_user = "UppASD"
+github_repo_name = "UppASD-tutorial"  # auto-detected from dirname if blank
 github_version = "main"
 conf_py_path = "/content/"  # with leading and trailing slash
 
