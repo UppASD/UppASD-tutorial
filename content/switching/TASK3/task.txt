@@ -1,3 +1,0 @@
-Set do_bpulse 2. Then you can modify the parameter of pulse center
- and width of pulse(See comment in bpulsefile) for Gaussian in the file named bpulsefile. 
-Plot the average magnetization of z component as a function of time and compare.

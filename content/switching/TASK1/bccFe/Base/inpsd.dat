@@ -27,3 +27,4 @@ do_avrg   Y
 avrg_step 1
 
 do_tottraj Y
+tottraj_step 100

@@ -15,7 +15,7 @@ Initmag   3                                     (1=random, 2=cone, 3=spec., 4=fi
 mode      S                                     S=SD, M=MC
 temp      0.000
 Nstep   10000                               --
-damping 0.0500
+damping 0.0100
 timestep 1.0d-15
 
 do_avrg   Y                                     Measure averages

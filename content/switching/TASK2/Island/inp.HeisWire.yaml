@@ -1,0 +1,70 @@
+#  UppASD Input data 
+simid:
+                    HeisWire
+  
+# Physical constants
+Boltzman constant:
+                      1.38064852E-23
+Bohr magneton:
+                      9.27400999E-24
+ 
+# Structure data
+ncell:
+                    2  3  1
+BC:
+                    0  0  0
+cell:
+                     1.00000000E+00 0.00000000E+00 0.00000000E+00
+                     0.00000000E+00 1.00000000E+00 0.00000000E+00
+                     0.00000000E+00 0.00000000E+00 1.00000000E+00
+positions:
+                    1  1   0.00000000E+00 0.00000000E+00 0.00000000E+00
+NA:
+                    1
+NT:
+                    1
+Sym:
+                    2
+Natom:
+                    6
+  
+# Simulation parameters
+LLG:
+                    1
+SDE:
+                    5
+Mensemble:
+                    1
+ 
+# Initial magnetization
+initmag:
+                    3
+moments:
+                      0.00000000E+00  1.00000000E+00  0.00000000E+00
+    
+**************** Rotation parameters            ****************
+Rotation                       0
+Rotation Angle    0.00000000E+00  0.00000000E+00  0.00000000E+00
+  
+**************** Demagnetization field          ****************
+Demag                          N               N               N
+Demag                          N
+Volume            0.00000000E+00
+  
+**************** Micro-wave field               ****************
+  
+**************** Initial phase                  ****************
+MC, SD, EM                       N 
+Field             0.00000000E+00  0.00000000E+00  0.00000000E+00
+ 
+**************** Measurement phase              ****************
+MC, SD, MEP                         S 
+Gradient				 N
+T                 1.00000000E-03
+Field             0.00000000E+00  0.00000000E+00  0.00000000E+00
+Lambda            5.00000000E-01  0.00000000E+00
+Nstep                      20000
+delta_t           1.00000000E-15
+   
+Tottraj                        Y             100              10
+No. trajectories               0
