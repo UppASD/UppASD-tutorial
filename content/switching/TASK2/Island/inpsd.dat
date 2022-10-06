@@ -1,0 +1,31 @@
+simid  triang_T 
+ncell    1 1 1
+BC         P P 0
+cell     1.000000000000    0.000000000000    0.000000000000
+        -0.500000000000    0.866025403784    0.000000000000
+         0.000000000000    0.000000000000    10.00000000000
+
+Sym       0                           
+do_prnstruct 1
+
+posfile     ./posfile
+momfile     ./momfile
+exchange    ./jfile
+anisotropy  ./kfile
+
+Initmag   3                               
+
+ip_mode   N
+
+mode      S
+hfield    0  0  -1
+Temp      0.1                           
+damping   0.1                          
+nstep     10000                               
+timestep  1.000e-16                      
+
+do_avrg   Y                                
+avrg_step 1
+
+do_tottraj Y
+

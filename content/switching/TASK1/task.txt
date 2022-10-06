@@ -1,0 +1,19 @@
+In this task, use the flag 'hfield' to control the 
+strength as well as the direction of magnetic field.
+
+Here you will switch the magnetization direction of 
+a macrospin and bcc Fe  from +z to -z direction, compare the switching 
+time with external field -1000 ,-1500 ,-2000, -2500, -3000 Tesla.
+Here you can do each simulation in an individual directory,  
+like Field-1000, Field-1500 and so on. Finally, plot the 
+average magnetization of z component as a function of time
+for each magnetic field.
+
+Keep in mind that the external field in this simulation
+is incrediblely huge, here we use huge magnetic field to accelerate our simulation. 
+
+You can use different Jij in jfile of bccFe and compare 
+whether different set of Jij affects the switching process?
+
+Do you think the switching process of bccFe behaves like a macrospin? Try to explain it 
+from the output moment.bccFe100.out.

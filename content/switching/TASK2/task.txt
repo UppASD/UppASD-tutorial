@@ -1,0 +1,23 @@
+1. use the flag 'damping' to control the 
+damping parameter in LLG equation.
+
+Here you still switch the magnetization direction of 
+the macrospin from +z to -z direction, compare the switching 
+time with damping 0.2 0.4 0.6 0.8 1.0. Finally, plot the 
+average magnetization of z component as a function of time
+for system with each damping. 
+
+Keep in mind that the damping value in real materials is 
+usually in the order of 1e^⁻3 or 1e^⁻4, here we use huge 
+damping to accelerate our simulation.
+
+2. Use the flag ’anisotropy’ combined with an external
+file storing the magnetic anisotropy
+parameter of system to manipulate the magnetic anisotropy parameter.
+
+Here still switch the magnetization direction of 
+macrospin from +z to -z direction, compare the switching 
+time with anisotropy K1  -0.02 -0.2 -0.4.
+Plot the  average magnetization of z component as a function of time
+for system with each magnetic anisotropy.
+

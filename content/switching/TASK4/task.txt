@@ -1,0 +1,5 @@
+In this task, use the flag 'Initmag 4' and 'restartfile ./restart.DOMAIN.DW' to initialize
+the system. Then set 'stt A' and 'jvec jx jy jz' to control the spin polarization direction
+of current.Visualize the domain wall motion dynamics of the
+system by UppASD GUI, for that you need to set ’do tottraj Y’ to get the spin configuration 
+of each sampling step.

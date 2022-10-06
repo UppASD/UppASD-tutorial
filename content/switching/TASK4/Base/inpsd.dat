@@ -1,0 +1,35 @@
+simid     HeisWire 
+ncell     20        100       1     
+BC        0         0         0      
+cell      1.00000   0.00000   0.00000
+          0.00000   1.00000   0.00000
+          0.00000   0.00000   1.00000
+Sym       2                           
+
+posfile     ./posfile
+exchange    ./jfile
+momfile     ./momfile
+anisotropy  ./kfile
+restartfile ./restart.DOMAIN.DW
+
+SDEAlgh      5
+do_prnstruct 1                       
+
+Mensemble 1                        
+Initmag   4
+
+mode      S
+temp      0.001 
+nstep     20000
+damping    0.5
+timestep  1e-15
+
+
+do_tottraj    Y                         
+tottraj_step  100
+
+
+plotenergy  1
+
+stt  A
+jvec  0 100 0 

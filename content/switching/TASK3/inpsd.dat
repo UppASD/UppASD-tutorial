@@ -1,0 +1,36 @@
+simid  scHeis64 
+ncell     1  1  1
+BC        0         0         0                 Boundary conditions (0=vacuum,P=periodic)
+cell      1.00000   0.00000   0.00000
+          0.00000   1.00000   0.00000
+          0.00000   0.00000   1.00000
+Sym       0                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+do_prnstruct 2
+posfile    ./posfile
+exchange   ./jfile
+momfile    ./momfile
+
+Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
+
+mode      S                                     S=SD, M=MC
+temp      0.000
+Nstep   10000                               --
+damping 0.0500
+timestep 1.0d-15
+
+do_avrg   Y                                     Measure averages
+avrg_step 10 
+
+do_tottraj Y                                    Measure moments
+tottraj_step       10
+tottraj_buff       1                           time step, buffer size
+
+plotenergy 1                                    Calculate energy of the system projected on the different Hamiltonian components
+
+do_bpulse    2
+bpulsefile   ./bpulsefile
+
+do_prn_beff Y
+beff_step 1
+
+real_time_measure Y
