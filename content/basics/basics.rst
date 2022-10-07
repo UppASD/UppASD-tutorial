@@ -4,13 +4,36 @@ Basics
 Building UppASD
 ---------------
 
+.. code-block:: bash
+  ml PrgEnv-gnu/8.2.0
+  make deps
+  make gfortranftn
+
+Run one of the testsuites, for instance *asd-tests*
+.. code-block:: bash
+
+  make asd-tests
+
 
 Python environment for the GUI
 ------------------------------
 
 The recommended way to set up the Python environment that is required
 for the UppASD graphical user interface is to use either a Python
-virtual environments or a conda environment.
+virtual environments or a conda environment. On Dardel, load a recent
+Python module
+
+.. code-block:: bash
+
+  ml PDC/21.11
+  ml Anaconda3/2021.0
+
+.. code-block:: bash
+
+  python -m venv venv
+  source venv/bin/activate
+  python -m pip install --upgrade pip
+  pip install -r requirements.txt
 
 First simulations
 -----------------
