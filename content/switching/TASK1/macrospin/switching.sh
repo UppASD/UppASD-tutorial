@@ -8,7 +8,7 @@ do
  cd Field$Bext
  sed -i "s/Bext/$Bext/g" inpsd.dat
  echo -e "Performing simulation for bfield $bfield"
- /proj/kthdelin/users/x_zhilu/UppASD_1216_version/UppASD_fp_mipoint/source/sd > out.log 
+ /UppASD/source/sd > out.log 
  echo -e "done"
  cd ..
  
