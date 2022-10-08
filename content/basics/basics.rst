@@ -76,6 +76,53 @@ To request 8 cores on the reserved nodes for one hour, use the command
 
 where in the name of the reservation, the date needs to be set to *today*.
 
+
+A typical output will look like
+
+.. code-block:: bash
+
+  salloc: Granted job allocation 591571
+  salloc: Waiting for resource configuration
+  salloc: Nodes nid001015 are ready for job
+
+Node nid001015 is now yours for the next hour. You can login to the reserved
+node via the login node
+
+.. code-block:: bash
+
+  ssh -X nid001015
+
+To run UppASD simulation as a batch job on 16 cores, and walltime 2 hours,
+you can use the template jobscript
+
+.. code-block:: bash
+
+  #!/bin/bash -l
+  # The -l above is required to get the full environment with modules
+
+  # Set the allocation to be charged for this job
+  # not required if you have set a default allocation
+  #SBATCH -A <project name>
+
+  # The name of the script is myjob
+  #SBATCH -J myjob
+
+  # 2 hours wall-clock time will be given to this job
+  #SBATCH -t 02:00:00
+
+  # The number of cores requested
+  #SBATCH -n 16
+
+  export OMP_NUM_THREADS=16
+
+  echo "Script initiated at `date` on `hostname`"
+
+  # The executable sd needs to be in the PATH
+  sd > out.log
+
+  echo "Script finished at `date` on `hostname`"
+
+
 UppASD on Tetralith
 -------------------
 
