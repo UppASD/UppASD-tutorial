@@ -1,6 +1,5 @@
 UppASD on supercomputers
 ========================
-------------------------
 
 The source code of UppASD is distributed on https://github.com/UppASD/UppASD
 along with documentation and a growing set of examples. To obtain the code,
@@ -66,7 +65,7 @@ To request 4 cores on the shared partition of Dardel for one hour, use the comma
 
   salloc -n 4 -t 1:00:00 -p shared -A <project name>
 
-where ``project name``needs to be replaced with the name of an active compute project.
+where ``project name`` needs to be replaced with the name of an active compute project.
 
 At the UppASD Autumn School 20222, reservations have been set up for dedicated nodes.
 To request 8 cores on the reserved nodes for one hour, use the command
