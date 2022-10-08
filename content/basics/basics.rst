@@ -76,7 +76,6 @@ To request 8 cores on the reserved nodes for one hour, use the command
 
 where in the name of the reservation, the date needs to be set to *today*.
 
-
 A typical output will look like
 
 .. code-block:: bash
@@ -154,6 +153,35 @@ To set up a Python environment for the graphical user interface
   conda activate ASD_GUI_env
   # Set the environment variable
   export MESA_GL_VERSION_OVERRIDE=3.3
+
+UppASD can be run on nodes allocated for interactive use, or as batch jobs.
+To request 1 node on Tetralith for 1 hour, use the command
+
+.. code-block:: bash
+
+  interactive -N 1 --exclusive -t 01:00:00 -A <project name>
+
+where ``project name`` needs to be replaced with the name of an active compute project.
+
+To run UppASD simulation as a batch job on 32 cores, and walltime 1 hour,
+you can use the template jobscript
+
+.. code-block:: bash
+
+  #!/bin/sh
+  #SBATCH -J myjob
+  #SBATCH -t 00-01:00:00
+  #SBATCH -N 1
+  #SBATCH --exclusive
+  #SBATCH -A <project name>
+
+  echo "Script initiated at `date` on `hostname`"
+
+  # The executable sd needs to be in the PATH
+  sd > out.log
+
+  echo "Script finished at `date` on `hostname`"
+
 
 Exercises
 ---------
