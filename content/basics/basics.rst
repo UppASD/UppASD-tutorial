@@ -1,5 +1,6 @@
-Building and running UppASD
-===========================
+UppASD on supercomputers
+========================
+------------------------
 
 The source code of UppASD is distributed on https://github.com/UppASD/UppASD
 along with documentation and a growing set of examples. To obtain the code,
@@ -18,12 +19,20 @@ or clone the git repository
   git clone https://github.com/UppASD/UppASD.git
   cd UppASD
 
-UppASD on Dardel
----------------
+UppASD can be built and run on desktop and laptop computers, as well as on
+supercomputers. General advice on how to build UppASD can be found in the
+user manual. In this section is provided instructions on how to build and
+run the program on two different supercomputers
 
-To build UppASD on the HPE Cray EX supercomputer
+UppASD on Dardel
+----------------
+
+UppASD is available on the HPE Cray EX supercomputer
 `Dardel <https://www.pdc.kth.se/hpc-services/computing-systems/about-dardel-1.1053338>`_
-with a Gnu toolchain and the Cray compiler wrappers
+as a centrally installed software
+`UppASD  <https://www.pdc.kth.se/software/software/UppASD/index_general.html>`_.
+
+To build UppASD on Dardel with a Gnu toolchain and the Cray compiler wrappers
 
 .. code-block:: bash
 
@@ -50,12 +59,33 @@ A conda environment can then be built with
   conda create --name ASD_GUI_env python=3.6 vtk=8.1.0 numpy scipy matplotlib yaml pyyaml pandas jsoncpp=1.8.3 tbb=2020.2
   conda activate ASD_GUI_env
 
+UppASD can be run on nodes allocated for interactive use, or as batch jobs.
+To request 4 cores on the shared partition of Dardel for one hour, use the command
+
+.. code-block:: bash
+
+  salloc -n 4 -t 1:00:00 -p shared -A <project name>
+
+where ``project name``needs to be replaced with the name of an active compute project.
+
+At the UppASD Autumn School 20222, reservations have been set up for dedicated nodes.
+To request 8 cores on the reserved nodes for one hour, use the command
+
+.. code-block:: bash
+
+  salloc -n 8 -t 1:00:00 -p shared -A edu22.uppasd --reservation=uppasd-2022-10-11
+
+where in the name of the reservation, the date needs to be set to *today*.
+
 UppASD on Tetralith
 -------------------
 
-To build UppASD on the Intel Xeon based supercomputer
+UppASD is available on the Intel Xeon based supercomputer
 `Tetralith <https://www.nsc.liu.se/systems/tetralith/>`_
-with an Intel toolchain
+as a centrally installed software
+`UppASD  <https://www.nsc.liu.se/software/catalogue/tetralith/modules/uppasd.html>`_.
+
+To build UppASD on Tetralith with an Intel toolchain
 
 .. code-block:: bash
 
@@ -79,22 +109,11 @@ To set up a Python environment for the graphical user interface
   # Set the environment variable
   export MESA_GL_VERSION_OVERRIDE=3.3
 
+Exercises
+---------
 
-First simulations
------------------
-
-
-UppASD on supercomputers
-------------------------
-UppASD can be run on supercomputers either on nodes allocated for interactive
-use, or as batch jobs.
-
-UppASD on Dardel
-^^^^^^^^^^^^^^^^
-
-To request 4 cores on the shared partition of Dardel for one hour, use the command
-``salloc -n 4 -t 1:00:00 -A <project name> -p shared``, where ``project name``
-needs to be replaced with the name of an active compute project.
+Exercise 1
+^^^^^^^^^^
 
 The code is parallelized over shared memory using OpenMP threading. In this
 exercise you will explore how the computational performance of UppASD depends
