@@ -52,7 +52,6 @@ time with anisotropy ``K1=-0.02 ,-0.2, -0.4``. Read the maunal and find out wher
 Plot the  average magnetization of **z** component as a function of time
 for system with each magnetic anisotropy and see the effect of anisotropy on switching.
 
-* Magnetic islands
 
 
 TASK3
