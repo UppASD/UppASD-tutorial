@@ -99,3 +99,32 @@ Questions and exercises:
 
 Fig 7. Adiabatic magnon spectra of Fe FCC.
 
+
+Tutorial 2
+==========
+ 
+FM Heisenberg nearest-neighbour spin chain
+------------------------------------------
+
+Collinear adiabatic magnon spectra and S(q,w)
+^^^^
+The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic.
+
+Crystal & magnetic structure
+^^^^
+
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D Heisenberg chain is created.
+::
+  simid     HeisWire                              System name
+  ncell     1         1         100               System size (in terms of unit cells)
+  BC        0         0         P                 Boundary conditions (0=vacuum,P=periodic)
+  cell      1.00000   0.00000   0.00000
+           0.00000   1.00000   0.00000
+           0.00000   0.00000   1.00000
+  Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)  
+  
+  posfile   ./posfile                             Position file
+  exchange  ./jfile                               Exchange file
+  momfile   ./momfile                             Moment file
+  do_prnstruct 1          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
+
