@@ -173,11 +173,11 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
 
 .. figure:: figures/tutorial2/fig3.png
 
-Fig 3. Primitive and reciprocal lattice vectors in bcc.
+Fig 3. Primitive and reciprocal lattice vectors in sc.
 
 .. figure:: figures/tutorial2/fig4.png
 
-Fig 4. BCC 1st Brilluoin zone.
+Fig 4. SC 1st Brilluoin zone.
 
 .. figure:: figures/tutorial2/fig5.png
 
