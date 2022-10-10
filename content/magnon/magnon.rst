@@ -28,6 +28,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   do_prnstruct 2          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
 
 .. figure:: figures/tutorial1/fig1.png
+Fig 1. Lattice and magnetic texture.
 
 Thermalizing the system
 ^^^^
@@ -45,6 +46,7 @@ Using the lines below, the systems is driven to the ground state.
   mcNstep   50000                                 MC steps
 
 .. figure:: figures/tutorial1/fig2.png
+Fig 2. Components of the energy versus number of iterations.
 
 Spin wave spectrum
 ^^^^^
@@ -58,6 +60,25 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
   qfile ./qfile                    Path along the high symmetry points in the reciprocal space
 
 **The first Brilluoin zone of a body centered cubic lattice**
+
+.. figure:: figures/tutorial1/fig3.png
+Fig 3. Primitive and reciprocal lattice vectors in bcc.
+
+.. figure:: figures/tutorial1/fig4.png
+Fig 4. BCC 1st Brilluoin zone.
+
+.. figure:: figures/tutorial1/fig5.png
+Fig 5. High symmetry points.
+
+Plotting the spectrum
+^^^^
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2.
+
+.. figure:: figures/tutorial1/fig6.png
+Fig 6. Adiabatic magnon spectra.
+
+
+
 
 
 
