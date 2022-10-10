@@ -1,7 +1,9 @@
 Magnon spectra and noncollinear magnetism
 =========================================
 
-*Some useful equations:*
+**Some useful equations:**
+
+
 
 
 Tutorial 1: Fe in bcc and fcc crystal structures
