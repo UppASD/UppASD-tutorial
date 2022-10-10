@@ -337,4 +337,15 @@ Questions and exercises:
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory? Why is linear around the center zone?
 2. Calculate analytically the Energy/spin and show it is the same as the numerical result.
 
+Tutorial 4
+==========
+ 
+FM Heisenberg nearest-neighbour spin chain with DM interactions
+---------------------------------------------------------------
+
+Non-Collinear adiabatic magnon spectra and S(q,w)
+^^^^
+
+The following tutorial serves as introduction to non-collinear AMS and shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain with DM interaction. Notice that AMS in this case does not work because the magnetic ground-state texture is non-collinear.
+
 
