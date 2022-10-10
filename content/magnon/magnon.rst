@@ -1,11 +1,6 @@
 Magnon spectra and noncollinear magnetism
 =========================================
 
-**Some preliminary and useful equations:**
-
-.. figure:: figures/equations/fig1.png
-Eq 1. Lattice and magnetic texture.
-
 Tutorial 1: Fe in bcc and fcc crystal structures
 ------------------------------------------------
 
@@ -712,3 +707,19 @@ Questions and exercises:
 1. Why we have 3 branches, with just 1 atom per unit cell?
 2. Is it the profile of an antiferromagnet around the Gamma point?
 
+**Some preliminary and useful equations:**
+
+.. figure:: figures/equations/fig1.png
+Eq 1. Excitation energy for spin waves in an anisotropic antiferromagnet.
+
+.. figure:: figures/equations/fig2.png
+Eq 1. Energy gap due to the anisotropy.
+
+.. figure:: figures/equations/fig3.png
+Eq 1. Excitation energy for spin waves in an anisotropic ferromagnet.
+
+.. figure:: figures/equations/fig4.png
+Eq 1. Excitation energy for spin waves in an isotropic antiferromagnet.
+
+.. figure:: figures/equations/fig5.png
+Eq 1. Excitation energy for spin waves in an isotropic ferromagnet.
