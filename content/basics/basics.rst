@@ -226,8 +226,10 @@ computational effiency when changing the number of cores in proportion with
 the problem size. With strong scaling is meant the computational effiency when
 changing the number of cores for a fixed problem size.
 
-The systems
+In the exercise you will investigate strong and weak scaling for a simulation of
+bulk in FeCo in ordered B2 structure. Input files for the system can found in
+``examples/Mappings/FeCo/B2``.
 
-* Exercise 1: Weak scaling for ``NX 12``, ``NY 12``, ``NX 12``:math:`c`, where :math:`nc` is the number CPU cores, ranging from 1 to 16.
+* Investigate the strong scaling for ``NX 24``, ``NY 24``, ``NZ 24``, when varying the number of CPU cores :math:`nc` in the range from 1 to 32.
 
-* Exercise 2: Strong scaling for ``NX 24``, ``NY 24``, ``NZ 24``, when varying the number of CPU cores :math:`nc` in the range from 1 to 16.
+* Investigate the weak scaling for ``NX 24``, ``NY 24``, ``NX 12``:math:`c`, where :math:`nc` is the number CPU cores, ranging from 1 to 32.
