@@ -222,7 +222,7 @@ AFM Heisenberg nearest-neighbour spin chain
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
 
-The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary to a magnetic supercell 2x1x1 of the crystal cell and define both spin direction in the supercell.
+The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary a magnetic supercell 2x1x1 of the crystal cell and define both spin directions in the supercell.
 
 Crystal & magnetic structure
 ^^^^
