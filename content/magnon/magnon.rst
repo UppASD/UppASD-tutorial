@@ -1,10 +1,10 @@
 Magnon spectra and noncollinear magnetism
 =========================================
 
-**Some useful equations:**
+**Some preliminary and useful equations:**
 
-
-
+.. figure:: figures/equations/fig1.png
+Eq 1. Lattice and magnetic texture.
 
 Tutorial 1: Fe in bcc and fcc crystal structures
 ------------------------------------------------
