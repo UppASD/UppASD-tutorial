@@ -351,7 +351,7 @@ The following tutorial serves as introduction to non-collinear AMS and shows eve
 Crystal & magnetic structure
 ^^^^
 
-Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D helical Heisenberg spin spiral is created. Have a look to posfile and momfile.
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D helical Heisenberg spin spiral is created. Have a look to posfile and momfile. Notice the system could be set up with just 1 atom per unit cell but, in this example, we use 4 atoms per unit cell just to help you to understand how to set up the dmfile for systems which have more than one atom per unit cell.
 
 ::
 
