@@ -213,7 +213,7 @@ Input files and scripts for bcc Fe can be found in ``examples/PhaseDiagrams/bccF
 
 * Examine the results by using the printM.sh and the plot.gnu scripts. The latter is a script for Gnuplot.
 
-* Change the inpsd.dat so that you can the temperature sweep as an ASD simulation, instead of MC simulation
+* Change the inpsd.dat so that you can the temperature sweep as an ASD simulation, instead of an MC simulation. Compare the results with each other, and with Fig. 2 of [Skubic2008]_.
 * Run additional simulations for different cell sizes. Use the Binder cumulant crossing approach to determine the critical temperature.
 
 Exercise 3: Weak and strong scaling
