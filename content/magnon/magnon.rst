@@ -94,3 +94,8 @@ Questions and exercises:
 3. Plot the spectra without the gap around the center zone.
 4. Why there are two branches, 1 acoustic and 1 optical?
 5. Plot the spectrum for Fe fcc. Why now there is just 1 branch? Is it following the analytical expression?
+
+.. figure:: figures/tutorial1/fig7.png
+
+Fig 5. Adiabatic magnon spectra of Fe FCC.
+
