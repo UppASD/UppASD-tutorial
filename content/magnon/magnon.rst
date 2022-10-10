@@ -472,7 +472,7 @@ Kagome system with DM interactions
 Non-Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
 
-The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. it shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w).
+The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w).
 
 Crystal & magnetic structure
 ^^^^
