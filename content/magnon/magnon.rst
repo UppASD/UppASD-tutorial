@@ -97,5 +97,5 @@ Questions and exercises:
 
 .. figure:: figures/tutorial1/fig7.png
 
-Fig 5. Adiabatic magnon spectra of Fe FCC.
+Fig 7. Adiabatic magnon spectra of Fe FCC.
 
