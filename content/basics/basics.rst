@@ -99,18 +99,13 @@ you can use the template jobscript
   #!/bin/bash -l
   # The -l above is required to get the full environment with modules
 
-  # Set the allocation to be charged for this job
-  # not required if you have set a default allocation
-  #SBATCH -A <project name>
-
-  # The name of the script is myjob
-  #SBATCH -J myjob
-
-  # 2 hours wall-clock time will be given to this job
-  #SBATCH -t 02:00:00
-
-  # The number of cores requested
-  #SBATCH -n 16
+  #SBATCH -A <project name>     # Set the allocation to be charged for this job
+  #SBATCH -J myjob              # The name of the script is myjob
+  #SBATCH -t 02:00:00           # 2 hours wall-clock time
+  #SBATCH -p shared             # The partition
+  #SBATCH -N 1                  # Number of nodes
+  #SBATCH -n 1                  # Number of tasks
+  #SBATCH -c 16                 # Number of cpus per task
 
   export OMP_NUM_THREADS=16
 
@@ -174,6 +169,8 @@ you can use the template jobscript
   #SBATCH -N 1
   #SBATCH --exclusive
   #SBATCH -A <project name>
+
+  export OMP_NUM_THREADS=32
 
   echo "Script initiated at `date` on `hostname`"
 
