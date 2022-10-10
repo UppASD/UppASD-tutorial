@@ -381,7 +381,7 @@ Spin dynamics
 
 Using the lines below, the systems is driven to the ground state by MonteCarlo.
 
-:
+::
 
   ip_mode   M
   ip_mcanneal 1
@@ -402,7 +402,7 @@ Spin wave spectrum
 
 We calculate the non-collinear  and collinear spin wave spectrum at the list of Q points (qfile) for comparison. Use qmaker script.
 
-:
+::
 
   do_ams Y                      Collinear Adiabatic magnon spectra
   do_diamag Y                   Non-Collinear Adiabatic magnon spectra
@@ -479,7 +479,7 @@ Crystal & magnetic structure
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an Kagome system with DM interaction is created. Have a look to posfile and momfile, etc.
 
-:
+::
 
   simid  kagome_T
   ncell    66 66 1
