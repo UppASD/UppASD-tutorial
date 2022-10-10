@@ -21,7 +21,8 @@ or clone the git repository
 UppASD can be built and run on desktop and laptop computers, as well as on
 supercomputers. General advice on how to build UppASD can be found in the
 user manual. In this section is provided instructions on how to build and
-run the program on two different supercomputers
+run the program on two different supercomputers, and with two different
+compiler toolchains.
 
 UppASD on Dardel
 ----------------
@@ -116,7 +117,6 @@ you can use the template jobscript
 
   echo "Script finished at `date` on `hostname`"
 
-
 UppASD on Tetralith
 -------------------
 
@@ -183,10 +183,40 @@ you can use the template jobscript
 Exercises
 ---------
 
-Exercise 1
-^^^^^^^^^^
+Exercise 1: Build code, first simulations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The code is parallelized over shared memory using OpenMP threading. In this
+In this first exercise you will build UppASD, run a first simulation, and visually
+inspect the spin dynamics with the GUI.
+
+* Build the UppASD executable from source on either a personal computer or on
+a supercomputer.
+* Set up a Python environment for the GUI using either virtual environments or conda.
+* Run a simulation for the two-dimensional system in ``examples/SimpleSystems/fcc001``.
+* Inspect the spin configuration for ``fcc001`` with the GUI. Work with either the
+*restart* file or the *moments* file.
+
+Exercise 2: Phase diagram for bcc Fe
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Atomistic spin dynamics simulations with Langevin dynamics can be used to investigate
+the thermal properties of materials. In this exercise you will investigate how the
+magnetic order parameter, the heat capacity, the susceptibility depends on temperature.
+Input files and scripts for bcc Fe can be found in ``examples/PhaseDiagrams/bccFe-Tsweep`` .
+
+* Run the sweep over temperature with the ``runme.sh`` script. What kind of simulations is
+run?
+* Examine the results by using the printM.sh and the plot.gnu scripts. The latter is
+a script for Gnuplot.
+* Change the inpsd.dat so that you can the temperature sweep as an ASD simulation,
+instead of MC simulation
+* Run additional simulations for different cell sizes. Use the Binder cumulant crossing
+approach to determine the critical temperature.
+
+Exercise 3: Weak and strong scaling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The UppASD code is parallelized over shared memory using OpenMP threading. In this
 exercise you will explore how the computational performance of UppASD depends
 on problem size and on the number of CPU cores. With weak scaling is meant the
 computational effiency when changing the number of cores in proportion with
