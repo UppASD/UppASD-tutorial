@@ -463,10 +463,248 @@ Questions and exercises:
 
 1. Do you understand why Collinear AMS failed in this case?
 
+Tutorial 5
+==========
+ 
+Kagome system with DM interactions
+----------------------------------
+
+Non-Collinear adiabatic magnon spectra and S(q,w)
+^^^^
+
+The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. it shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w).
+
+Crystal & magnetic structure
+^^^^
+
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an Kagome system with DM interaction is created. Have a look to posfile and momfile, etc.
+
+:
+
+  simid  kagome_T
+  ncell    66 66 1
+  BC         P P 0
+  cell     1.000000000000    0.000000000000    0.000000000000
+          -0.500000000000    0.866025403784    0.000000000000
+           0.000000000000    0.000000000000    10.00000000000
+  
+  Sym        0
+  
+  posfile    ./posfile
+  posfiletype D               C=Cartesian or D=direct coordinates in posfile
+  momfile    ./momfile
+  exchange   ./jfile
 
 
+maptype 2
+do_jtensor 1
+
+.. figure:: figures/tutorial5/fig1.png
+
+Fig 1. Crystal and magnetic texture.
+
+Spin dynamics
+^^^^
+
+Using the lines below, and using a momfile with previous minimization, the system is already in the ground-state. This is just to speed up the simulation time.
+
+::
+
+  ip_mode N
+  ip_mcanneal 2
+  10000 100.0001
+  10000 0.0001
+  
+  mode      S                                     S=SD, M=MC
+  temp      0.0001
+  Nstep     60000
+  damping   0.001
+  timestep  1d-16
+
+Spin wave spectrum
+^^^^
+
+We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+
+::
+
+  do_ams Y                      Collinear Adiabatic magnon spectra
+  do_diamag Y                   Non-Collinear Adiabatic magnon spectra
+  
+  qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
+                                file with direct coordinates)
+  qfile   ./qfile               Path along the high symmetry points in the reciprocal space
+
+**The first Brilluoin zone of a hexagonal lattice**
 
 
+.. figure:: figures/tutorial5/fig2.png
+
+Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.
+
+Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
+^^^^
+
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.
+
+.. figure:: figures/tutorial5/fig3.png
+
+Fig 3. Non-Collinear AMS.
+
+Plotting S(q,w)
+^^^^
+
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.
+
+::
+
+  do_sc  Q
+  sc_nstep 500
+  sc_step   90
+  do_sc_local_axis B             Perform SQW along local quantization axis (SA) (Y/N/B) 
+                                 B--> B_effxSA
+  sc_window_fun 2                Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 
+                                 4=Blackman-Harris)
+  sc_average N                   Averaging of S(q,w): (F)ull, (E)ven, or (N)one
+  do_sc_tens N                   Print the tensorial values s(q,w) (Y/N)
+  
+  qpoints D
+  qfile ./qfile
+
+.. figure:: figures/tutorial5/fig4.png
+
+Fig 4. Structure factor together with non-Collinear AMS.
+
+Questions and exercises: 
+^^^^
+
+1. Is there only one branch?
+2. Seems linear around Gamma point but J is FM? Why is that? Shouldn´t be parabolic?
+
+Tutorial 6
+==========
+ 
+Triangular system with AFM interactions
+---------------------------------------
+
+Non-Collinear adiabatic magnon spectra and S(q,w)
+^^^^
+
+The following tutorial serves as how to use non-collinear AMS for systems that are not commensurate with the magnetic unit cell. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w).
+
+Crystal & magnetic structure
+^^^^
+Crystal & magnetic structure
+
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an AFM triangular lattice is created. Have a look to posfile and momfile, etc.
+
+::
+
+  simid  triang_T
+  ncell    66 66 1
+  BC         P P 0
+  cell     1.000000000000    0.000000000000    0.000000000000
+          -0.500000000000    0.866025403784    0.000000000000
+           0.000000000000    0.000000000000    10.00000000000
+  
+  Sym        3                Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+  
+  posfile    ./posfile
+  posfiletype D                C=Cartesian or D=direct coordinates
+  momfile    ./momfile
+  exchange   ./jfile
+  
+  maptype 2
+  do_jtensor 1
 
 
+.. figure:: figures/tutorial6/fig1.png
+
+Fig 1. Crystal and magnetic texture.
+
+Spin dynamics
+^^^^
+
+Using the lines below the system is evolved in time. Notice that in the initial phase, we use a minimization of the spin-spiral energy, and by doing that, the ordering wave vector is calculated. In a second calculation, the adiabatic magnon spectra is calculated by using the already calculated ordering wave vector of the spin spiral based on the direction provided by the spin vector qm_svec and qm_nvec which is perpendicular to the given spin direction.
+
+::
+
+  ip_mode Q                                Activate qminimizer
+                                           minimize spin-spiral energy
+                                           calculate ordering wave vector, etc.
+  ip_nphase 1
+  50000 0.00000 1.0e-16 5.0
+  10000 300.0001 1.0e-16 5.0
+  10000 100.0001 1.0e-16 5.0
+  10000 10.0001  1.0e-16 5.0
+  20000 1.0001   1.0e-16 5.0
+  50000 0.00000 1.0e-16 5.0
+  
+  mode      S                                     S=SD, M=MC
+  temp      0.1
+  Nstep     59500
+  damping   0.001
+  timestep  1e-16
+  qm_nvec 0 0 1                             Unit-vector perpendicular to spins
+  qm_svec 0 1 0                             Direction of the spin
+  
+Spin wave spectrum
+^^^^
+
+We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+
+::
+
+  do_diamag Y                   Non-Collinear Adiabatic magnon spectra
+  
+  qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
+                                file with direct coordinates)
+  qfile   ./qfile               Path along the high symmetry points in the reciprocal space
+  
+  nc_qvect 0.330000 0.571577 0.000000   Ordering wave vector
+  nc_nvect 0.0 0.0 1.0                  Pitch-vector along z and the moments rotate 
+                                        in the xy-plane 
+  qm_nvec 0 0 1                             Unit-vector perpendicular to spins
+  qm_svec 0 1 0                             Direction of the spin
+
+**The first Brilluoin zone of a hexagonal lattice**
+
+
+.. figure:: figures/tutorial6/fig2.png
+
+Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.
+
+Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
+^^^^
+
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”
+
+.. figure:: figures/tutorial6/fig3.png
+
+Fig 3. Non-Collinear AMS.
+
+Plotting S(q,w)
+^^^^
+
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.
+
+::
+
+  do_sc  Q
+  sc_nstep 700
+  sc_step   85
+  do_sc_local_axis B             Perform SQW along local quantization axis (SA) (Y/N/B) 
+                                 B--> B_effxSA
+  sc_window_fun 2                Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 
+                                 4=Blackman-Harris)
+
+.. figure:: figures/tutorial6/fig4.png
+
+Fig 4. Structure factor together with non-Collinear AMS with non-zero ordering wave vector.
+
+Questions and exercises: 
+^^^^
+
+1. Why we have 3 branches, with just 1 atoms per unit cell?
+2. That´s It have the profile of an antiferromagnet around the Gamma point?
 
