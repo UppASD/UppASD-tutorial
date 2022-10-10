@@ -1,0 +1,50 @@
+simid  kagome_T 
+ncell    66 66 1
+BC         P P 0
+cell     1.000000000000    0.000000000000    0.000000000000
+        -0.500000000000    0.866025403784    0.000000000000
+         0.000000000000    0.000000000000    10.00000000000
+
+Sym        0
+
+posfile    ./posfile
+posfiletype D               C=Cartesian or D=direct coordinates in posfile
+momfile    ./momfile
+exchange   ./jfile
+
+maptype 2
+do_jtensor 1
+
+do_prnstruct 1
+
+Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
+
+ip_mode N
+ip_mcanneal 2
+10000 100.0001
+10000 0.0001
+
+mode      S                                     S=SD, M=MC
+temp      0.0001
+Nstep      45000
+damping   0.001
+timestep  1.000e-16
+
+do_avrg   Y                                     Measure averages
+avrg_step 100
+
+
+plotenergy 1         
+
+do_ams N
+do_diamag Y
+do_sc  Q
+sc_nstep 500
+sc_step   90 
+do_sc_local_axis B                               Perform SQW along local quantization axis (SA) (Y/N/B) B--> B_effxSA
+sc_window_fun 2                                  Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
+sc_average N                                     Averaging of S(q,w): (F)ull, (E)ven, or (N)one
+do_sc_tens N                                     Print the tensorial values s(q,w) (Y/N)
+
+qpoints D
+qfile ./qfile
