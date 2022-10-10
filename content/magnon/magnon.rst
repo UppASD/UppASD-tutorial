@@ -46,4 +46,18 @@ Using the lines below, the systems is driven to the ground state.
 
 .. figure:: figures/tutorial1/fig2.png
 
+Spin wave spectrum
+^^^^^
+
+We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra (AMS)) at the list of Q points (qfile). Use qmaker script.
+
+::
+
+  do_ams Y                         Collinear Adiabatic magnon spectra
+  qpoints D                        Direct coordinates
+  qfile ./qfile                    Path along the high symmetry points in the reciprocal space
+
+**The first Brilluoin zone of a body centered cubic lattice**
+
+
 
