@@ -320,7 +320,7 @@ Plotting S(q,w)
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
-:
+::
 
   do_sc Q           Measure spin correlation
   sc_window_fun  2  Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
