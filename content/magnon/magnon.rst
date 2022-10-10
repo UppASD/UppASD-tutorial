@@ -77,6 +77,18 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 .. figure:: figures/tutorial1/fig6.png
 Fig 6. Adiabatic magnon spectra.
 
+Questions and exercises:
+^^^^
+
+1. Does it follows the analytical expression?
+2. Why the spectra is shift it up? 
+3. Plot the spectra without the gap around the center zone.
+4. Why there are two branches, 1 acoustic and 1 optical?
+5. Plot the spectrum for Fe fcc. Why now there is just 1 branch? Is it following the analytical expression?
+
+
+
+
 
 
 
