@@ -115,6 +115,7 @@ Crystal & magnetic structure
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D Heisenberg chain is created.
 ::
+
   simid     HeisWire                              System name
   ncell     1         1         100               System size (in terms of unit cells)
   BC        0         0         P                 Boundary conditions (0=vacuum,P=periodic)
@@ -137,6 +138,7 @@ Spin dynamics
 
 Using the lines below, the systems is driven to the ground state by spin dynamics.
 ::
+
   Mensemble 1                                     Number of samples in ensemble averaging
   Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
   
@@ -160,6 +162,7 @@ Spin wave spectrum
 We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
 
 ::
+
   do_ams Y                         Collinear Adiabatic magnon spectra
   do_magdos N                      Generate magnon density of states
   
@@ -193,10 +196,12 @@ Plotting S(q,w)
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
 ::
+
   do_sc Q           Measure spin correlation
   sc_window_fun  2  Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
   sc_nstep 5000     Number of steps to sample
   sc_step 8        Number of time steps between each sampling
+
 
 .. figure:: figures/tutorial2/fig7.png
 
