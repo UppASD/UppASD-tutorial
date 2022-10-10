@@ -8,7 +8,7 @@ Sym       0                                     Symmetry of lattice (0 for no, 1
 
 posfile   ./posfile
 momfile   ./momfile
-exchange  ./jASD2
+exchange  ./jfile
 anisotropy ./kfile
 
 do_prnstruct 1
