@@ -27,11 +27,23 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   anisotropy ./kfile
   do_prnstruct 2          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
 
-.. image:: content/magnon/fig1.png
-  :height: 100px
-   :width: 200 px
-   :scale: 50 %
-   :alt: alternate text
-   :align: right
+.. figure:: fig1.png
+
+Thermalizing the system
+^^^^
+Using the lines below, the systems is driven to the ground state.
+
+::
+
+  ip_mode   M
+  ip_mcanneal 1
+  10000 0.001 1.00e-16 0.95
+  
+  mode      M
+  Temp      0.001          K                      Temperature of the system
+  hfield    0.00000   0.00000   0.00000           Static H field
+  mcNstep   50000                                 MC steps
+
+
 
 
