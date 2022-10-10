@@ -456,7 +456,7 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 
 .. figure:: figures/tutorial4/fig8.png
 
-Fig 8. Structure factor and Non-Collinear AMS.
+Fig 8. Structure factor together with non-Collinear AMS and collinear AMS.
 
 Questions and exercises:
 ^^^^
