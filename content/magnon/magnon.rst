@@ -704,6 +704,6 @@ Fig 4. Structure factor together with non-Collinear AMS with non-zero ordering w
 Questions and exercises: 
 ^^^^
 
-1. Why we have 3 branches, with just 1 atoms per unit cell?
-2. That´s It have the profile of an antiferromagnet around the Gamma point?
+1. Why we have 3 branches, with just 1 atom per unit cell?
+2. Is it the profile of an antiferromagnet around the Gamma point?
 
