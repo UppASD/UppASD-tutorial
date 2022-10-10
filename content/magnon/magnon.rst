@@ -44,6 +44,6 @@ Using the lines below, the systems is driven to the ground state.
   hfield    0.00000   0.00000   0.00000           Static H field
   mcNstep   50000                                 MC steps
 
-
+.. figure:: fig2.png
 
 
