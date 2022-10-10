@@ -27,7 +27,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   anisotropy ./kfile
   do_prnstruct 2          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
 
-.. figure:: fig1.png
+.. figure:: figures/tutorial1/fig1.png
 
 Thermalizing the system
 ^^^^
@@ -44,6 +44,6 @@ Using the lines below, the systems is driven to the ground state.
   hfield    0.00000   0.00000   0.00000           Static H field
   mcNstep   50000                                 MC steps
 
-.. figure:: fig2.png
+.. figure:: figures/tutorial1/fig2.png
 
 
