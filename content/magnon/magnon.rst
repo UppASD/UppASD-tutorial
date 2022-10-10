@@ -51,7 +51,7 @@ Using the lines below, the systems is driven to the ground state.
 
 .. figure:: figures/tutorial1/fig2.png
 
-Fig 2. Components of the energy versus number of iterations.
+Fig 2. Energy versus number of iterations.
 
 Spin wave spectrum
 ^^^^^^^^^^^^^^^^^^
@@ -127,4 +127,86 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   exchange  ./jfile                               Exchange file
   momfile   ./momfile                             Moment file
   do_prnstruct 1          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
+
+.. figure:: figures/tutorial2/fig1.png
+
+Fig 1. Crystal and magnetic texture.
+
+Spin dynamics
+^^^^
+
+Using the lines below, the systems is driven to the ground state by spin dynamics.
+::
+  Mensemble 1                                     Number of samples in ensemble averaging
+  Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
+  
+  ip_mode   S                                     Initial phase parameters
+  ip_nphase 1
+  20000 1.0e-3 1e-16 4.0
+  
+  mode      S                                     S=SD, M=MC
+  temp      1.0e-3                                Measurement phase parameters
+  damping   0.0010                                --
+  Nstep     40000                                 --
+  timestep  1.000e-15                             --
+
+.. figure:: figures/tutorial2/fig2.png
+
+Fig 2. Energy versus number of iterations.
+
+Spin wave spectrum
+^^^^
+
+We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+
+::
+  do_ams Y                         Collinear Adiabatic magnon spectra
+  do_magdos N                      Generate magnon density of states
+  
+  qpoints F                        Flag for q-point generation (F=file,A=automatic,C=full cell)
+  qfile   ./qfile                  Path along the high symmetry points in the reciprocal space
+
+**The first Brilluoin zone of a simple cubic lattice**
+
+.. figure:: figures/tutorial2/fig3.png
+
+Fig 3. Primitive and reciprocal lattice vectors in bcc.
+
+.. figure:: figures/tutorial2/fig4.png
+
+Fig 4. BCC 1st Brilluoin zone.
+
+.. figure:: figures/tutorial2/fig5.png
+
+Fig 5. High symmetry points.
+
+Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
+^^^^
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
+
+.. figure:: figures/tutorial2/fig6.png
+
+Fig 6. Adiabatic magnon spectra.
+
+Plotting S(q,w)
+^^^^
+Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
+
+::
+  do_sc Q           Measure spin correlation
+  sc_window_fun  2  Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
+  sc_nstep 5000     Number of steps to sample
+  sc_step 8        Number of time steps between each sampling
+
+.. figure:: figures/tutorial2/fig7.png
+
+Fig 7. Structure factor together with AMS.
+
+Questions and exercises:
+^^^^
+
+1. Does it follows the analytical expression predicted by Linear Spin Wave Theory?
+
+
+
 
