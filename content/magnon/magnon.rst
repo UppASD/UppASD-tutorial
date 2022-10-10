@@ -7,7 +7,7 @@ Tutorial 1: Fe in bcc and fcc crystal structures
 Collinear magnon spectra and influence of uniaxial anisotropy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example shows how to calculate the spin wave spectrum of the standard examples Fe bcc and Fe fcc and to understand the influence of the number of atoms per unit cell on the spectra together with the influence of the uniaxial anisotropy.
+This example shows how to calculate the spin wave spectrum of the standard examples Fe bcc and Fe fcc and to understand the influence of the number of atoms per unit cell on the spectra together with the influence of the uniaxial anisotropy. Files are found in Fe folder.
 
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,7 +108,7 @@ FM Heisenberg nearest-neighbour spin chain
 
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
-The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic.
+The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic. Files are found in HeisChain folder.
 
 Crystal & magnetic structure
 ^^^^
@@ -222,7 +222,7 @@ AFM Heisenberg nearest-neighbour spin chain
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
 
-The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary a magnetic supercell 2x1x1 of the crystal cell and define both spin directions in the supercell.
+The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary a magnetic supercell 2x1x1 of the crystal cell and define both spin directions in the supercell. Files are found in HeisChainAF folder.
 
 Crystal & magnetic structure
 ^^^^
@@ -346,7 +346,7 @@ FM Heisenberg nearest-neighbour spin chain with DM interactions
 Non-Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
 
-The following tutorial serves as introduction to non-collinear AMS and shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain with DM interaction. Notice that AMS in this case does not work because the magnetic ground-state texture is non-collinear.
+The following tutorial serves as introduction to non-collinear AMS and shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain with DM interaction. Notice that AMS in this case does not work because the magnetic ground-state texture is non-collinear. Files are found in HeisChainDM folder.
 
 Crystal & magnetic structure
 ^^^^
@@ -472,7 +472,7 @@ Kagome system with DM interactions
 Non-Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
 
-The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w).
+The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w). Files are found in Kagome_ncAMS folder.
 
 Crystal & magnetic structure
 ^^^^
@@ -589,7 +589,7 @@ Triangular system with AFM interactions
 Non-Collinear adiabatic magnon spectra and S(q,w)
 ^^^^
 
-The following tutorial serves as how to use non-collinear AMS for systems that are not commensurate with the magnetic unit cell. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w).
+The following tutorial serves as how to use non-collinear AMS for systems that are not commensurate with the magnetic unit cell. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w). Files are found in Triangular_ncAMS folder.
 
 Crystal & magnetic structure
 ^^^^
