@@ -495,9 +495,8 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   momfile    ./momfile
   exchange   ./jfile
 
-
-maptype 2
-do_jtensor 1
+  maptype 2
+  do_jtensor 1
 
 .. figure:: figures/tutorial5/fig1.png
 
