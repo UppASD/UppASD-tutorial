@@ -1,0 +1,1 @@
+ifort -CB -traceback -check all -qopenmp decodeSopt.f90 -o decodeSopt.x
