@@ -235,7 +235,7 @@ bulk in FeCo in ordered B2 structure. Input files for the system can found in
 * Investigate the weak scaling for ``NX 24``, ``NY 24``, ``NX 12``:math:`c`, where :math:`nc` is the number CPU cores, ranging from 1 to 32.
 
 Exercise 4: Important control parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The key to performing relevant ASD simulation is to ensure that the eqations of motion are
 integrated properly, and that the simulation does indeed describe the system of choice properly.
