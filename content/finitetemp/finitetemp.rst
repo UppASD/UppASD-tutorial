@@ -56,6 +56,36 @@ i.e. including nearest and next-nearest neighbours on the cubic lattice. Notice 
 
 Phase diagrams
 --------------
+Obtaining the M vs T relationship is probably the most common use case for Monte Carlo simulations on spin systems. 
+In this exercise you can compare the MC functionalities of UppASD with a the ALPS package. 
+
+The system in question is here the 2d square lattice with NN exchange couplings. 
+To compare with other model implementations this example uses the ``aunits Y`` flag which sets the temperature unit to the exchange strength ``J`` instead of Kelvin.
+
+The ``inpsd.dat`` will here look as follows (to start with). Note the **TEMP** entries for initial and measurement temperatures.
+
+.. literalinclude:: SquareLattice/Base/inpsd.dat
+
+and the ``posfile`` and ``momfile``, and ``jfile`` files looks as 
+
+.. literalinclude:: SquareLattice/Base/posfile
+.. literalinclude:: SquareLattice/Base/momfile
+.. literalinclude:: SquareLattice/Base/jfile
+
+Again, note that with ``aunits Y`` the exchange interaction in ``jfile`` is not defined in ``mRy`` but in the dimensionless energy scale of ``J`` (not Joule either).
+
+In order to obtain the full M(T) curve, several simulations are needed at consecutive temperatures. 
+This is preferably scripted, like in this example where we use a simple ``bash`` script ``runme.sh``
+
+.. literalinclude:: SquareLattice/runme.sh
+
+Here you either need to replace the ``${SD_BINARY}`` expression, or export the location of your UppASD binary as the environment variable with the same name.
+
+ * Run the script and plot the resulting M(T) curve. 
+
+ * Compare with the reference data in the :download:`sc_64_ALPS.dat <SquareLattice/sc_64_ALPS.dat>` file
+
+ * Are the simulation parameters "good enough" or are more thermalization/sampling steps needed to obtain an accurate M(T) curve?
 
 
 Minimization
