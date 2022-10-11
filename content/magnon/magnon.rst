@@ -98,20 +98,17 @@ Questions and exercises:
 .. figure:: figures/tutorial1/fig7.png
 
 Fig 7. Adiabatic magnon spectra of Fe FCC.
-
-
-Tutorial 2
-==========
  
-FM Heisenberg nearest-neighbour spin chain
-------------------------------------------
+Tutorial 2: FM Heisenberg nearest-neighbour spin chain
+------------------------------------------------------
 
 Collinear adiabatic magnon spectra and S(q,w)
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic. Files are found in HeisChain folder.
 
 Crystal & magnetic structure
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D Heisenberg chain is created.
 ::
@@ -134,7 +131,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 Fig 1. Crystal and magnetic texture.
 
 Spin dynamics
-^^^^
+^^^^^^^^^^^^^
 
 Using the lines below, the systems is driven to the ground state by spin dynamics.
 ::
@@ -157,7 +154,7 @@ Using the lines below, the systems is driven to the ground state by spin dynamic
 Fig 2. Energy versus number of iterations.
 
 Spin wave spectrum
-^^^^
+^^^^^^^^^^^^^^^^^^
 
 We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
 
@@ -184,7 +181,8 @@ Fig 4. SC 1st Brilluoin zone.
 Fig 5. High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
 
 .. figure:: figures/tutorial2/fig6.png
@@ -192,7 +190,8 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 Fig 6. Adiabatic magnon spectra.
 
 Plotting S(q,w)
-^^^^
+^^^^^^^^^^^^^^^
+
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
 ::
@@ -208,24 +207,21 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 Fig 7. Structure factor together with AMS.
 
 Questions and exercises:
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory?
 
-
-Tutorial 3
-==========
  
-AFM Heisenberg nearest-neighbour spin chain
--------------------------------------------
+Tutorial 3: AFM Heisenberg nearest-neighbour spin chain
+-------------------------------------------------------
 
 Collinear adiabatic magnon spectra and S(q,w)
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary a magnetic supercell 2x1x1 of the crystal cell and define both spin directions in the supercell. Files are found in HeisChainAF folder.
 
 Crystal & magnetic structure
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D AFM Heisenberg chain is created. Have a look to posfile and momfile.
 
@@ -250,7 +246,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 Fig 1. Crystal and magnetic texture.
 
 Spin dynamics
-^^^^
+^^^^^^^^^^^^^
 
 Using the lines below, the systems is driven to the ground state by spin dynamics.
 
@@ -271,7 +267,7 @@ Using the lines below, the systems is driven to the ground state by spin dynamic
 Fig 2. Energy versus number of iterations.
 
 Spin wave spectrum
-^^^^
+^^^^^^^^^^^^^^^^^^
 
 We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
 
@@ -299,7 +295,7 @@ Fig 4. SC 1st Brilluoin zone.
 Fig 5. High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
 
@@ -316,7 +312,7 @@ Fig 6. Adiabatic magnon spectra.
 Fig 7. Adiabatic magnon spectra.
 
 Plotting S(q,w)
-^^^^
+^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
@@ -332,24 +328,22 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 Fig 8. Structure factor with AMS.
 
 Questions and exercises:
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory? Why is linear around the center zone?
 2. Calculate analytically the Energy/spin and show it is the same as the numerical result.
 
-Tutorial 4
-==========
  
-FM Heisenberg nearest-neighbour spin chain with DM interactions
----------------------------------------------------------------
+Tutorial 4: FM Heisenberg nearest-neighbour spin chain with DM interactions
+---------------------------------------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following tutorial serves as introduction to non-collinear AMS and shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain with DM interaction. Notice that AMS in this case does not work because the magnetic ground-state texture is non-collinear. Files are found in HeisChainDM folder.
 
 Crystal & magnetic structure
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D helical Heisenberg spin spiral is created. Have a look to posfile and momfile. Notice the system could be set up with just 1 atom per unit cell but, in this example, we use 4 atoms per unit cell just to help you to understand how to set up the dmfile for systems which have more than one atom per unit cell.
 
@@ -377,7 +371,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 Fig 1. Crystal and magnetic texture.
 
 Spin dynamics
-^^^^
+^^^^^^^^^^^^^
 
 Using the lines below, the systems is driven to the ground state by MonteCarlo.
 
@@ -398,7 +392,7 @@ Using the lines below, the systems is driven to the ground state by MonteCarlo.
 Fig 2. Energy versus number of iterations.
 
 Spin wave spectrum
-^^^^
+^^^^^^^^^^^^^^^^^^
 
 We calculate the non-collinear  and collinear spin wave spectrum at the list of Q points (qfile) for comparison. Use qmaker script.
 
@@ -427,7 +421,7 @@ Fig 4. SC 1st Brilluoin zone.
 Fig 5. High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
 
@@ -444,7 +438,7 @@ Fig 6. Collinear Adiabatic magnon spectra.
 Fig 7. Non-collinear Adiabatic magnon spectra.
 
 Plotting S(q,w)
-^^^^
+^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS and option 5 S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
@@ -459,23 +453,22 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 Fig 8. Structure factor together with non-Collinear AMS and collinear AMS.
 
 Questions and exercises:
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Do you understand why Collinear AMS failed in this case?
 
-Tutorial 5
-==========
+
  
-Kagome system with DM interactions
-----------------------------------
+Tutorial 5: Kagome system with DM interactions
+----------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w). Files are found in Kagome_ncAMS folder.
 
 Crystal & magnetic structure
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an Kagome system with DM interaction is created. Have a look to posfile and momfile, etc.
 
@@ -503,7 +496,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 Fig 1. Crystal and magnetic texture.
 
 Spin dynamics
-^^^^
+^^^^^^^^^^^^^
 
 Using the lines below, and using a momfile with previous minimization, the system is already in the ground-state. This is just to speed up the simulation time.
 
@@ -521,7 +514,7 @@ Using the lines below, and using a momfile with previous minimization, the syste
   timestep  1d-16
 
 Spin wave spectrum
-^^^^
+^^^^^^^^^^^^^^^^^^
 
 We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
 
@@ -536,13 +529,12 @@ We calculate the non-collinear spin wave spectrum (in this case, a collinear adi
 
 **The first Brilluoin zone of a hexagonal lattice**
 
-
 .. figure:: figures/tutorial5/fig2.png
 
 Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.
 
@@ -551,7 +543,7 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 Fig 3. Non-Collinear AMS.
 
 Plotting S(q,w)
-^^^^
+^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.
 
@@ -574,26 +566,23 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 
 Fig 4. Structure factor together with non-Collinear AMS.
 
-Questions and exercises: 
-^^^^
+Questions and exercises:
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Is there only one branch?
 2. Seems linear around Gamma point but J is FM? Why is that? Shouldn´t be parabolic?
 
-Tutorial 6
-==========
- 
-Triangular system with AFM interactions
----------------------------------------
+
+Tutorial 6: Triangular system with AFM interactions
+---------------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following tutorial serves as how to use non-collinear AMS for systems that are not commensurate with the magnetic unit cell. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w). Files are found in Triangular_ncAMS folder.
 
 Crystal & magnetic structure
-^^^^
-Crystal & magnetic structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an AFM triangular lattice is created. Have a look to posfile and momfile, etc.
 
@@ -622,7 +611,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 Fig 1. Crystal and magnetic texture.
 
 Spin dynamics
-^^^^
+^^^^^^^^^^^^^
 
 Using the lines below the system is evolved in time. Notice that in the initial phase, we use a minimization of the spin-spiral energy, and by doing that, the ordering wave vector is calculated. In a second calculation, the adiabatic magnon spectra is calculated by using the already calculated ordering wave vector of the spin spiral based on the direction provided by the spin vector qm_svec and qm_nvec which is perpendicular to the given spin direction.
 
@@ -648,7 +637,7 @@ Using the lines below the system is evolved in time. Notice that in the initial 
   qm_svec 0 1 0                             Direction of the spin
   
 Spin wave spectrum
-^^^^
+^^^^^^^^^^^^^^^^^^
 
 We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
 
@@ -668,13 +657,12 @@ We calculate the non-collinear spin wave spectrum (in this case, a collinear adi
 
 **The first Brilluoin zone of a hexagonal lattice**
 
-
 .. figure:: figures/tutorial6/fig2.png
 
 Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”
 
@@ -683,7 +671,7 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 Fig 3. Non-Collinear AMS.
 
 Plotting S(q,w)
-^^^^
+^^^^^^^^^^^^^^^
 
 Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.
 
@@ -701,8 +689,8 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
 
 Fig 4. Structure factor together with non-Collinear AMS with non-zero ordering wave vector.
 
-Questions and exercises: 
-^^^^
+Questions and exercises:
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Why we have 3 branches, with just 1 atom per unit cell?
 2. Is it the profile of an antiferromagnet around the Gamma point?
@@ -710,16 +698,21 @@ Questions and exercises:
 **Some preliminary and useful equations:**
 
 .. figure:: figures/equations/fig1.png
+
 Eq 1. Excitation energy for spin waves in an anisotropic antiferromagnet.
 
 .. figure:: figures/equations/fig2.png
-Eq 1. Energy gap due to the anisotropy.
+
+Eq 2. Energy gap due to the anisotropy.
 
 .. figure:: figures/equations/fig3.png
-Eq 1. Excitation energy for spin waves in an anisotropic ferromagnet.
+
+Eq 3. Excitation energy for spin waves in an anisotropic ferromagnet.
 
 .. figure:: figures/equations/fig4.png
-Eq 1. Excitation energy for spin waves in an isotropic antiferromagnet.
+
+Eq 4. Excitation energy for spin waves in an isotropic antiferromagnet.
 
 .. figure:: figures/equations/fig5.png
-Eq 1. Excitation energy for spin waves in an isotropic ferromagnet.
+
+Eq 5. Excitation energy for spin waves in an isotropic ferromagnet.
