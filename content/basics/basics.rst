@@ -233,3 +233,23 @@ bulk in FeCo in ordered B2 structure. Input files for the system can found in
 * Investigate the strong scaling for ``NX 24``, ``NY 24``, ``NZ 24``, when varying the number of CPU cores :math:`nc` in the range from 1 to 32.
 
 * Investigate the weak scaling for ``NX 24``, ``NY 24``, ``NX 12``:math:`c`, where :math:`nc` is the number CPU cores, ranging from 1 to 32.
+
+Exercise 4: Important control parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The key to performing relevant ASD simulation is to ensure that the eqations of motion are
+integrated properly, and that the simulation does indeed describe the system of choice properly.
+For the equations of motion, the choice of solver and the simulation time step are the controlling parameters.
+
+In this exercise you will investigate the effect that the choice of the simulation time step has on the resulting measurables.
+
+First consider a single spin in an external field. Inputs that can be used for this system is found in ``examples/SimpleSystems/SingleSpin/BASE``.
+
+Note that here you need to edit the contents of the ``inpsd.dat`` file so copy the inputs to a directory outside of the example folder structure before
+performing any edits. 
+
+Solvers that can be considered are the semi-implicit midpoint solver (``sde_algh 1``), the cartesian Heun solver (``sde_algh 4``) and the Depondt solver (``sde_algh 5``) 
+
+* Investigate the conservative properties for a single spin in an effective field and how it depends on solver, field strength and simulation time step.
+
+* Modify the system so you have two spins coupled with an exchange interaction J.  Do the same investigation as for the single spin but with varying exchange interaction J instead of external field.
