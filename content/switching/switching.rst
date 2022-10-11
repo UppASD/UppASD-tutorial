@@ -16,7 +16,7 @@ TASK1: External field
 Here you will use the inputs in the folder ``macrospin`` to switch the magnetization direction of 
 a macrospin from **+z** to **-z** direction, compare the switching 
 time with external field ``-1000 ,-1500 ,-2000, -2500, -3000 Tesla``.
-You can directly use the script ``switching.sh`` to complete this simulation. Finally, use the plotting script ``plot.gnu`` or ``plot.py`` to plot the 
+You can directly use the script ``switching.sh`` to complete this exercise. Finally, use the plotting script ``plot.gnu`` or ``plot.py`` to plot the 
 average magnetization of **z** component as a function of time
 for each magnetic field and compare them. Keep in mind that the external field in this simulation
 is incrediblely huge, here we use huge magnetic field to accelerate our simulation. 
