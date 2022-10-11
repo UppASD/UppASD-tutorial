@@ -63,7 +63,7 @@ Gaussian pulse,exponentially decaying pulse have been implemented in UppASD). He
 If you have time, try to compare the switching process with different damping and parameters for Gaussian pulse in the file named ``bpulsefile``.
 
 
-TASK4: Spin transfer torque 
+TASK4: Spin transfer torque(STT) 
 ------------------------
 * Magnetic memory devices have been studied extensively in the past years. The IBM racetrack memory being one of the prime examples of this. This device relies on the movement of a magnetic texture connecting two magnetic domains with different orientation. This texture is known as a domain wall. To move this wall a spin polarized current can be applied to the system exerting a torque over the texture forcing it to move. In this exercise, you will simulate the precessional switching. 
 
