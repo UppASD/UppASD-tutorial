@@ -34,7 +34,7 @@ In this exercise you will compare the switching time of a macrospin with differe
 
 The inputs for this simulation are in the folder ``damping``. Use the flag ``damping`` in ``inpsd.dat`` to control the damping parameter in LLG equation. Here you still switch the magnetization direction of 
 the macrospin from **+z** to **-z** direction, compare the switching 
-time with damping ``0.2 ,0.4, 0.6, 0.8, 1.0``. You can directly use the script ``damping.sh`` to complete this simulation.   Finally, plot the 
+time with damping ``0.2 ,0.4, 0.6, 0.8, 1.0``. You can directly use the script ``damping.sh`` to complete this exercise. Finally, plot the 
 average magnetization of **z** component as a function of time
 for system with each damping and see how different damping affects the switching process and explain it from LLG equation(Here you can create a python plot script by yourself). 
 
