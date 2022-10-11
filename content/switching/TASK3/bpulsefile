@@ -1,0 +1,16 @@
+ # Header
+93.70 0 0   # Magnetic field amplitude (x,y,z)
+0.0         # Not used
+1           # Step between recalculation of field (1 is good)
+10          # Number of pulse parameters to use
+0.0         # Pulse parameter 1 
+5.0e-12     # Pulse parameter 2 (Center of pulse for Gaussian)
+1.0e-12     # Pulse parameter 3 (Width of pulse for Gaussian)
+0.0         # Pulse parameter 4 
+0.0         # Pulse parameter 5 
+1.0         # Pulse parameter 6 (Scaling factor for Gaussian)
+0.0         # Pulse parameter 7 
+0.0         # Pulse parameter 8 
+0.0         # Pulse parameter 9 
+0.0         # Pulse parameter 10
+

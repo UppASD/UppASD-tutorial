@@ -1,0 +1,30 @@
+simid bccFe100                             
+ncell     5 5 5                 
+BC        P         P         P           
+cell      1.00000   0.00000   0.00000     
+          0.00000   1.00000   0.00000
+          1.00000   0.00000   1.00000
+Sym       1                               
+do_prnstruct 1
+
+posfile     ./posfile
+momfile     ./momfile
+exchange    ./jfile
+anisotropy  ./kfile
+
+Initmag   3                               
+
+ip_mode   N
+
+mode      S
+hfield    0  0  Bext
+Temp      0.1                          
+damping   1.0                           
+nstep     1000                               
+timestep  1.000e-16                      
+
+do_avrg   Y                                
+avrg_step 1
+
+do_tottraj Y
+tottraj_step 100
