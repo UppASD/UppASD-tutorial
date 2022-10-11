@@ -49,7 +49,7 @@ file named ``kfile`` storing the magnetic anisotropy
 parameter of system to manipulate the magnetic anisotropy parameter.
 Here still switch the magnetization direction of 
 macrospin from **+z** to **-z** direction, compare the switching 
-time with anisotropy ``K1=-0.02 ,-0.2, -0.4``. You can directly use the script ``switching_K.sh`` to complete this simulation. Read the maunal and find out where you need to modify in the ``kfile``.
+time with anisotropy ``K1=-0.02 ,-0.2, -0.4``. You can directly use the script ``switching_K.sh`` to complete this exercise. Read the manual and find out where you need to modify in the ``kfile``.
 Plot the average magnetization of **z** component as a function of time
 for system with each magnetic anisotropy and see the effect of anisotropy on switching.
 
