@@ -21,7 +21,7 @@ average magnetization of **z** component as a function of time
 for each magnetic field and compare them. Keep in mind that the external field in this simulation
 is incrediblely huge, here we use huge magnetic field to accelerate our simulation. 
 
-2. After that, use the inputs in the folder ``bccFe``.  Set the temperature to 0K and the external field of ``-2000T``, then you can try different Jij in ``jfile`` of bccFe and compare 
+2. After that, use the inputs in the folder ``bccFe``.  Set the temperature to 0K and the external field to ``-2000T``, then you can try different Jij in ``jfile`` of bccFe and compare 
 whether different set of Jij affects the switching process? Read the maunal and find out where you need to modify in the ``jfile``.
 
 Do you think the switching process of bccFe behaves like a macrospin? Try to explain it 
