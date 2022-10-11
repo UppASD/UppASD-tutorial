@@ -42,7 +42,7 @@ Keep in mind that the damping value in real materials is
 usually in the order of **1e^⁻3** or **1e^⁻4**, here we use huge 
 damping to accelerate our simulation.
 
-* To switch a magnetic system, one needs to overcome the energy barrier, which is determined by system’s magnetic anisotropy and the volume of the system. In actual device, the energy barrier can stablize system's magnetic order. However, huge energy barrier can induce higher power consumption to manipulate the magnetism in device. In this assignment, you will explore the magnetic switching process of macrospin with different magnetic anisotropy. 
+* To switch a magnetic system, one needs to overcome the energy barrier, which is determined by system’s magnetic anisotropy and the volume of the system. In actual device, the energy barrier can stablize system's magnetic order. However, huge energy barrier induces higher power consumption to manipulate the magnetism in device. In this assignment, you will explore the magnetic switching process of macrospin with different magnetic anisotropy. 
 
 The inputs for this simulation are in the folder ``anisotropy``.  Use the flag ``anisotropy`` in ``inpsd.dat`` combined with an external
 file named ``kfile`` storing the magnetic anisotropy
