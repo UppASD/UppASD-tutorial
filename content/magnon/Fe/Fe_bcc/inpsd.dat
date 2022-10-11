@@ -1,0 +1,47 @@
+simid bccFe100                                    
+ncell     10        10       10                 System size            
+BC        P         P         P                 Boundary conditions (0=vacuum, P=periodic)
+cell      1.00000   0.00000   0.00000         
+          0.00000   1.00000   0.00000
+          0.00000   0.00000   1.00000
+Sym       0                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+
+posfile    ./posfile
+momfile    ./momfile
+exchange   ./jfile
+anisotropy ./kfile
+
+do_prnstruct 2                                  Flag to print lattice structure (0=off/1=on/2=print only coordinates)
+
+SDEalgh   5                                     SDE solver: 1=midpoint, 2=heun, 3=heun3, 4=Heun_proper, 5=Depondt
+Initmag   3                                     Initial config of moments (1=random, 2=cone, 3=spec., 4=file)
+
+ip_mode   M
+ip_mcanneal 1
+10000 0.001 1.00e-16 0.95
+
+mode      M
+Temp      0.001          K                      Temperature of the system
+hfield    0.00000   0.00000   0.00000           Static H field
+mcNstep   50000                                 MC steps
+#damping   0.50                                  damping parameter (gamma)
+#nstep     10000                                 Number of time-steps
+#timestep  1.000e-16       s                     The time step-size for the SDE-solver
+
+plotenergy 1
+
+do_avrg   N                                     Measure averages
+
+do_cumu N
+cumu_step 50
+cumu_buff 10
+
+do_tottraj N                                    Measure moments
+do_proj_avrg N
+tottraj_step   100 
+
+do_ams Y                                        Collinear Adiabatic magnon spectra
+qpoints D                                       Direct coordinates
+qfile ./qfile                                   Path along the high symmetry points in the reciprocal space
+
+

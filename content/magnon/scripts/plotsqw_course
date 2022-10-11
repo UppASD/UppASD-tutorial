@@ -1,0 +1,730 @@
+#!/bin/bash
+
+
+printf "\n Choose the type of plotting: 1-> SQW, 2-> AMS, 3-> NC-AMS, 4-> SQW+NC-AMS, 5->SQW+AMS, 6->SQW+NC-AMS+Q, 7-> NC-AMS+Q\n"
+read type_plot
+
+if [ $type_plot -eq 1 ]
+then
+
+a=0
+b=0
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+dt=`grep timestep inpsd.dat | tail -1 | awk '{ print $2}' `
+ss=`grep sc_step inpsd.dat | tail -1 | awk '{ print $2}'`
+ns=`grep sc_nstep inpsd.dat | tail -1 | awk '{ print $2}'`
+# energy in meV below and becuase of frequency symmetry we can divide by two
+econ=`echo $dt $ss $ns | awk '{ print 4.13566733e-12/($1*$2*$3)}'`
+yscale=`echo $dt $ss | awk '{ print 4.13566733e-12/($1*$2)}'`
+printf "\n Lower limit of the energy range (-1 for the all range) :\n"
+read sqwyscalelower
+if [ $sqwyscalelower -eq -1 ]
+then
+sqwyscalelow=0
+else
+sqwyscalelow=$sqwyscalelower
+fi
+printf "\n Upper limit of the energy range (-1 for the all range) :\n"
+read sqwyscaleupper
+if [ $sqwyscaleupper -eq -1 ]
+then
+sqwyscaleup=`echo $yscale | awk '{ print $1/2}'`
+else
+sqwyscaleup=$sqwyscaleupper
+fi
+printf "\n Upper limit of the q range (-1 for the all range) :\n"
+read sqwxscaleupper
+if [ $(echo "$sqwxscaleupper == -1" | bc -l)  ]
+then
+sqwxscale=`head -n 1 qfile | awk '{ print $1/100}'`
+else
+sqwxscale=$sqwxscaleupper
+fi
+
+if [ -d "SQW" ] 
+then
+    echo "Directory /SQW exists. Running the script sqw_map.sh"
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+else
+    echo "Directory /SQW does not exists. Creating the temporal directory and running the script sqw_map.sh"
+    mkdir SQW
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+fi
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+q2tic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | ack -oP '[\d\.]+\s[^\d]+$' qfile | tr -s ' ' | tail -n +2 | tail -r | tail -n +2 | tail -r | sed -e 's/\([^ ]*\) \(.*\)/"" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+echo "Plotting S(q,w) with gnuplot ..."
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua size 1560,975
+set multiplot
+
+set link x2
+set xtics ($qtic) nomirror font "Times-Roman, 25"
+set x2tics ($q2tic) nomirror font "Times-Roman, 25"
+set ytics font "Times-Roman, 25"
+set grid x2tics front lt 0 lw 2
+set border 4095 front lw 2
+set termoption dash
+set parametric
+set palette model CMY rgbformulae 7,5,15
+set pm3d map
+set yrange [$sqwyscalelow:$sqwyscaleup]
+set xrange [0:$sqwxscale]
+set zrange [-0:1]
+set cbrange [-0:1]
+set size 0.5, 0.5
+
+set origin 0.0, 0.0
+set ylabel offset -1,0 "Energy (meV)" font "Times-Roman, 28"
+set title "S_x" font ", 25"
+splot "SQW/sqw.mat_x" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle
+
+set origin 0.00, 0.50
+set ylabel "Energy (meV)" font "Times-Roman, 28"
+set title "S_y" font "Times-Roman, 25"
+splot "SQW/sqw.mat_y" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle
+
+set origin 0.50, 0.0
+set title "S_z" font "Times-Roman, 28"
+splot "SQW/sqw.mat_z" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle
+
+set origin 0.50, 0.50
+set title "S_{total}" font "Times-Roman, 28"
+splot "SQW/sqw.mat_t" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle
+unset multiplot
+EOF
+rm -r SQW
+echo "End of plotting the Structure Factor S(q,w)."
+
+elif [ $type_plot -eq 2 ]
+then
+
+a=0
+b=0
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+
+file=$(ls ams.*.out)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file tempqfile | column -s $'\t' -t > plotfile)
+$(rm tempqfile)
+
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+Ncol=$(awk 'NR==2 {print NF}' $file)
+xscale=$(tail -n 1 qfile | awk '{print $4}')
+echo "Plotting AMS with gnuplot ..."
+Ncoltot=$(($Ncol + 4))
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua
+set lmargin 10
+set xrange [0:$xscale]
+set ytics  font "Times-Roman, 25"
+set xtics ($qtic) font "Times-Roman, 25"
+set ylabel "Energy (meV)" font "Times-Roman, 30"
+set title "$WORD" font "Times-Roman, 40" offset 0,-1.5
+set termoption dash
+set parametric
+set grid xtics lt 0 lw 2
+
+plot for [i=2:$Ncol-1] "plotfile" u (\$$Ncoltot):i w l lw 2.5 lc "blue" notitle
+set trange [GPVAL_Y_MIN:GPVAL_Y_MAX]
+set yrange [0:GPVAL_Y_MAX]
+plot for [i=2:$Ncol-1] "plotfile" u (\$$Ncoltot):i w l lw 2.5 lc "blue" notitle
+
+#plot for [i=2:$Ncol-1] '< join $file qfile' u (\$$Ncol/100):i w l lw 2.5 lc "blue" notitle
+#set trange [GPVAL_Y_MIN:GPVAL_Y_MAX]
+#set yrange [0:GPVAL_Y_MAX]
+#plot for [i=2:$Ncol-1] '$file' u (\$$Ncol/100):i w l lw 2.5 lc "blue" notitle
+
+EOF
+$(rm plotfile)
+echo "End of plotting the Adiabatic Magnon Spectra."
+
+elif [ $type_plot -eq 3 ]
+then
+
+a=0
+b=0
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+
+file=$(ls ncams.*.out)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file tempqfile | column -s $'\t' -t > plotfile)
+$(rm tempqfile)
+
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+Ncol=$(awk 'NR==2 {print NF}' $file)
+xscale=$(tail -n 1 qfile | awk '{print $4}')
+echo "Plotting AMS with gnuplot ..."
+Ncoltot=$(($Ncol + 4))
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua
+set lmargin 10
+set xrange [0:$xscale]
+set ytics  font "Times-Roman, 25"
+set xtics ($qtic) font "Times-Roman, 25"
+set ylabel "Energy (meV)" font "Times-Roman, 30"
+set title "$WORD" font "Times-Roman, 40" offset 0,-1.5
+set termoption dash
+set parametric
+set grid xtics lt 0 lw 2
+
+plot for [i=2:$Ncol-1] "plotfile" u (\$$Ncoltot):i w l lw 2.5 lc "blue" notitle
+set trange [GPVAL_Y_MIN:GPVAL_Y_MAX]
+set yrange [0:GPVAL_Y_MAX]
+plot for [i=2:$Ncol-1] "plotfile" u (\$$Ncoltot):i w l lw 2.5 lc "blue" notitle
+
+#plot for [i=2:$Ncol-1] '< join $file qfile' u (\$$Ncol/100):i w l lw 2.5 lc "blue" notitle
+#set trange [GPVAL_Y_MIN:GPVAL_Y_MAX]
+#set yrange [0:GPVAL_Y_MAX]
+#plot for [i=2:$Ncol-1] '$file' u (\$$Ncol/100):i w l lw 2.5 lc "blue" notitle
+
+EOF
+$(rm plotfile)
+echo "End of plotting the Adiabatic Magnon Spectra."
+
+elif [ $type_plot -eq 4 ]
+then
+
+a=0
+b=0
+
+file=$(ls ncams.*.out)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file tempqfile | column -s $'\t' -t > plotfile)
+$(rm tempqfile)
+Ncol=$(awk 'NR==2 {print NF}' $file)
+
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+dt=`grep timestep inpsd.dat | tail -1 | awk '{ print $2}' `
+ss=`grep sc_step inpsd.dat | tail -1 | awk '{ print $2}'`
+ns=`grep sc_nstep inpsd.dat | tail -1 | awk '{ print $2}'`
+# energy in meV below and becuase of frequency symmetry we can divide by two
+econ=`echo $dt $ss $ns | awk '{ print 4.13566733e-12/($1*$2*$3)}'`
+yscale=`echo $dt $ss | awk '{ print 4.13566733e-12/($1*$2)}'`
+printf "\n Lower limit of the energy range (-1 for the all range) :\n"
+read sqwyscalelower
+if [ $sqwyscalelower -eq -1 ]
+then
+sqwyscalelow=0
+else
+sqwyscalelow=$sqwyscalelower
+fi
+printf "\n Upper limit of the energy range (-1 for the all range) :\n"
+read sqwyscaleupper
+if [ $sqwyscaleupper -eq -1 ]
+then
+sqwyscaleup=`echo $yscale | awk '{ print $1/2}'`
+else
+sqwyscaleup=$sqwyscaleupper
+fi
+printf "\n Upper limit of the q range (-1 for the all range) :\n"
+read sqwxscaleupper
+if [ $sqwxscaleupper -eq -1 ]
+then
+sqwxscale=`head -n 1 qfile | awk '{ print $1/100}'`
+else
+sqwxscale=$sqwxscaleupper
+fi
+
+if [ -d "SQW" ]
+then
+    echo "Directory /SQW exists. Running the script sqw_map.sh"
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+else
+    echo "Directory /SQW does not exists. Creating the temporal directory and running the script sqw_map.sh"
+    mkdir SQW
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+fi
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+q2tic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | ack -oP '[\d\.]+\s[^\d]+$' qfile | tr -s ' ' | tail -n +2 | tail -r | tail -n +2 | tail -r | sed -e 's/\([^ ]*\) \(.*\)/"" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+Ncoltot=$(($Ncol + 4))
+
+echo "Plotting S(q,w)+AMS with gnuplot ..."
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua size 1560,975
+set multiplot
+
+set link x2
+set xtics ($qtic) nomirror font "Times-Roman, 25"
+set x2tics ($q2tic) nomirror font "Times-Roman, 25"
+set ytics font "Times-Roman, 25"
+set grid x2tics front lt 0 lw 2
+set border 4095 front lw 2
+set termoption dash
+set parametric
+set palette model CMY rgbformulae 7,5,15
+set pm3d map
+set yrange [$sqwyscalelow:$sqwyscaleup]
+set xrange [0:$sqwxscale]
+set zrange [-0:1]
+set cbrange [-0:1]
+set size 0.5, 0.5
+set arrow from graph 0.77, graph 1.08 to graph 0.87, graph 1.08  nohead lw 2 lc "red"
+set label 'NC-AMS' at graph 0.9, graph 1.08 font "Times-Roman, 25"
+
+set origin 0.0, 0.0
+set ylabel offset -1,0 "Energy (meV)" font "Times-Roman, 28"
+set title "S_x" font ", 25"
+splot "SQW/sqw.mat_x" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+
+set origin 0.00, 0.50
+set ylabel "Energy (meV)" font "Times-Roman, 28"
+set title "S_y" font "Times-Roman, 25"
+splot "SQW/sqw.mat_y" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+
+set origin 0.50, 0.0
+set title "S_z" font "Times-Roman, 28"
+splot "SQW/sqw.mat_z" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+
+set origin 0.50, 0.50
+set title "S_{total}" font "Times-Roman, 28"
+splot "SQW/sqw.mat_t" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+unset multiplot
+EOF
+$(rm plotfile)
+rm -r SQW
+echo "End of plotting the Structure Factor S(q,w)+NC-AMS."
+
+elif [ $type_plot -eq 5 ]
+then
+
+a=0
+b=0
+
+file=$(ls ams.*.out)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file tempqfile | column -s $'\t' -t > plotfile)
+$(rm tempqfile)
+Ncol=$(awk 'NR==2 {print NF}' $file)
+
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+dt=`grep timestep inpsd.dat | tail -1 | awk '{ print $2}' `
+ss=`grep sc_step inpsd.dat | tail -1 | awk '{ print $2}'`
+ns=`grep sc_nstep inpsd.dat | tail -1 | awk '{ print $2}'`
+# energy in meV below and becuase of frequency symmetry we can divide by two
+econ=`echo $dt $ss $ns | awk '{ print 4.13566733e-12/($1*$2*$3)}'`
+yscale=`echo $dt $ss | awk '{ print 4.13566733e-12/($1*$2)}'`
+printf "\n Lower limit of the energy range (-1 for the all range) :\n"
+read sqwyscalelower
+if [ $sqwyscalelower -eq -1 ]
+then
+sqwyscalelow=0
+else
+sqwyscalelow=$sqwyscalelower
+fi
+printf "\n Upper limit of the energy range (-1 for the all range) :\n"
+read sqwyscaleupper
+if [ $sqwyscaleupper -eq -1 ]
+then
+sqwyscaleup=`echo $yscale | awk '{ print $1/2}'`
+else
+sqwyscaleup=$sqwyscaleupper
+fi
+printf "\n Upper limit of the q range (-1 for the all range) :\n"
+read sqwxscaleupper
+if [ $sqwxscaleupper -eq -1 ]
+then
+sqwxscale=`head -n 1 qfile | awk '{ print $1/100}'`
+else
+sqwxscale=$sqwxscaleupper
+fi
+
+if [ -d "SQW" ]
+then
+    echo "Directory /SQW exists. Running the script sqw_map.sh"
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+else
+    echo "Directory /SQW does not exists. Creating the temporal directory and running the script sqw_map.sh"
+    mkdir SQW
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+fi
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+q2tic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | ack -oP '[\d\.]+\s[^\d]+$' qfile | tr -s ' ' | tail -n +2 | tail -r | tail -n +2 | tail -r | sed -e 's/\([^ ]*\) \(.*\)/"" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+Ncoltot=$(($Ncol + 4))
+
+echo "Plotting S(q,w)+AMS with gnuplot ..."
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua size 1560,975
+set multiplot
+
+set link x2
+set xtics ($qtic) nomirror font "Times-Roman, 25"
+set x2tics ($q2tic) nomirror font "Times-Roman, 25"
+set ytics font "Times-Roman, 25"
+set grid x2tics front lt 0 lw 2
+set border 4095 front lw 2
+set termoption dash
+set parametric
+set palette model CMY rgbformulae 7,5,15
+set pm3d map
+set yrange [$sqwyscalelow:$sqwyscaleup]
+set xrange [0:$sqwxscale]
+set zrange [-0:1]
+set cbrange [-0:1]
+set size 0.5, 0.5
+set arrow from graph 0.77, graph 1.08 to graph 0.87, graph 1.08  nohead lw 2 lc "red"
+set label 'AMS' at graph 0.9, graph 1.08 font "Times-Roman, 25"
+
+set origin 0.0, 0.0
+set ylabel offset -1,0 "Energy (meV)" font "Times-Roman, 28"
+set title "S_x" font ", 25"
+splot "SQW/sqw.mat_x" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+
+set origin 0.00, 0.50
+set ylabel "Energy (meV)" font "Times-Roman, 28"
+set title "S_y" font "Times-Roman, 25"
+splot "SQW/sqw.mat_y" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+
+set origin 0.50, 0.0
+set title "S_z" font "Times-Roman, 28"
+splot "SQW/sqw.mat_z" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+
+set origin 0.50, 0.50
+set title "S_{total}" font "Times-Roman, 28"
+splot "SQW/sqw.mat_t" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle
+unset multiplot
+EOF
+$(rm plotfile)
+rm -r SQW
+echo "End of plotting the Structure Factor S(q,w)+AMS."
+
+elif [ $type_plot -eq 6 ]
+then
+
+a=0
+b=0
+
+file=$(ls ncams.*.out)
+file1=$(ls ncams+q.*.out)
+file2=$(ls ncams-q.*.out)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file tempqfile | column -s $'\t' -t > plotfile)
+$(rm tempqfile)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file1 tempqfile | column -s $'\t' -t > plotfile1)
+$(rm tempqfile)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file2 tempqfile | column -s $'\t' -t > plotfile2)
+$(rm tempqfile)
+Ncol=$(awk 'NR==2 {print NF}' $file)
+
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+dt=`grep timestep inpsd.dat | tail -1 | awk '{ print $2}' `
+ss=`grep sc_step inpsd.dat | tail -1 | awk '{ print $2}'`
+ns=`grep sc_nstep inpsd.dat | tail -1 | awk '{ print $2}'`
+# energy in meV below and becuase of frequency symmetry we can divide by two
+econ=`echo $dt $ss $ns | awk '{ print 4.13566733e-12/($1*$2*$3)}'`
+yscale=`echo $dt $ss | awk '{ print 4.13566733e-12/($1*$2)}'`
+printf "\n Lower limit of the energy range (-1 for the all range) :\n"
+read sqwyscalelower
+if [ $sqwyscalelower -eq -1 ]
+then
+sqwyscalelow=0
+else
+sqwyscalelow=$sqwyscalelower
+fi
+printf "\n Upper limit of the energy range (-1 for the all range) :\n"
+read sqwyscaleupper
+if [ $sqwyscaleupper -eq -1 ]
+then
+sqwyscaleup=`echo $yscale | awk '{ print $1/2}'`
+else
+sqwyscaleup=$sqwyscaleupper
+fi
+printf "\n Upper limit of the q range (-1 for the all range) :\n"
+read sqwxscaleupper
+if [ $sqwxscaleupper -eq -1 ]
+then
+sqwxscale=`head -n 1 qfile | awk '{ print $1/100}'`
+else
+sqwxscale=$sqwxscaleupper
+fi
+
+if [ -d "SQW" ]
+then
+    echo "Directory /SQW exists. Running the script sqw_map.sh"
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+else
+    echo "Directory /SQW does not exists. Creating the temporal directory and running the script sqw_map.sh"
+    mkdir SQW
+    cp inpsd.dat sqw.$WORD.out SQW
+    cd SQW
+    $HOME/bin/sqw_map.sh
+    cd ..
+fi
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+q2tic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | ack -oP '[\d\.]+\s[^\d]+$' qfile | tr -s ' ' | tail -n +2 | tail -r | tail -n +2 | tail -r | sed -e 's/\([^ ]*\) \(.*\)/"" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+Ncoltot=$(($Ncol + 4))
+
+echo "Plotting S(q,w)+NC-AMS+Q with gnuplot ..."
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua size 1560,975
+set multiplot
+
+set link x2
+set xtics ($qtic) nomirror font "Times-Roman, 25"
+set x2tics ($q2tic) nomirror font "Times-Roman, 25"
+set ytics font "Times-Roman, 25"
+set grid x2tics front lt 0 lw 2
+set border 4095 front lw 2
+set termoption dash
+set parametric
+set palette model CMY rgbformulae 7,5,15
+set pm3d map
+set yrange [$sqwyscalelow:$sqwyscaleup]
+set xrange [0:$sqwxscale]
+set zrange [-0:1]
+set cbrange [-0:1]
+set size 0.5, 0.5
+set arrow from graph 0.77, graph 1.08 to graph 0.87, graph 1.08  nohead lw 2 lc "red"
+set label 'Phason mode' at graph 0.9, graph 1.08 font "Times-Roman, 15"
+set arrow from graph 0.77, graph 1.15 to graph 0.87, graph 1.15  nohead lw 2 lc "violet"
+set label 'q+Q' at graph 0.9, graph 1.15 font "Times-Roman, 15"
+set arrow from graph 0.77, graph 1.22 to graph 0.87, graph 1.22  nohead lw 2 lc "black"
+set label 'q-Q' at graph 0.9, graph 1.22 font "Times-Roman, 15"
+
+set origin 0.0, 0.0
+set ylabel offset -1,0 "Energy (meV)" font "Times-Roman, 28"
+set title "S_x" font ", 25"
+splot "SQW/sqw.mat_x" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "red" notitle, for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+set origin 0.00, 0.50
+set ylabel "Energy (meV)" font "Times-Roman, 28"
+set title "S_y" font "Times-Roman, 25"
+splot "SQW/sqw.mat_y" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle, for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+set origin 0.50, 0.0
+set title "S_z" font "Times-Roman, 28"
+splot "SQW/sqw.mat_z" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle,for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+set origin 0.50, 0.50
+set title "S_{total}" font "Times-Roman, 28"
+splot "SQW/sqw.mat_t" matrix using (column(1)/100):(column(2)*$econ):(column(3)) w pm3d notitle, for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle,for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+unset multiplot
+EOF
+$(rm plotfile)
+$(rm plotfile1)
+$(rm plotfile2)
+rm -r SQW
+echo "End of plotting the Structure Factor S(q,w)+NC-AMS."
+
+else
+
+a=0
+b=0
+
+file=$(ls ncams.*.out)
+file1=$(ls ncams+q.*.out)
+file2=$(ls ncams-q.*.out)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file tempqfile | column -s $'\t' -t > plotfile)
+$(rm tempqfile)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file1 tempqfile | column -s $'\t' -t > plotfile1)
+$(rm tempqfile)
+$(tail -n +2 "qfile" > tempqfile)
+$(paste $file2 tempqfile | column -s $'\t' -t > plotfile2)
+$(rm tempqfile)
+Ncol=$(awk 'NR==2 {print NF}' $file)
+
+for WORD in `cat inpsd.dat`
+do a=$(($a+1))
+if [ "$b" -eq "1" ]
+then
+break
+fi
+if [ "$WORD" == "simid" ]
+then
+    b=1
+fi
+done
+dt=`grep timestep inpsd.dat | tail -1 | awk '{ print $2}' `
+ss=`grep sc_step inpsd.dat | tail -1 | awk '{ print $2}'`
+ns=`grep sc_nstep inpsd.dat | tail -1 | awk '{ print $2}'`
+# energy in meV below and becuase of frequency symmetry we can divide by two
+econ=`echo $dt $ss $ns | awk '{ print 4.13566733e-12/($1*$2*$3)}'`
+yscale=`echo $dt $ss | awk '{ print 4.13566733e-12/($1*$2)}'`
+printf "\n Lower limit of the energy range (-1 for the all range) :\n"
+read sqwyscalelower
+if [ $sqwyscalelower -eq -1 ]
+then
+sqwyscalelow=0
+else
+sqwyscalelow=$sqwyscalelower
+fi
+printf "\n Upper limit of the energy range (-1 for the all range) :\n"
+read sqwyscaleupper
+if [ $sqwyscaleupper -eq -1 ]
+then
+sqwyscaleup=`echo $yscale | awk '{ print $1/2}'`
+else
+sqwyscaleup=$sqwyscaleupper
+fi
+printf "\n Upper limit of the q range (-1 for the all range) :\n"
+read sqwxscaleupper
+if [ $sqwxscaleupper -eq -1 ]
+then
+sqwxscale=`head -n 1 qfile | awk '{ print $1/100}'`
+else
+sqwxscale=$sqwxscaleupper
+fi
+
+qtic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | sed -e 's/\([^ ]*\) \(.*\)/"\2" \1,/g' | tr -d '\n' | sed 's/,$//')
+q2tic=$(ack -oP '[\d\.]+\s[^.]+$' qfile | tr -s ' ' | ack -oP '[\d\.]+\s[^\d]+$' qfile | tr -s ' ' | tail -n +2 | tail -r | tail -n +2 | tail -r | sed -e 's/\([^ ]*\) \(.*\)/"" \1,/g' | tr -d '\n' | sed 's/,$//')
+
+Ncoltot=$(($Ncol + 4))
+
+echo "Plotting NC-AMS+Q with gnuplot ..."
+
+/opt/local/bin/gnuplot << EOF
+set encoding utf8
+set terminal aqua size 1560,975
+set multiplot
+
+set link x2
+set xtics ($qtic) nomirror font "Times-Roman, 25"
+set x2tics ($q2tic) nomirror font "Times-Roman, 25"
+set ytics font "Times-Roman, 25"
+set grid x2tics front lt 0 lw 2
+set border 4095 front lw 2
+set termoption dash
+set parametric
+set palette model CMY rgbformulae 7,5,15
+set pm3d map
+set yrange [$sqwyscalelow:$sqwyscaleup]
+set xrange [0:$sqwxscale]
+set zrange [-0:1]
+set cbrange [-0:1]
+set size 0.5, 0.5
+set arrow from graph 0.77, graph 1.08 to graph 0.87, graph 1.08  nohead lw 2 lc "red"
+set label 'Phason mode' at graph 0.9, graph 1.08 font "Times-Roman, 15"
+set arrow from graph 0.77, graph 1.15 to graph 0.87, graph 1.15  nohead lw 2 lc "violet"
+set label 'q+Q' at graph 0.9, graph 1.15 font "Times-Roman, 15"
+set arrow from graph 0.77, graph 1.22 to graph 0.87, graph 1.22  nohead lw 2 lc "black"
+set label 'q-Q' at graph 0.9, graph 1.22 font "Times-Roman, 15"
+
+set origin 0.0, 0.0
+set ylabel offset -1,0 "Energy (meV)" font "Times-Roman, 28"
+set title "S_x" font ", 25"
+splot for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "red" notitle, for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+set origin 0.00, 0.50
+set ylabel "Energy (meV)" font "Times-Roman, 28"
+set title "S_y" font "Times-Roman, 25"
+splot for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle, for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+set origin 0.50, 0.0
+set title "S_z" font "Times-Roman, 28"
+splot  for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle,for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+set origin 0.50, 0.50
+set title "S_{total}" font "Times-Roman, 28"
+splot for [i=2:$Ncol-1] 'plotfile' u (\$$Ncoltot):i:(0.0) w l lw 2 lc "red" notitle,for [i=2:$Ncol-1] 'plotfile1' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "violet" notitle, for [i=2:$Ncol-1] 'plotfile2' u (\$$Ncoltot):i:(0.0) w l lw 3 lc "black" notitle
+
+unset multiplot
+EOF
+$(rm plotfile)
+$(rm plotfile1)
+$(rm plotfile2)
+echo "End of plotting the Structure Factor S(q,w)+NC-AMS."
+
+fi

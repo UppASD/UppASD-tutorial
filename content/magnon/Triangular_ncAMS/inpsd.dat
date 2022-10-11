@@ -1,0 +1,63 @@
+simid  triang_T 
+ncell    66 66 1
+BC         P P 0
+cell     1.000000000000    0.000000000000    0.000000000000
+        -0.500000000000    0.866025403784    0.000000000000
+         0.000000000000    0.000000000000    10.00000000000
+
+Sym        3                Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+
+posfile    ./posfile
+posfiletype D                C=Cartesian or D=direct coordinates
+momfile    ./momfile
+exchange   ./jfile
+
+maptype 2
+do_jtensor 1
+
+do_prnstruct 2
+
+Initmag  3                                      (1=random, 2=cone, 3=spec., 4=file)
+
+ip_mode Q                                      Activate qminimizer
+ip_nphase 1
+50000 0.00000 1.0e-16 5.0
+10000 300.0001 1.0e-16 5.0
+10000 100.0001 1.0e-16 5.0
+10000 10.0001  1.0e-16 5.0
+20000 1.0001   1.0e-16 5.0
+50000 0.00000 1.0e-16 5.0
+
+mode      S                                     S=SD, M=MC
+temp      0.1
+Nstep     59500
+damping   0.001
+timestep  1e-16
+
+do_avrg   Y                                     Measure averages
+avrg_step 100
+
+
+plotenergy 1         
+
+
+
+do_ams Y
+do_sc  Q
+sc_nstep 700
+sc_step   85
+do_sc_local_axis B
+sc_window_fun 2
+do_diamag Y
+qpoints D
+qfile ./qfile
+
+
+nc_qvect 0.330000      0.571577      0.000000
+nc_nvect 0.0 0.0 1.0
+
+qm_nvec 1 0 0                 Unit-vector perpendicular to spins
+qm_svec 0 1 0                 Direction of the spin 
+
+compensate_drift 1            Compensate drift in RNG. Correct the random number distribution so that the true mean is zero
+

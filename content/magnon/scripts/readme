@@ -1,0 +1,6 @@
+**Instructions for running the scripts:**
+
+1. Compile decodeSopt.f90. 
+2. Compile qmaker.f90 (file to generate the qfiles along specific directions in the reciprocal space).
+3. You need to update mypath in sqw_map.sh to the directory where col2arr.awk, flip.awk and decodeSopt.x (the executable file of decodeSopt.f90) are stored.
+4. You may need to install sed, ack and gnuplot in your operating system for plotsqw_course to run.
