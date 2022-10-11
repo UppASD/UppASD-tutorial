@@ -12,7 +12,7 @@ TASK1: External field
 -----------------
 * The magnetization direction of sample can be manipulated by applying an external magnetic field with the desired orientation. In this exercise you will apply a magnetic field to switch the magnetization direction of macrospin and bcc Fe from **+z** to **-z** direction. 
 
-1. All the input files are in the Folder ``TASK1``, use the flag ``hfield`` in ``inpsd.dat`` to control the strength as well as the direction of magnetic field.
+1. Use the flag ``hfield`` in ``inpsd.dat`` to control the strength as well as the direction of magnetic field.
 Here you will use the inputs in the folder ``macrospin`` to switch the magnetization direction of 
 a macrospin from **+z** to **-z** direction, compare the switching 
 time with external field ``-1000 ,-1500 ,-2000, -2500, -3000 Tesla``.
