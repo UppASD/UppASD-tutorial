@@ -1,0 +1,34 @@
+simid bccFe100                                    
+ncell     10        10       10                 System size            
+BC        P         P         P                 Boundary conditions (0=vacuum, P=periodic)
+cell      1.00000   0.00000   0.00000         
+          0.00000   1.00000   0.00000
+          0.00000   0.00000   1.00000
+Sym       0
+do_prnstruct 2
+
+posfile    ./posfile
+momfile    ./momfile
+exchange   ./jfile
+
+Initmag   1                                     Initial config of moments (1=random, 2=cone, 3=spec., 4=file)
+
+ip_mode   N
+ip_mcanneal 1
+          10000 100.0 1.00e-16 0.95
+          100 100.0 1.00e-16 0.95
+          100 100.0 1.00e-16 0.95
+
+mode      M
+Temp      0.001         K                     Temperature of the system
+hfield    0.00000   0.00000   0.00000           Static H field
+mcnstep   10000                                Number of time-steps
+
+do_avrg   Y                                     Measure averages
+plotenergy 1
+do_cumu Y
+
+ea_model T
+
+do_autocorr Y
+acfile ./acfile
