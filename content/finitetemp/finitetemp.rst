@@ -164,7 +164,7 @@ Glassy systems
 ^^^^^^^^^^^^^^
 
 As a final challenge, lets consider a spin glass system. 
-A simple yet illustrative model for a spin glass system is given by the Edwards-Anderson model, where a nearest neighbour Hamiltonian on a cubic 
+A simple yet illustrative model for a spin glass system is given by the `Edwards-Anderson model <https://en.wikipedia.org/wiki/Spin_glass#Edwards%E2%80%93Anderson_model>`_, where a nearest neighbour Hamiltonian on a cubic 
 lattice, but with random exchange interactions are used. 
 
 The UppASD code can model Edwards-Anderson spin glasses by the keywords ``ea_model T`` and ``ea_sigma XX`` where ``ea_sigma`` contols
