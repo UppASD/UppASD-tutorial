@@ -1,0 +1,34 @@
+simid  SquareKz 
+ncell     64 64 1
+BC        P         P         0                 Boundary conditions (0=vacuum,P=periodic)
+cell      1.00000   0.00000   0.00000
+          0.00000   1.00000   0.00000
+          0.00000   0.00000   1.00000
+Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+
+aunits Y
+posfile    ./posfile
+exchange   ./jfile
+momfile    ./momfile
+anisotropy ./kfile
+do_prnstruct 1
+
+Mensemble 1
+Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
+#restartfile ./restart
+
+ip_mode   M                                     Initial phase parameters
+ip_temp   0.001                                 --
+ip_mcNstep     3000                            --
+
+mode      M                                     S=SD, M=MC
+temp      0.001                                 Measurement phase parameters
+mcNstep   2000                                --
+#Nstep    10000                                --
+#damping  0.5
+#timestep 1
+
+do_avrg   Y                                     Measure averages
+do_tottraj Y                                    Measure moments
+plotenergy 1                                    Calculate energy 
+do_cumu Y                                       Calculate cumulants

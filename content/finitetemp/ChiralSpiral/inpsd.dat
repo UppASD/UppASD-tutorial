@@ -1,0 +1,29 @@
+simid SCsurf_T
+ncell     128 128 1
+BC        P         P         0                 Boundary conditions (0=vacuum,P=periodic)
+cell      1.00000   0.00000   0.00000 
+          0.00000   1.00000   0.00000
+          0.00000   0.00000   1.00000
+
+do_prnstruct 2
+posfile   ./posfile
+exchange  ./jfile
+momfie    ./momfile
+dm        ./dmfile
+
+
+Initmag   1                                     (1=random, 2=cone, 3=spec., 4=file)
+
+ip_mode N
+ip_mcanneal 0
+
+mode      S                                     M for MC and S for SD
+temp      0.000
+damping   0.500
+Nstep     5000
+timestep  1.000e-15       s                    The time step-size for the SDE-solver
+
+
+plotenergy   1   
+do_avrg      Y
+do_cumu      Y
