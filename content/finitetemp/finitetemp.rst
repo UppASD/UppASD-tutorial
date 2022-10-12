@@ -160,14 +160,32 @@ Fig. 1 Spin spiral ground state for a DM system.
  * If you do not get the spiral state, try to obtain it with simulated annealing. How close can you come? Is the energy stabilizing?
 
 
-### Glassy systems
-### ^^^^^^^^^^^^^^
-### 
-### As a final challenge, lets consider a spin glass system. 
-### A simple yet illustrative model for a spin glass system is given by the Edwards-Anderson model, where a nearest neighbour Hamiltonian on a cubic 
-### lattice, but with random exchange interactions are used. 
-### 
-### #.. math::
-### #H=-\sum_{i,j} J_{ij}  \mathbf{m}_i \mathbf{m}_j
-### 
-### The UppASD code can model Edwards-Anderson spin glasses by the keywords
+Glassy systems
+^^^^^^^^^^^^^^
+
+As a final challenge, lets consider a spin glass system. 
+A simple yet illustrative model for a spin glass system is given by the Edwards-Anderson model, where a nearest neighbour Hamiltonian on a cubic 
+lattice, but with random exchange interactions are used. 
+
+The UppASD code can model Edwards-Anderson spin glasses by the keywords ``ea_model T`` and ``ea_sigma XX`` where ``ea_sigma`` contols
+the width of the Gaussian distribution of the randomized exchange interactions. Disregarding the ``ea_sigma`` keyword for now, 
+we can define a simple cubic system with randomized exchange with the following ``inpsd.dat``
+
+.. literalinclude:: EdwardsAnderson/inpsd.dat
+
+While the ``posfile`` and ``momfile`` are made as easy as possible
+
+.. literalinclude:: EdwardsAnderson/posfile
+.. literalinclude:: EdwardsAnderson/momfile
+
+Even though the exchange interactions will be randomized, we still have to set up a Hamiltonian with existing couplings since only 
+the magnitude and not the directions will be randomized. Thus we use the following ``jfile``
+
+.. literalinclude:: EdwardsAnderson/jfile
+
+With the glassy system setup. we end this exercise session with a friendly competition:
+
+ * Without changing the system size and Hamiltonian, apply your thermalization and minimization skills to get the lowest possible energy for this system.
+
+The participant with the lowest energy will get a symbolic price during the conference dinner.
+
