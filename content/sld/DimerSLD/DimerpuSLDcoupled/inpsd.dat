@@ -62,4 +62,12 @@ do_prn_binteff  Y
 binteff_step    10
 binteff_buff    10
 
+ntraj   2
+1    10    10
+2    10    10
+
+lntraj   2
+1    10    10
+2    10    10
+
 plotenergy   1
