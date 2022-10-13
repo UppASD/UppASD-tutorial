@@ -1,6 +1,45 @@
 Magnon spectra and noncollinear magnetism
 =========================================
 
+Tutorial 0: Spin wave stiffness
+-------------------------------
+
+The spin wave stiffness and the related property exchange stiffness provides the bridge between atomistic spin dynamics and micromagnetism. 
+
+A setup for bcc Fe where the stiffness can be calculated can be seen below
+
+.. literalinclude:: Stiffness/inpsd.dat
+
+Notice that we actually have no ``ip_mode`` nor ``mode`` sections, because here we are actually not interested in running any simulation.
+
+The ``posfile`` and ``momfile`` are here as follows
+
+.. literalinclude:: Stiffness/posfile
+
+.. literalinclude:: Stiffness/momfile
+
+The exchange interaction file ``jASD2S`` can be downloaded from :download:`here <https://raw.githubusercontent.com/UppASD/UppASD/master/examples/Mappings/bccFe-variants/jASD2S>` .
+
+ * Calculate the spin wave stiffness for the system and examine how the results depend on the choice of ``eta_max`` and ``eta_min``. 
+
+The output from the stiffness calculations are found in the ``asd_micro.bccFe100.out`` file.
+
+
+Tutorial 0b: Spin wave scripts
+------------------------------
+
+Even though the calculation of magnon spectra will be practiced on in more detail enough, 
+one can also use the setup above to quickly showcase the functionality of the ``preQ.py`` and ``postQ.py`` scripts.
+
+These scripts are available in the repository but are continiously evolving. Up-to-date scripts are provided here: :download:`preQ.py <./Stiffness/preQ.py>` and :download:`postQ.py <./Stiffness/postQ.py>`
+
+ * Use the ``preQ.py`` script to setup a k-space path for the spin wave dispersion in bcc Fe, run the system, and plot the resulting ``ams.png`` by using ``postQ.py``.
+
+Optional: 
+ * The ``preQ.py`` script provides several k-space paths. Compare the calculated magnon DOS ``magdos.bccFe100.out`` when using either ``qpoints D`` and ``qfile ./qfile.kpath`` or ``qpoints R`` and ``qfile ./qfile.reduced``.
+
+
+
 Tutorial 1: Fe in bcc and fcc crystal structures
 ------------------------------------------------
 
