@@ -7,6 +7,13 @@ input files need to be augmented with a number of files, namely a ``phonfile``, 
 and the coupling constants for a cross coupling Hamiltonian such as the third order
 spin-spin-displacement Hamiltonian contained in an ``mmlfile``.
 
+In these exercises you will explore how a spin-lattice coupled systems can be set up for
+simulation with UppASD. The first two systems are a magnetic dimer and a magnetic trimer.
+For these systems input files are provided in two variants, either with the full set of
+interactions specified, or with only the irreducible set of interactions are specified.
+In the latter case the point group operations that are activated with the ``sym`` flag
+are used to work out the full set of couplings.
+
 Exercise 1: SLD simulation of a dimer
 -------------------------------------
 
@@ -59,18 +66,19 @@ on one of the two atoms that are exchange coupled, given that no third site is p
 
 * Run a simulation for the example ``DimerSLD/DimerpuSLDcoupled``. Which output files are generated?
 * Plot the time trajectories of the energies that are written to the file ``lattenergy.scnobase.out``. How do the energies evolve in time? Compare for Fig. 2 in [Hellsvik2019]_.
-* Plot the time trajectories of spins (``moment.scnobase.out``), and displacements (``disp.scnobase.out``). How do magnetic precession frequencies evolve in time? Compare for Fig. 3 in [Hellsvik2019]_.
+* Plot the time trajectories of spins (``trajectory.scnobase.001.1.out``, ``trajectory.scnobase.002.1.out``), and displacements (``disptraj.scnobase.1.1.out``, ``disptraj.scnobase.2.1.out``). How do magnetic precession frequencies evolve in time? Compare for Fig. 3 in [Hellsvik2019]_.
 * Compare the input files contained in ``DimerSLD/DimerpuSLDcoupledSym`` with ``DimerSLD/DimerpuSLDcoupled``. How do they differ? Verify that the same Hamiltonians are set up within the UppASD simulation by comparing the ``struct.scnobase.out``, the ``lldata.scnobase.ou``, and the ``mmldata.scnobase.out`` files for the two different cases.
 
-SLD simulation for trimer
--------------------------
+Exercise 2: SLD simulation for trimer
+-------------------------------------
 
 TrimerSLD      # Trimer SLD, atomic units, with different MML coupling,
                # either of :math:`A_{iji}` type or of :math:`A_{ijk}` type.
                # optional use of point group symmetries for the couplings
 
-bcc Fe
-------
+Exercise 3: Phonon and magnon spectra for bcc Fe
+------------------------------------------------
+
 bccFeSLD       # bcc Fe with MM, LL and MML coupling. Uses cutoff in LL interaction
 
 	       # Variants available in the runbccFe*.sh scripts
