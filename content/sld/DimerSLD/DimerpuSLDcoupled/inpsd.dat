@@ -20,20 +20,20 @@ ll        ./llfile.nosym
 mml      ./mmlfile.nosym
 Initlatt  3
 
-do_ld     Y
-mode      R
+do_ld     Y                    # Read lattice and spin-lattice Hamiltonians
+mode      R                    # Perform SLD simulation
 Nstep     20000
 timestep  1e-16
 damping   0.00
 lattdamp  0.00
 Temp      0.00
 
-do_lavrg   Y
+do_lavrg   Y                   # Measurement of average displacaments
 do_proj_lavrg   Y
 lavrg_step   10
 lavrg_buff   10
 
-do_ltottraj  Y
+do_ltottraj  Y                 # Measurements of displacments
 ltottraj_step  10
 ltottraj_buff  10
 
@@ -62,12 +62,12 @@ do_prn_binteff  Y
 binteff_step    10
 binteff_buff    10
 
-ntraj   2
+ntraj   2                  # Measurements of individual spin trajectories
 1    10    10
 2    10    10
 
-lntraj   2
+lntraj   2                 # Measurements of individual displacament trajectories
 1    10    10
 2    10    10
 
-plotenergy   1
+plotenergy   1             # Measurement of energies

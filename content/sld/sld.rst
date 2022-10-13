@@ -65,16 +65,16 @@ on one of the two atoms that are exchange coupled, given that no third site is p
 .. literalinclude:: DimerSLD/DimerpuSLDcoupled/mmlfile.nosym
 
 * Run a simulation for the example ``DimerSLD/DimerpuSLDcoupled``. Which output files are generated?
-* Plot the time trajectories of the energies that are written to the file ``lattenergy.scnobase.out``. How do the energies evolve in time? Compare for Fig. 2 in [Hellsvik2019]_.
+* Plot the time trajectories of the energies that are written to the file ``lattenergy.scnobase.out``. How do the energies evolve in time? Compare for Fig. 2 in [Hellsvik2019]_. Use the sccript ``plotTrajDimerSLD.py``.
 * Plot the time trajectories of spins (``trajectory.scnobase.001.1.out``, ``trajectory.scnobase.002.1.out``), and displacements (``disptraj.scnobase.1.1.out``, ``disptraj.scnobase.2.1.out``). How do magnetic precession frequencies evolve in time? Compare for Fig. 3 in [Hellsvik2019]_.
 * Compare the input files contained in ``DimerSLD/DimerpuSLDcoupledSym`` with ``DimerSLD/DimerpuSLDcoupled``. How do they differ? Verify that the same Hamiltonians are set up within the UppASD simulation by comparing the ``struct.scnobase.out``, the ``lldata.scnobase.ou``, and the ``mmldata.scnobase.out`` files for the two different cases.
 
 Exercise 2: SLD simulation for trimer
 -------------------------------------
 
-TrimerSLD      # Trimer SLD, atomic units, with different MML coupling,
-               # either of :math:`A_{iji}` type or of :math:`A_{ijk}` type.
-               # optional use of point group symmetries for the couplings
+* Run a simulation for the example ``TrimerSLD/TrimerauSLD3site``.
+* Modify the plot script ``plotTrajDimerSLD.py`` that was used for the dimer, so that it can be used for the trimer.
+* Run a simulation for the example ``TrimerSLD/TrimerauSLD3siteSym``. Compare the input files contained in ``TrimerSLD/TrimerauSLD3siteSym`` with ``TrimerSLD/TrimerauSLD3site``. How do they differ?
 
 Exercise 3: Phonon and magnon spectra for bcc Fe
 ------------------------------------------------
