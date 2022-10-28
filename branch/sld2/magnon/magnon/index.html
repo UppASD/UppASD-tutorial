@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magnon spectra and noncollinear magnetism &mdash; UppASD Tutorial  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Spin-lattice dynamics" href="../../sld/sld/" />
+    <link rel="prev" title="Finite temperatures" href="../../finitetemp/finitetemp/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../" class="icon icon-home"> UppASD Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basics/basics/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../switching/switching/">Switching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../finitetemp/finitetemp/">Finite temperatures</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Magnon spectra and noncollinear magnetism</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-1-fe-in-bcc-and-fcc-crystal-structures">Tutorial 1: Fe in bcc and fcc crystal structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#collinear-magnon-spectra-and-influence-of-uniaxial-anisotropy">Collinear magnon spectra and influence of uniaxial anisotropy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crystal-magnetic-structure">Crystal &amp; magnetic structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thermalizing-the-system">Thermalizing the system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spin-wave-spectrum">Spin wave spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-the-spectrum">Plotting the spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#questions-and-exercises">Questions and exercises:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-2-fm-heisenberg-nearest-neighbour-spin-chain">Tutorial 2: FM Heisenberg nearest-neighbour spin chain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#collinear-adiabatic-magnon-spectra-and-s-q-w">Collinear adiabatic magnon spectra and S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Crystal &amp; magnetic structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spin-dynamics">Spin dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Spin wave spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-adiabatic-magnon-spectrum-in-the-framework-of-linear-spin-wave-theory">Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-s-q-w">Plotting S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Questions and exercises:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-3-afm-heisenberg-nearest-neighbour-spin-chain">Tutorial 3: AFM Heisenberg nearest-neighbour spin chain</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Collinear adiabatic magnon spectra and S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Crystal &amp; magnetic structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Spin dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Spin wave spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Plotting S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Questions and exercises:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-4-fm-heisenberg-nearest-neighbour-spin-chain-with-dm-interactions">Tutorial 4: FM Heisenberg nearest-neighbour spin chain with DM interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#non-collinear-adiabatic-magnon-spectra-and-s-q-w">Non-Collinear adiabatic magnon spectra and S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Crystal &amp; magnetic structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Spin dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Spin wave spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Plotting S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Questions and exercises:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-5-kagome-system-with-dm-interactions">Tutorial 5: Kagome system with DM interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Non-Collinear adiabatic magnon spectra and S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Crystal &amp; magnetic structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Spin dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Spin wave spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Plotting S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Questions and exercises:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-6-triangular-system-with-afm-interactions">Tutorial 6: Triangular system with AFM interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Non-Collinear adiabatic magnon spectra and S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Crystal &amp; magnetic structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Spin dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Spin wave spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Plotting S(q,w)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Questions and exercises:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sld/sld/">Spin-lattice dynamics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+      <li>Magnon spectra and noncollinear magnetism</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-tutorial/blob/main/content/magnon/magnon.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="magnon-spectra-and-noncollinear-magnetism">
+<h1>Magnon spectra and noncollinear magnetism<a class="headerlink" href="#magnon-spectra-and-noncollinear-magnetism" title="Permalink to this heading"></a></h1>
+<section id="tutorial-1-fe-in-bcc-and-fcc-crystal-structures">
+<h2>Tutorial 1: Fe in bcc and fcc crystal structures<a class="headerlink" href="#tutorial-1-fe-in-bcc-and-fcc-crystal-structures" title="Permalink to this heading"></a></h2>
+<section id="collinear-magnon-spectra-and-influence-of-uniaxial-anisotropy">
+<h3>Collinear magnon spectra and influence of uniaxial anisotropy<a class="headerlink" href="#collinear-magnon-spectra-and-influence-of-uniaxial-anisotropy" title="Permalink to this heading"></a></h3>
+<p>This example shows how to calculate the spin wave spectrum of the standard examples Fe bcc and Fe fcc and to understand the influence of the number of atoms per unit cell on the spectra together with the influence of the uniaxial anisotropy. Files are found in Fe folder.</p>
+</section>
+<section id="crystal-magnetic-structure">
+<h3>Crystal &amp; magnetic structure<a class="headerlink" href="#crystal-magnetic-structure" title="Permalink to this heading"></a></h3>
+<p>Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an Fe bcc system is created.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span> <span class="n">bccFe100</span>
+<span class="n">ncell</span>     <span class="mi">10</span>        <span class="mi">10</span>       <span class="mi">10</span>                 <span class="n">System</span> <span class="n">size</span>
+<span class="n">BC</span>        <span class="n">P</span>         <span class="n">P</span>         <span class="n">P</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+<span class="n">Sym</span>       <span class="mi">0</span>      <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jfile</span>
+<span class="n">anisotropy</span> <span class="o">./</span><span class="n">kfile</span>
+<span class="n">do_prnstruct</span> <span class="mi">2</span>          <span class="n">Flag</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">lattice</span> <span class="n">structure</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">off</span><span class="o">/</span><span class="mi">1</span><span class="o">=</span><span class="n">on</span><span class="o">/</span><span class="mi">2</span><span class="o">=</span><span class="nb">print</span> <span class="n">only</span> <span class="n">coordinates</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig1.png" src="../../_images/fig1.png" />
+</figure>
+<p>Fig 1. Lattice and magnetic texture.</p>
+</section>
+<section id="thermalizing-the-system">
+<h3>Thermalizing the system<a class="headerlink" href="#thermalizing-the-system" title="Permalink to this heading"></a></h3>
+<p>Using the lines below, the systems is driven to the ground state.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span>   <span class="n">M</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>
+<span class="mi">10000</span> <span class="mf">0.001</span> <span class="mf">1.00e-16</span> <span class="mf">0.95</span>
+
+<span class="n">mode</span>      <span class="n">M</span>
+<span class="n">Temp</span>      <span class="mf">0.001</span>          <span class="n">K</span>                      <span class="n">Temperature</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span>
+<span class="n">hfield</span>    <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>           <span class="n">Static</span> <span class="n">H</span> <span class="n">field</span>
+<span class="n">mcNstep</span>   <span class="mi">50000</span>                                 <span class="n">MC</span> <span class="n">steps</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig2.png" src="../../_images/fig2.png" />
+</figure>
+<p>Fig 2. Energy versus number of iterations.</p>
+</section>
+<section id="spin-wave-spectrum">
+<h3>Spin wave spectrum<a class="headerlink" href="#spin-wave-spectrum" title="Permalink to this heading"></a></h3>
+<p>We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra (AMS)) at the list of Q points <code class="docutils literal notranslate"><span class="pre">qfile</span></code>. Use <code class="docutils literal notranslate"><span class="pre">qmaker</span></code> script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_ams</span> <span class="n">Y</span>                         <span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+<span class="n">qpoints</span> <span class="n">D</span>                        <span class="n">Direct</span> <span class="n">coordinates</span>
+<span class="n">qfile</span> <span class="o">./</span><span class="n">qfile</span>                    <span class="n">Path</span> <span class="n">along</span> <span class="n">the</span> <span class="n">high</span> <span class="n">symmetry</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">reciprocal</span> <span class="n">space</span>
+</pre></div>
+</div>
+<p><strong>The first Brilluoin zone of a body centered cubic lattice</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig3.png" src="../../_images/fig3.png" />
+</figure>
+<p>Fig 3. Primitive and reciprocal lattice vectors in bcc.</p>
+<figure class="align-default">
+<img alt="../../_images/fig4.png" src="../../_images/fig4.png" />
+</figure>
+<p>Fig 4. BCC 1st Brilluoin zone.</p>
+<figure class="align-default">
+<img alt="../../_images/fig5.png" src="../../_images/fig5.png" />
+</figure>
+<p>Fig 5. High symmetry points.</p>
+</section>
+<section id="plotting-the-spectrum">
+<h3>Plotting the spectrum<a class="headerlink" href="#plotting-the-spectrum" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2.</p>
+<figure class="align-default">
+<img alt="../../_images/fig6.png" src="../../_images/fig6.png" />
+</figure>
+<p>Fig 6. Adiabatic magnon spectra.</p>
+</section>
+<section id="questions-and-exercises">
+<h3>Questions and exercises:<a class="headerlink" href="#questions-and-exercises" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Does the spectra follow the analytical expression?</p></li>
+<li><p>Why the spectra is shift it up?</p></li>
+<li><p>Plot the spectra without the gap around the center zone.</p></li>
+<li><p>Why there are two branches, 1 acoustic and 1 optical?</p></li>
+<li><p>Plot the spectrum for Fe fcc. Why now there is just 1 branch? Is it following the analytical expression?</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/fig7.png" src="../../_images/fig7.png" />
+</figure>
+<p>Fig 7. Adiabatic magnon spectra of Fe FCC.</p>
+</section>
+</section>
+<section id="tutorial-2-fm-heisenberg-nearest-neighbour-spin-chain">
+<h2>Tutorial 2: FM Heisenberg nearest-neighbour spin chain<a class="headerlink" href="#tutorial-2-fm-heisenberg-nearest-neighbour-spin-chain" title="Permalink to this heading"></a></h2>
+<section id="collinear-adiabatic-magnon-spectra-and-s-q-w">
+<h3>Collinear adiabatic magnon spectra and S(q,w)<a class="headerlink" href="#collinear-adiabatic-magnon-spectra-and-s-q-w" title="Permalink to this heading"></a></h3>
+<p>The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic. Files are found in HeisChain folder.</p>
+</section>
+<section id="id1">
+<h3>Crystal &amp; magnetic structure<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D Heisenberg chain is created.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">HeisWire</span>                              <span class="n">System</span> <span class="n">name</span>
+<span class="n">ncell</span>     <span class="mi">1</span>         <span class="mi">1</span>         <span class="mi">100</span>               <span class="n">System</span> <span class="n">size</span> <span class="p">(</span><span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">unit</span> <span class="n">cells</span><span class="p">)</span>
+<span class="n">BC</span>        <span class="mi">0</span>         <span class="mi">0</span>         <span class="n">P</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>
+         <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+         <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+<span class="n">Sym</span>       <span class="mi">1</span>                                     <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>                             <span class="n">Position</span> <span class="n">file</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>                               <span class="n">Exchange</span> <span class="n">file</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>                             <span class="n">Moment</span> <span class="n">file</span>
+<span class="n">do_prnstruct</span> <span class="mi">1</span>          <span class="n">Flag</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">lattice</span> <span class="n">structure</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">off</span><span class="o">/</span><span class="mi">1</span><span class="o">=</span><span class="n">on</span><span class="o">/</span><span class="mi">2</span><span class="o">=</span><span class="nb">print</span> <span class="n">only</span> <span class="n">coordinates</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig11.png" src="../../_images/fig11.png" />
+</figure>
+<p>Fig 1. Crystal and magnetic texture.</p>
+</section>
+<section id="spin-dynamics">
+<h3>Spin dynamics<a class="headerlink" href="#spin-dynamics" title="Permalink to this heading"></a></h3>
+<p>Using the lines below, the systems is driven to the ground state by spin dynamics.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mensemble</span> <span class="mi">1</span>                                     <span class="n">Number</span> <span class="n">of</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">ensemble</span> <span class="n">averaging</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>                                     <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">ip_mode</span>   <span class="n">S</span>                                     <span class="n">Initial</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">20000</span> <span class="mf">1.0e-3</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>                                     <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>      <span class="mf">1.0e-3</span>                                <span class="n">Measurement</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">damping</span>   <span class="mf">0.0010</span>                                <span class="o">--</span>
+<span class="n">Nstep</span>     <span class="mi">40000</span>                                 <span class="o">--</span>
+<span class="n">timestep</span>  <span class="mf">1.000e-15</span>                             <span class="o">--</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig21.png" src="../../_images/fig21.png" />
+</figure>
+<p>Fig 2. Energy versus number of iterations.</p>
+</section>
+<section id="id2">
+<h3>Spin wave spectrum<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_ams</span> <span class="n">Y</span>                         <span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+<span class="n">do_magdos</span> <span class="n">N</span>                      <span class="n">Generate</span> <span class="n">magnon</span> <span class="n">density</span> <span class="n">of</span> <span class="n">states</span>
+
+<span class="n">qpoints</span> <span class="n">F</span>                        <span class="n">Flag</span> <span class="k">for</span> <span class="n">q</span><span class="o">-</span><span class="n">point</span> <span class="n">generation</span> <span class="p">(</span><span class="n">F</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="n">automatic</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">full</span> <span class="n">cell</span><span class="p">)</span>
+<span class="n">qfile</span>   <span class="o">./</span><span class="n">qfile</span>                  <span class="n">Path</span> <span class="n">along</span> <span class="n">the</span> <span class="n">high</span> <span class="n">symmetry</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">reciprocal</span> <span class="n">space</span>
+</pre></div>
+</div>
+<p><strong>The first Brilluoin zone of a simple cubic lattice</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig31.png" src="../../_images/fig31.png" />
+</figure>
+<p>Fig 3. Primitive and reciprocal lattice vectors in sc.</p>
+<figure class="align-default">
+<img alt="../../_images/fig41.png" src="../../_images/fig41.png" />
+</figure>
+<p>Fig 4. SC 1st Brilluoin zone.</p>
+<figure class="align-default">
+<img alt="../../_images/fig51.png" src="../../_images/fig51.png" />
+</figure>
+<p>Fig 5. High symmetry points.</p>
+</section>
+<section id="plotting-adiabatic-magnon-spectrum-in-the-framework-of-linear-spin-wave-theory">
+<h3>Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory<a class="headerlink" href="#plotting-adiabatic-magnon-spectrum-in-the-framework-of-linear-spin-wave-theory" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.</p>
+<figure class="align-default">
+<img alt="../../_images/fig61.png" src="../../_images/fig61.png" />
+</figure>
+<p>Fig 6. Adiabatic magnon spectra.</p>
+</section>
+<section id="plotting-s-q-w">
+<h3>Plotting S(q,w)<a class="headerlink" href="#plotting-s-q-w" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_sc</span> <span class="n">Q</span>           <span class="n">Measure</span> <span class="n">spin</span> <span class="n">correlation</span>
+<span class="n">sc_window_fun</span>  <span class="mi">2</span>  <span class="n">Choice</span> <span class="n">of</span> <span class="n">FFT</span> <span class="n">window</span> <span class="n">function</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">box</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">Hann</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">Hamming</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">Blackman</span><span class="o">-</span><span class="n">Harris</span><span class="p">)</span>
+<span class="n">sc_nstep</span> <span class="mi">5000</span>     <span class="n">Number</span> <span class="n">of</span> <span class="n">steps</span> <span class="n">to</span> <span class="n">sample</span>
+<span class="n">sc_step</span> <span class="mi">8</span>        <span class="n">Number</span> <span class="n">of</span> <span class="n">time</span> <span class="n">steps</span> <span class="n">between</span> <span class="n">each</span> <span class="n">sampling</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig71.png" src="../../_images/fig71.png" />
+</figure>
+<p>Fig 7. Structure factor together with AMS.</p>
+</section>
+<section id="id3">
+<h3>Questions and exercises:<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Does it follows the analytical expression predicted by Linear Spin Wave Theory?</p></li>
+</ol>
+</section>
+</section>
+<section id="tutorial-3-afm-heisenberg-nearest-neighbour-spin-chain">
+<h2>Tutorial 3: AFM Heisenberg nearest-neighbour spin chain<a class="headerlink" href="#tutorial-3-afm-heisenberg-nearest-neighbour-spin-chain" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h3>Collinear adiabatic magnon spectra and S(q,w)<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary a magnetic supercell 2x1x1 of the crystal cell and define both spin directions in the supercell. Files are found in HeisChainAF folder.</p>
+</section>
+<section id="id5">
+<h3>Crystal &amp; magnetic structure<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D AFM Heisenberg chain is created. Have a look to posfile and momfile.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">HeisWire</span>
+<span class="n">ncell</span>     <span class="mi">1</span>         <span class="mi">1</span>         <span class="mi">100</span>               <span class="n">System</span> <span class="n">size</span>
+<span class="n">BC</span>        <span class="mi">0</span>         <span class="mi">0</span>         <span class="n">P</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>
+           <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">2.000000</span>
+<span class="n">Sym</span>       <span class="mi">1</span>                                     <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>
+<span class="n">do_prnstruct</span> <span class="mi">1</span>                                 <span class="n">Print</span> <span class="n">lattice</span> <span class="n">structure</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">no</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">yes</span><span class="p">)</span>
+<span class="n">maptype</span>   <span class="mi">2</span>                                    <span class="mi">1</span><span class="o">=</span><span class="n">cartessian</span> <span class="n">coordinates</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">Direct</span> <span class="n">coordinates</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig12.png" src="../../_images/fig12.png" />
+</figure>
+<p>Fig 1. Crystal and magnetic texture.</p>
+</section>
+<section id="id6">
+<h3>Spin dynamics<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>Using the lines below, the systems is driven to the ground state by spin dynamics.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span>   <span class="n">S</span>                                     <span class="n">Initial</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">20000</span> <span class="mf">1.0e-3</span> <span class="mf">1e-16</span> <span class="mf">4.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>                                     <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>      <span class="mf">1.0e-3</span>                                <span class="n">Measurement</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">damping</span>   <span class="mf">0.0010</span>                                <span class="o">--</span>
+<span class="n">Nstep</span>     <span class="mi">45000</span>                                 <span class="o">--</span>
+<span class="n">timestep</span>  <span class="mf">1.000e-15</span>                             <span class="o">--</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig22.png" src="../../_images/fig22.png" />
+</figure>
+<p>Fig 2. Energy versus number of iterations.</p>
+</section>
+<section id="id7">
+<h3>Spin wave spectrum<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<p>We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_ams</span> <span class="n">Y</span>                      <span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+<span class="n">do_magdos</span> <span class="n">N</span>                   <span class="n">Generate</span> <span class="n">magnon</span> <span class="n">density</span> <span class="n">of</span> <span class="n">states</span>
+
+<span class="n">qpoints</span> <span class="n">D</span>                     <span class="n">Flag</span> <span class="n">q</span><span class="o">-</span><span class="n">point</span> <span class="n">generation</span><span class="p">(</span><span class="n">F</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="n">automa</span><span class="o">.</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">full</span> <span class="n">cell</span><span class="p">,</span><span class="n">D</span><span class="o">=</span><span class="n">external</span>
+                              <span class="n">file</span> <span class="k">with</span> <span class="n">direct</span> <span class="n">coordinates</span><span class="p">)</span>
+<span class="n">qfile</span>   <span class="o">./</span><span class="n">qfile</span>               <span class="n">Path</span> <span class="n">along</span> <span class="n">the</span> <span class="n">high</span> <span class="n">symmetry</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">reciprocal</span> <span class="n">space</span>
+</pre></div>
+</div>
+<p><strong>The first Brilluoin zone of a simple cubic lattice</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig32.png" src="../../_images/fig32.png" />
+</figure>
+<p>Fig 3. Primitive and reciprocal lattice vectors in sc.</p>
+<figure class="align-default">
+<img alt="../../_images/fig42.png" src="../../_images/fig42.png" />
+</figure>
+<p>Fig 4. SC 1st Brilluoin zone.</p>
+<figure class="align-default">
+<img alt="../../_images/fig52.png" src="../../_images/fig52.png" />
+</figure>
+<p>Fig 5. High symmetry points.</p>
+</section>
+<section id="id8">
+<h3>Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.</p>
+<ol class="arabic simple">
+<li><p>Use only the primitive cell.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/fig62.png" src="../../_images/fig62.png" />
+</figure>
+<p>Fig 6. Adiabatic magnon spectra.</p>
+<ol class="arabic simple" start="2">
+<li><p>Use the magnetic supercell 2x1x1 of the crystal cell</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/fig72.png" src="../../_images/fig72.png" />
+</figure>
+<p>Fig 7. Adiabatic magnon spectra.</p>
+</section>
+<section id="id9">
+<h3>Plotting S(q,w)<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_sc</span> <span class="n">Q</span>           <span class="n">Measure</span> <span class="n">spin</span> <span class="n">correlation</span>
+<span class="n">sc_window_fun</span>  <span class="mi">2</span>  <span class="n">Choice</span> <span class="n">of</span> <span class="n">FFT</span> <span class="n">window</span> <span class="n">function</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">box</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">Hann</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">Hamming</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">Blackman</span><span class="o">-</span><span class="n">Harris</span><span class="p">)</span>
+<span class="n">sc_nstep</span> <span class="mi">3000</span>     <span class="n">Number</span> <span class="n">of</span> <span class="n">steps</span> <span class="n">to</span> <span class="n">sample</span>
+<span class="n">sc_step</span>  <span class="mi">15</span>       <span class="n">Number</span> <span class="n">of</span> <span class="n">time</span> <span class="n">steps</span> <span class="n">between</span> <span class="n">each</span> <span class="n">sampling</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig8.png" src="../../_images/fig8.png" />
+</figure>
+<p>Fig 8. Structure factor with AMS.</p>
+</section>
+<section id="id10">
+<h3>Questions and exercises:<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Does it follows the analytical expression predicted by Linear Spin Wave Theory? Why is linear around the center zone?</p></li>
+<li><p>Calculate analytically the Energy/spin and show it is the same as the numerical result.</p></li>
+</ol>
+</section>
+</section>
+<section id="tutorial-4-fm-heisenberg-nearest-neighbour-spin-chain-with-dm-interactions">
+<h2>Tutorial 4: FM Heisenberg nearest-neighbour spin chain with DM interactions<a class="headerlink" href="#tutorial-4-fm-heisenberg-nearest-neighbour-spin-chain-with-dm-interactions" title="Permalink to this heading"></a></h2>
+<section id="non-collinear-adiabatic-magnon-spectra-and-s-q-w">
+<h3>Non-Collinear adiabatic magnon spectra and S(q,w)<a class="headerlink" href="#non-collinear-adiabatic-magnon-spectra-and-s-q-w" title="Permalink to this heading"></a></h3>
+<p>The following tutorial serves as introduction to non-collinear AMS and shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain with DM interaction. Notice that AMS in this case does not work because the magnetic ground-state texture is non-collinear. Files are found in HeisChainDM folder.</p>
+</section>
+<section id="id11">
+<h3>Crystal &amp; magnetic structure<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<p>Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D helical Heisenberg spin spiral is created. Have a look to posfile and momfile. Notice the system could be set up with just 1 atom per unit cell but, in this example, we use 4 atoms per unit cell just to help you to understand how to set up the dmfile for systems which have more than one atom per unit cell.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>     <span class="n">HeisWire</span>
+<span class="n">ncell</span>     <span class="mi">1</span>         <span class="mi">1</span>         <span class="mi">100</span>               <span class="n">System</span> <span class="n">size</span>
+<span class="n">BC</span>        <span class="mi">0</span>         <span class="mi">0</span>         <span class="n">P</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">4.00000</span>
+<span class="n">Sym</span>       <span class="mi">0</span>                                     <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfile</span>   <span class="o">./</span><span class="n">momfile</span>
+<span class="n">dm</span>        <span class="o">./</span><span class="n">dmfile</span>
+<span class="n">do_prnstruct</span> <span class="mi">1</span>                                  <span class="n">Print</span> <span class="n">lattice</span> <span class="n">structure</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">no</span><span class="p">,</span> <span class="mi">1</span><span class="o">=</span><span class="n">yes</span><span class="p">)</span>
+<span class="n">maptype</span> <span class="mi">2</span>
+<span class="n">Mensemble</span> <span class="mi">1</span>                                     <span class="n">Number</span> <span class="n">of</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">ensemble</span> <span class="n">averaging</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>                                     <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig13.png" src="../../_images/fig13.png" />
+</figure>
+<p>Fig 1. Crystal and magnetic texture.</p>
+</section>
+<section id="id12">
+<h3>Spin dynamics<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<p>Using the lines below, the systems is driven to the ground state by MonteCarlo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span>   <span class="n">M</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>
+<span class="mi">100000</span> <span class="mf">1.0e-3</span>
+
+<span class="n">mode</span>      <span class="n">S</span>                                     <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>      <span class="mf">1.0e-3</span>                                <span class="n">Measurement</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">damping</span>   <span class="mf">0.0010</span>                                <span class="o">--</span>
+<span class="n">Nstep</span>     <span class="mi">128000</span>                                 <span class="o">--</span>
+<span class="n">timestep</span>  <span class="mf">1.000e-15</span>                             <span class="o">--</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig23.png" src="../../_images/fig23.png" />
+</figure>
+<p>Fig 2. Energy versus number of iterations.</p>
+</section>
+<section id="id13">
+<h3>Spin wave spectrum<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<p>We calculate the non-collinear  and collinear spin wave spectrum at the list of Q points (qfile) for comparison. Use qmaker script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_ams</span> <span class="n">Y</span>                      <span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+<span class="n">do_diamag</span> <span class="n">Y</span>                   <span class="n">Non</span><span class="o">-</span><span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+
+<span class="n">qpoints</span> <span class="n">D</span>                     <span class="n">Flag</span> <span class="n">q</span><span class="o">-</span><span class="n">point</span> <span class="n">generation</span><span class="p">(</span><span class="n">F</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="n">automa</span><span class="o">.</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">full</span> <span class="n">cell</span><span class="p">,</span><span class="n">D</span><span class="o">=</span><span class="n">external</span>
+                              <span class="n">file</span> <span class="k">with</span> <span class="n">direct</span> <span class="n">coordinates</span><span class="p">)</span>
+<span class="n">qfile</span>   <span class="o">./</span><span class="n">qfile</span>               <span class="n">Path</span> <span class="n">along</span> <span class="n">the</span> <span class="n">high</span> <span class="n">symmetry</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">reciprocal</span> <span class="n">space</span>
+</pre></div>
+</div>
+<p><strong>The first Brilluoin zone of a simple cubic lattice</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig33.png" src="../../_images/fig33.png" />
+</figure>
+<p>Fig 3. Primitive and reciprocal lattice vectors in sc.</p>
+<figure class="align-default">
+<img alt="../../_images/fig43.png" src="../../_images/fig43.png" />
+</figure>
+<p>Fig 4. SC 1st Brilluoin zone.</p>
+<figure class="align-default">
+<img alt="../../_images/fig53.png" src="../../_images/fig53.png" />
+</figure>
+<p>Fig 5. High symmetry points.</p>
+</section>
+<section id="id14">
+<h3>Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.</p>
+<ol class="arabic simple">
+<li><p>Collinear AMS</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/fig63.png" src="../../_images/fig63.png" />
+</figure>
+<p>Fig 6. Collinear Adiabatic magnon spectra.</p>
+<ol class="arabic simple" start="2">
+<li><p>Non-Collinear AMS</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../_images/fig73.png" src="../../_images/fig73.png" />
+</figure>
+<p>Fig 7. Non-collinear Adiabatic magnon spectra.</p>
+</section>
+<section id="id15">
+<h3>Plotting S(q,w)<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS and option 5 S(q,w) with AMS. File to print out “sqw.HeisWire.out”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_sc</span> <span class="n">Q</span>                                         <span class="n">Measure</span> <span class="n">spin</span> <span class="n">correlation</span>
+<span class="n">sc_nstep</span> <span class="mi">8000</span>                                   <span class="n">Number</span> <span class="n">of</span> <span class="n">steps</span> <span class="n">to</span> <span class="n">sample</span>
+<span class="n">sc_step</span>  <span class="mi">16</span>                                     <span class="n">Number</span> <span class="n">of</span> <span class="n">time</span> <span class="n">steps</span> <span class="n">between</span> <span class="n">each</span> <span class="n">sampling</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig81.png" src="../../_images/fig81.png" />
+</figure>
+<p>Fig 8. Structure factor together with non-Collinear AMS and collinear AMS.</p>
+</section>
+<section id="id16">
+<h3>Questions and exercises:<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Do you understand why Collinear AMS failed in this case?</p></li>
+</ol>
+</section>
+</section>
+<section id="tutorial-5-kagome-system-with-dm-interactions">
+<h2>Tutorial 5: Kagome system with DM interactions<a class="headerlink" href="#tutorial-5-kagome-system-with-dm-interactions" title="Permalink to this heading"></a></h2>
+<section id="id17">
+<h3>Non-Collinear adiabatic magnon spectra and S(q,w)<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<p>The following tutorial serves as introduction to non-collinear AMS when the unit cell is commensurate with the magnetic unit lattice. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w). Files are found in Kagome_ncAMS folder.</p>
+</section>
+<section id="id18">
+<h3>Crystal &amp; magnetic structure<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<p>Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an Kagome system with DM interaction is created. Have a look to posfile and momfile, etc.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>  <span class="n">kagome_T</span>
+<span class="n">ncell</span>    <span class="mi">66</span> <span class="mi">66</span> <span class="mi">1</span>
+<span class="n">BC</span>         <span class="n">P</span> <span class="n">P</span> <span class="mi">0</span>
+<span class="n">cell</span>     <span class="mf">1.000000000000</span>    <span class="mf">0.000000000000</span>    <span class="mf">0.000000000000</span>
+        <span class="o">-</span><span class="mf">0.500000000000</span>    <span class="mf">0.866025403784</span>    <span class="mf">0.000000000000</span>
+         <span class="mf">0.000000000000</span>    <span class="mf">0.000000000000</span>    <span class="mf">10.00000000000</span>
+
+<span class="n">Sym</span>        <span class="mi">0</span>
+
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">posfiletype</span> <span class="n">D</span>               <span class="n">C</span><span class="o">=</span><span class="n">Cartesian</span> <span class="ow">or</span> <span class="n">D</span><span class="o">=</span><span class="n">direct</span> <span class="n">coordinates</span> <span class="ow">in</span> <span class="n">posfile</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jfile</span>
+
+<span class="n">maptype</span> <span class="mi">2</span>
+<span class="n">do_jtensor</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig14.png" src="../../_images/fig14.png" />
+</figure>
+<p>Fig 1. Crystal and magnetic texture.</p>
+</section>
+<section id="id19">
+<h3>Spin dynamics<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<p>Using the lines below, and using a momfile with previous minimization, the system is already in the ground-state. This is just to speed up the simulation time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span> <span class="n">N</span>
+<span class="n">ip_mcanneal</span> <span class="mi">2</span>
+<span class="mi">10000</span> <span class="mf">100.0001</span>
+<span class="mi">10000</span> <span class="mf">0.0001</span>
+
+<span class="n">mode</span>      <span class="n">S</span>                                     <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>      <span class="mf">0.0001</span>
+<span class="n">Nstep</span>     <span class="mi">60000</span>
+<span class="n">damping</span>   <span class="mf">0.001</span>
+<span class="n">timestep</span>  <span class="mi">1</span><span class="n">d</span><span class="o">-</span><span class="mi">16</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3>Spin wave spectrum<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h3>
+<p>We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_ams</span> <span class="n">Y</span>                      <span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+<span class="n">do_diamag</span> <span class="n">Y</span>                   <span class="n">Non</span><span class="o">-</span><span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+
+<span class="n">qpoints</span> <span class="n">D</span>                     <span class="n">Flag</span> <span class="n">q</span><span class="o">-</span><span class="n">point</span> <span class="n">generation</span><span class="p">(</span><span class="n">F</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="n">automa</span><span class="o">.</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">full</span> <span class="n">cell</span><span class="p">,</span><span class="n">D</span><span class="o">=</span><span class="n">external</span>
+                              <span class="n">file</span> <span class="k">with</span> <span class="n">direct</span> <span class="n">coordinates</span><span class="p">)</span>
+<span class="n">qfile</span>   <span class="o">./</span><span class="n">qfile</span>               <span class="n">Path</span> <span class="n">along</span> <span class="n">the</span> <span class="n">high</span> <span class="n">symmetry</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">reciprocal</span> <span class="n">space</span>
+</pre></div>
+</div>
+<p><strong>The first Brilluoin zone of a hexagonal lattice</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig24.png" src="../../_images/fig24.png" />
+</figure>
+<p>Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.</p>
+</section>
+<section id="id21">
+<h3>Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.</p>
+<figure class="align-default">
+<img alt="../../_images/fig34.png" src="../../_images/fig34.png" />
+</figure>
+<p>Fig 3. Non-Collinear AMS.</p>
+</section>
+<section id="id22">
+<h3>Plotting S(q,w)<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_sc</span>  <span class="n">Q</span>
+<span class="n">sc_nstep</span> <span class="mi">500</span>
+<span class="n">sc_step</span>   <span class="mi">90</span>
+<span class="n">do_sc_local_axis</span> <span class="n">B</span>             <span class="n">Perform</span> <span class="n">SQW</span> <span class="n">along</span> <span class="n">local</span> <span class="n">quantization</span> <span class="n">axis</span> <span class="p">(</span><span class="n">SA</span><span class="p">)</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">N</span><span class="o">/</span><span class="n">B</span><span class="p">)</span>
+                               <span class="n">B</span><span class="o">--&gt;</span> <span class="n">B_effxSA</span>
+<span class="n">sc_window_fun</span> <span class="mi">2</span>                <span class="n">Choice</span> <span class="n">of</span> <span class="n">FFT</span> <span class="n">window</span> <span class="n">function</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">box</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">Hann</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">Hamming</span><span class="p">,</span>
+                               <span class="mi">4</span><span class="o">=</span><span class="n">Blackman</span><span class="o">-</span><span class="n">Harris</span><span class="p">)</span>
+<span class="n">sc_average</span> <span class="n">N</span>                   <span class="n">Averaging</span> <span class="n">of</span> <span class="n">S</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">w</span><span class="p">):</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span><span class="n">ull</span><span class="p">,</span> <span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="n">ven</span><span class="p">,</span> <span class="ow">or</span> <span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="n">one</span>
+<span class="n">do_sc_tens</span> <span class="n">N</span>                   <span class="n">Print</span> <span class="n">the</span> <span class="n">tensorial</span> <span class="n">values</span> <span class="n">s</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">w</span><span class="p">)</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">qpoints</span> <span class="n">D</span>
+<span class="n">qfile</span> <span class="o">./</span><span class="n">qfile</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig44.png" src="../../_images/fig44.png" />
+</figure>
+<p>Fig 4. Structure factor together with non-Collinear AMS.</p>
+</section>
+<section id="id23">
+<h3>Questions and exercises:<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Is there only one branch?</p></li>
+<li><p>Seems linear around Gamma point but J is FM? Why is that? Shouldn´t be parabolic?</p></li>
+</ol>
+</section>
+</section>
+<section id="tutorial-6-triangular-system-with-afm-interactions">
+<h2>Tutorial 6: Triangular system with AFM interactions<a class="headerlink" href="#tutorial-6-triangular-system-with-afm-interactions" title="Permalink to this heading"></a></h2>
+<section id="id24">
+<h3>Non-Collinear adiabatic magnon spectra and S(q,w)<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h3>
+<p>The following tutorial serves as how to use non-collinear AMS for systems that are not commensurate with the magnetic unit cell. It shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w). Files are found in Triangular_ncAMS folder.</p>
+</section>
+<section id="id25">
+<h3>Crystal &amp; magnetic structure<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
+<p>Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an AFM triangular lattice is created. Have a look to posfile and momfile, etc.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>  <span class="n">triang_T</span>
+<span class="n">ncell</span>    <span class="mi">66</span> <span class="mi">66</span> <span class="mi">1</span>
+<span class="n">BC</span>         <span class="n">P</span> <span class="n">P</span> <span class="mi">0</span>
+<span class="n">cell</span>     <span class="mf">1.000000000000</span>    <span class="mf">0.000000000000</span>    <span class="mf">0.000000000000</span>
+        <span class="o">-</span><span class="mf">0.500000000000</span>    <span class="mf">0.866025403784</span>    <span class="mf">0.000000000000</span>
+         <span class="mf">0.000000000000</span>    <span class="mf">0.000000000000</span>    <span class="mf">10.00000000000</span>
+
+<span class="n">Sym</span>        <span class="mi">3</span>                <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">posfiletype</span> <span class="n">D</span>                <span class="n">C</span><span class="o">=</span><span class="n">Cartesian</span> <span class="ow">or</span> <span class="n">D</span><span class="o">=</span><span class="n">direct</span> <span class="n">coordinates</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jfile</span>
+
+<span class="n">maptype</span> <span class="mi">2</span>
+<span class="n">do_jtensor</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig15.png" src="../../_images/fig15.png" />
+</figure>
+<p>Fig 1. Crystal and magnetic texture.</p>
+</section>
+<section id="id26">
+<h3>Spin dynamics<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
+<p>Using the lines below the system is evolved in time. Notice that in the initial phase, we use a minimization of the spin-spiral energy, and by doing that, the ordering wave vector is calculated. In a second calculation, the adiabatic magnon spectra is calculated by using the already calculated ordering wave vector of the spin spiral based on the direction provided by the spin vector qm_svec and qm_nvec which is perpendicular to the given spin direction.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span> <span class="n">Q</span>                                <span class="n">Activate</span> <span class="n">qminimizer</span>
+                                         <span class="n">minimize</span> <span class="n">spin</span><span class="o">-</span><span class="n">spiral</span> <span class="n">energy</span>
+                                         <span class="n">calculate</span> <span class="n">ordering</span> <span class="n">wave</span> <span class="n">vector</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span>
+<span class="n">ip_nphase</span> <span class="mi">1</span>
+<span class="mi">50000</span> <span class="mf">0.00000</span> <span class="mf">1.0e-16</span> <span class="mf">5.0</span>
+<span class="mi">10000</span> <span class="mf">300.0001</span> <span class="mf">1.0e-16</span> <span class="mf">5.0</span>
+<span class="mi">10000</span> <span class="mf">100.0001</span> <span class="mf">1.0e-16</span> <span class="mf">5.0</span>
+<span class="mi">10000</span> <span class="mf">10.0001</span>  <span class="mf">1.0e-16</span> <span class="mf">5.0</span>
+<span class="mi">20000</span> <span class="mf">1.0001</span>   <span class="mf">1.0e-16</span> <span class="mf">5.0</span>
+<span class="mi">50000</span> <span class="mf">0.00000</span> <span class="mf">1.0e-16</span> <span class="mf">5.0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>                                     <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>      <span class="mf">0.1</span>
+<span class="n">Nstep</span>     <span class="mi">59500</span>
+<span class="n">damping</span>   <span class="mf">0.001</span>
+<span class="n">timestep</span>  <span class="mf">1e-16</span>
+<span class="n">qm_nvec</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span>                             <span class="n">Unit</span><span class="o">-</span><span class="n">vector</span> <span class="n">perpendicular</span> <span class="n">to</span> <span class="n">spins</span>
+<span class="n">qm_svec</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>                             <span class="n">Direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">spin</span>
+</pre></div>
+</div>
+</section>
+<section id="id27">
+<h3>Spin wave spectrum<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h3>
+<p>We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_diamag</span> <span class="n">Y</span>                   <span class="n">Non</span><span class="o">-</span><span class="n">Collinear</span> <span class="n">Adiabatic</span> <span class="n">magnon</span> <span class="n">spectra</span>
+
+<span class="n">qpoints</span> <span class="n">D</span>                     <span class="n">Flag</span> <span class="n">q</span><span class="o">-</span><span class="n">point</span> <span class="n">generation</span><span class="p">(</span><span class="n">F</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="n">automa</span><span class="o">.</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">full</span> <span class="n">cell</span><span class="p">,</span><span class="n">D</span><span class="o">=</span><span class="n">external</span>
+                              <span class="n">file</span> <span class="k">with</span> <span class="n">direct</span> <span class="n">coordinates</span><span class="p">)</span>
+<span class="n">qfile</span>   <span class="o">./</span><span class="n">qfile</span>               <span class="n">Path</span> <span class="n">along</span> <span class="n">the</span> <span class="n">high</span> <span class="n">symmetry</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">reciprocal</span> <span class="n">space</span>
+
+<span class="n">nc_qvect</span> <span class="mf">0.330000</span> <span class="mf">0.571577</span> <span class="mf">0.000000</span>   <span class="n">Ordering</span> <span class="n">wave</span> <span class="n">vector</span>
+<span class="n">nc_nvect</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>                  <span class="n">Pitch</span><span class="o">-</span><span class="n">vector</span> <span class="n">along</span> <span class="n">z</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">moments</span> <span class="n">rotate</span>
+                                      <span class="ow">in</span> <span class="n">the</span> <span class="n">xy</span><span class="o">-</span><span class="n">plane</span>
+<span class="n">qm_nvec</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span>                             <span class="n">Unit</span><span class="o">-</span><span class="n">vector</span> <span class="n">perpendicular</span> <span class="n">to</span> <span class="n">spins</span>
+<span class="n">qm_svec</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>                             <span class="n">Direction</span> <span class="n">of</span> <span class="n">the</span> <span class="n">spin</span>
+</pre></div>
+</div>
+<p><strong>The first Brilluoin zone of a hexagonal lattice</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig25.png" src="../../_images/fig25.png" />
+</figure>
+<p>Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.</p>
+</section>
+<section id="id28">
+<h3>Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”</p>
+<figure class="align-default">
+<img alt="../../_images/fig35.png" src="../../_images/fig35.png" />
+</figure>
+<p>Fig 3. Non-Collinear AMS.</p>
+</section>
+<section id="id29">
+<h3>Plotting S(q,w)<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h3>
+<p>Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_sc</span>  <span class="n">Q</span>
+<span class="n">sc_nstep</span> <span class="mi">700</span>
+<span class="n">sc_step</span>   <span class="mi">85</span>
+<span class="n">do_sc_local_axis</span> <span class="n">B</span>             <span class="n">Perform</span> <span class="n">SQW</span> <span class="n">along</span> <span class="n">local</span> <span class="n">quantization</span> <span class="n">axis</span> <span class="p">(</span><span class="n">SA</span><span class="p">)</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">N</span><span class="o">/</span><span class="n">B</span><span class="p">)</span>
+                               <span class="n">B</span><span class="o">--&gt;</span> <span class="n">B_effxSA</span>
+<span class="n">sc_window_fun</span> <span class="mi">2</span>                <span class="n">Choice</span> <span class="n">of</span> <span class="n">FFT</span> <span class="n">window</span> <span class="n">function</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">box</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">Hann</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">Hamming</span><span class="p">,</span>
+                               <span class="mi">4</span><span class="o">=</span><span class="n">Blackman</span><span class="o">-</span><span class="n">Harris</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/fig45.png" src="../../_images/fig45.png" />
+</figure>
+<p>Fig 4. Structure factor together with non-Collinear AMS with non-zero ordering wave vector.</p>
+</section>
+<section id="id30">
+<h3>Questions and exercises:<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Why we have 3 branches, with just 1 atom per unit cell?</p></li>
+<li><p>Is it the profile of an antiferromagnet around the Gamma point?</p></li>
+</ol>
+<p><strong>Some preliminary and useful equations:</strong></p>
+<figure class="align-default">
+<img alt="../../_images/fig16.png" src="../../_images/fig16.png" />
+</figure>
+<p>Eq 1. Excitation energy for spin waves in an anisotropic antiferromagnet.</p>
+<figure class="align-default">
+<img alt="../../_images/fig26.png" src="../../_images/fig26.png" />
+</figure>
+<p>Eq 2. Energy gap due to the anisotropy.</p>
+<figure class="align-default">
+<img alt="../../_images/fig36.png" src="../../_images/fig36.png" />
+</figure>
+<p>Eq 3. Excitation energy for spin waves in an anisotropic ferromagnet.</p>
+<figure class="align-default">
+<img alt="../../_images/fig46.png" src="../../_images/fig46.png" />
+</figure>
+<p>Eq 4. Excitation energy for spin waves in an isotropic antiferromagnet.</p>
+<figure class="align-default">
+<img alt="../../_images/fig54.png" src="../../_images/fig54.png" />
+</figure>
+<p>Eq 5. Excitation energy for spin waves in an isotropic ferromagnet.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../finitetemp/finitetemp/" class="btn btn-neutral float-left" title="Finite temperatures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../sld/sld/" class="btn btn-neutral float-right" title="Spin-lattice dynamics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

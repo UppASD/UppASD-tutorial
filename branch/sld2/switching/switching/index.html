@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switching &mdash; UppASD Tutorial  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Finite temperatures" href="../../finitetemp/finitetemp/" />
+    <link rel="prev" title="Introduction" href="../../basics/basics/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../" class="icon icon-home"> UppASD Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basics/basics/">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Switching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task1-external-field">TASK1: External field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task2-damping-and-magnetic-anisotropy">TASK2: Damping and magnetic anisotropy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task3-precessional-switching">TASK3: Precessional switching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task4-spin-transfer-torque-stt">TASK4: Spin transfer torque(STT)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../finitetemp/finitetemp/">Finite temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../magnon/magnon/">Magnon spectra and noncollinear magnetism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sld/sld/">Spin-lattice dynamics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home"></a> &raquo;</li>
+      <li>Switching</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-tutorial/blob/main/content/switching/switching.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="switching">
+<h1>Switching<a class="headerlink" href="#switching" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>The time-integrated amount of data and stored information is doubled roughly every 18 months and, since the majority of the world’s information is stored in magnetic media, the possibility writing and retrieving information in a magnetic material at ever greater
+speed and with lower energy consumption has obvious benefits for our society. Hence, the simple switching of a magnetic unit, a bit, is a crucial process which defines how efficiently information can be stored and retrieved from a magnetic memory. In the following exercises, you will use the code UppASD to perform magnetic switching simulation with several setups. There are 4 tasks in total, you can find the inputs for the 4 tasks in the folders <code class="docutils literal notranslate"><span class="pre">TASK1,</span> <span class="pre">TASK2,</span> <span class="pre">TASK3,</span> <span class="pre">TASK4</span></code> respectively.</p>
+<p>The presentation is avalable as <a class="reference download internal" download="" href="../../_downloads/297c348afc26dcb29a1209fdbe6b4254/Lecture_switching_UppASD_school.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a></p>
+</section>
+<section id="task1-external-field">
+<h2>TASK1: External field<a class="headerlink" href="#task1-external-field" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>The magnetization direction of sample can be manipulated by applying an external magnetic field with the desired orientation. In this exercise you will apply a magnetic field to switch the magnetization direction of macrospin and bcc Fe from <strong>+z</strong> to <strong>-z</strong> direction.</p></li>
+</ul>
+<p>1. Use the flag <code class="docutils literal notranslate"><span class="pre">hfield</span></code> in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> to control the strength as well as the direction of magnetic field.
+Here you will use the inputs in the folder <code class="docutils literal notranslate"><span class="pre">macrospin</span></code> to switch the magnetization direction of
+a macrospin from <strong>+z</strong> to <strong>-z</strong> direction, compare the switching
+time with external field <code class="docutils literal notranslate"><span class="pre">-1000</span> <span class="pre">,-1500</span> <span class="pre">,-2000,</span> <span class="pre">-2500,</span> <span class="pre">-3000</span> <span class="pre">Tesla</span></code>.
+You can directly use the script <code class="docutils literal notranslate"><span class="pre">switching.sh</span></code> to complete this exercise. Finally, use the plotting script <code class="docutils literal notranslate"><span class="pre">plot.gnu</span></code> or <code class="docutils literal notranslate"><span class="pre">plot.py</span></code> to plot the
+average magnetization of <strong>z</strong> component as a function of time
+for each magnetic field and compare them. Keep in mind that the external field in this simulation
+is incrediblely huge, here we use huge magnetic field to accelerate our simulation.</p>
+<p>2. After that, use the inputs in the folder <code class="docutils literal notranslate"><span class="pre">bccFe</span></code>.  Set the temperature to 0K and the external field to <code class="docutils literal notranslate"><span class="pre">-2000T</span></code>, then you can try different Jij in <code class="docutils literal notranslate"><span class="pre">jfile</span></code> of bccFe and compare
+whether different set of Jij affects the switching process? Read the maunal and find out where you need to modify in the <code class="docutils literal notranslate"><span class="pre">jfile</span></code>.</p>
+<p>Do you think the switching process of bccFe behaves like a macrospin? Try to explain it
+from the output <code class="docutils literal notranslate"><span class="pre">moment.bccFe100.out</span></code>.</p>
+</section>
+<section id="task2-damping-and-magnetic-anisotropy">
+<h2>TASK2: Damping and magnetic anisotropy<a class="headerlink" href="#task2-damping-and-magnetic-anisotropy" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Damping enters the LLG equation as a phenomenological term, which denotes the energy and angular momentum dissipation from the magnetic system to the environment. The magnetic switching is heavily dependent on the damping.</p></li>
+</ul>
+<p>In this exercise you will compare the switching time of a macrospin with different damping.</p>
+<p>The inputs for this simulation are in the folder <code class="docutils literal notranslate"><span class="pre">damping</span></code>. Use the flag <code class="docutils literal notranslate"><span class="pre">damping</span></code> in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> to control the damping parameter in LLG equation. Here you still switch the magnetization direction of
+the macrospin from <strong>+z</strong> to <strong>-z</strong> direction, compare the switching
+time with damping <code class="docutils literal notranslate"><span class="pre">0.2</span> <span class="pre">,0.4,</span> <span class="pre">0.6,</span> <span class="pre">0.8,</span> <span class="pre">1.0</span></code>. You can directly use the script <code class="docutils literal notranslate"><span class="pre">damping.sh</span></code> to complete this exercise. Finally, plot the
+average magnetization of <strong>z</strong> component as a function of time
+for system with each damping and see how different damping affects the switching process and explain it from LLG equation(Here you can create a python plot script by yourself).</p>
+<p>Keep in mind that the damping value in real materials is
+usually in the order of <strong>1e^⁻3</strong> or <strong>1e^⁻4</strong>, here we use huge
+damping to accelerate our simulation.</p>
+<ul class="simple">
+<li><p>To switch a magnetic system, one needs to overcome the energy barrier, which is determined by system’s magnetic anisotropy and the volume of the system. In actual device, the energy barrier can stablize system’s magnetic order. However, huge energy barrier induces higher power consumption to manipulate the magnetism in device. In this assignment, you will explore the magnetic switching process of macrospin with different magnetic anisotropy.</p></li>
+</ul>
+<p>The inputs for this simulation are in the folder <code class="docutils literal notranslate"><span class="pre">anisotropy</span></code>.  Use the flag <code class="docutils literal notranslate"><span class="pre">anisotropy</span></code> in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> combined with an external
+file named <code class="docutils literal notranslate"><span class="pre">kfile</span></code> storing the magnetic anisotropy
+parameter of system to manipulate the magnetic anisotropy parameter.
+Here still switch the magnetization direction of
+macrospin from <strong>+z</strong> to <strong>-z</strong> direction, compare the switching
+time with anisotropy <code class="docutils literal notranslate"><span class="pre">K1=-0.02</span> <span class="pre">,-0.2,</span> <span class="pre">-0.4</span></code>. You can directly use the script <code class="docutils literal notranslate"><span class="pre">switching_K.sh</span></code> to complete this exercise. Read the manual and find out where you need to modify in the <code class="docutils literal notranslate"><span class="pre">kfile</span></code>.
+Plot the average magnetization of <strong>z</strong> component as a function of time
+for system with each magnetic anisotropy and see the effect of anisotropy on switching.</p>
+</section>
+<section id="task3-precessional-switching">
+<h2>TASK3: Precessional switching<a class="headerlink" href="#task3-precessional-switching" title="Permalink to this heading"></a></h2>
+<p>In this exercise, you will simulate the precessional switching which has been introduced in the talk.</p>
+<p>Here you will use the flag <code class="docutils literal notranslate"><span class="pre">do_bpulse</span></code> in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> to control the type of field pulse(The pulse type like square pulse, square pulse with exponential head and tail,
+Gaussian pulse,exponentially decaying pulse have been implemented in UppASD). Here you will use the Gaussian pulse in this exercise, so set <code class="docutils literal notranslate"><span class="pre">do_bpulse</span> <span class="pre">2</span></code>. Run the simulation and plot the average magnetization of <strong>z</strong> component as a function of time.
+If you have time, try to compare the switching process with different damping and parameters for Gaussian pulse in the file named <code class="docutils literal notranslate"><span class="pre">bpulsefile</span></code>.</p>
+</section>
+<section id="task4-spin-transfer-torque-stt">
+<h2>TASK4: Spin transfer torque(STT)<a class="headerlink" href="#task4-spin-transfer-torque-stt" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Magnetic memory devices have been studied extensively in the past years. The IBM racetrack memory being one of the prime examples of this. This device relies on the movement of a magnetic texture connecting two magnetic domains with different orientation. This texture is known as a domain wall. To move this wall a spin polarized current can be applied to the system exerting a torque over the texture forcing it to move. In this exercise, you will simulate the precessional switching.</p></li>
+</ul>
+<p>In this task, use the flag <code class="docutils literal notranslate"><span class="pre">Initmag</span> <span class="pre">4</span></code> and <code class="docutils literal notranslate"><span class="pre">restartfile</span> <span class="pre">./restart.DOMAIN.DW</span></code> to initialize spin configuration of
+the system. Then turn on the STT flag by <code class="docutils literal notranslate"><span class="pre">stt</span> <span class="pre">A</span></code> and define the polarized direction of current by <code class="docutils literal notranslate"><span class="pre">jvec</span> <span class="pre">jx</span> <span class="pre">jy</span> <span class="pre">jz</span></code>. Visualize the domain wall motion dynamics of the
+system by UppASD GUI, for that you need to set <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">tottraj</span> <span class="pre">Y</span></code> to get the trajectory of each spin at each sampling step. You can play with the flag <code class="docutils literal notranslate"><span class="pre">jvec</span></code> to manipulate the direction of domain motion(Play with different strength and vectors of current).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../basics/basics/" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../finitetemp/finitetemp/" class="btn btn-neutral float-right" title="Finite temperatures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
