@@ -9,7 +9,7 @@ speed and with lower energy consumption has obvious benefits for our society. He
 The presentation is avalable as :download:`pdf <Presentation/Lecture_switching_UppASD_school.pdf>`
 
 TASK1: External field
------------------
+---------------------
 * The magnetization direction of sample can be manipulated by applying an external magnetic field with the desired orientation. In this exercise you will apply a magnetic field to switch the magnetization direction of macrospin and bcc Fe from **+z** to **-z** direction. 
 
 1. Use the flag ``hfield`` in ``inpsd.dat`` to control the strength as well as the direction of magnetic field.
@@ -28,9 +28,8 @@ Do you think the switching process of bccFe behaves like a macrospin? Try to exp
 from the output ``moment.bccFe100.out``.
 
 TASK2: Damping and magnetic anisotropy
-------------------------
-* Damping enters the LLG equation as a phenomenological term, which denotes the energy and angular momentum dissipation from the magnetic system to the environment. The magnetic switching is heavily dependent on the damping. 
-In this exercise you will compare the switching time of a macrospin with different damping. 
+--------------------------------------
+* Damping enters the LLG equation as a phenomenological term, which denotes the energy and angular momentum dissipation from the magnetic system to the environment. The magnetic switching is heavily dependent on the damping. In this exercise you will compare the switching time of a macrospin with different damping.
 
 The inputs for this simulation are in the folder ``damping``. Use the flag ``damping`` in ``inpsd.dat`` to control the damping parameter in LLG equation. Here you still switch the magnetization direction of 
 the macrospin from **+z** to **-z** direction, compare the switching 
@@ -55,7 +54,7 @@ for system with each magnetic anisotropy and see the effect of anisotropy on swi
 
 
 TASK3: Precessional switching
-------------------------
+-----------------------------
 In this exercise, you will simulate the precessional switching which has been introduced in the talk. 
 
 Here you will use the flag ``do_bpulse`` in ``inpsd.dat`` to control the type of field pulse(The pulse type like square pulse, square pulse with exponential head and tail,
@@ -64,14 +63,9 @@ If you have time, try to compare the switching process with different damping an
 
 
 TASK4: Spin transfer torque(STT) 
-------------------------
+--------------------------------
 * Magnetic memory devices have been studied extensively in the past years. The IBM racetrack memory being one of the prime examples of this. This device relies on the movement of a magnetic texture connecting two magnetic domains with different orientation. This texture is known as a domain wall. To move this wall a spin polarized current can be applied to the system exerting a torque over the texture forcing it to move. In this exercise, you will simulate the precessional switching. 
 
 In this task, use the flag ``Initmag 4`` and ``restartfile ./restart.DOMAIN.DW`` to initialize spin configuration of 
 the system. Then turn on the STT flag by ``stt A`` and define the polarized direction of current by ``jvec jx jy jz``. Visualize the domain wall motion dynamics of the
 system by UppASD GUI, for that you need to set ``do tottraj Y`` to get the trajectory of each spin at each sampling step. You can play with the flag ``jvec`` to manipulate the direction of domain motion(Play with different strength and vectors of current).
-
-
-
-
-
