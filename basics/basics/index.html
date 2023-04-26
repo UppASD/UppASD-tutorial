@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; UppASD Tutorial  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Switching" href="../../switching/switching/" />
+    <link rel="prev" title="UppASD tutorial" href="../../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#code-distribution">Code distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uppasd-on-supercomputers">UppASD on supercomputers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uppasd-on-dardel">UppASD on Dardel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uppasd-on-tetralith">UppASD on Tetralith</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-1-build-code-first-simulations">Exercise 1: Build code, first simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-2-phase-diagram-for-bcc-fe">Exercise 2: Phase diagram for bcc Fe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-3-weak-and-strong-scaling">Exercise 3: Weak and strong scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-4-important-control-parameters">Exercise 4: Important control parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../switching/switching/">Switching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../finitetemp/finitetemp/">Finite temperatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../magnon/magnon/">Magnon spectra and noncollinear magnetism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sld/sld/">Spin-lattice dynamics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-tutorial/blob/main/content/basics/basics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<section id="code-distribution">
+<h2>Code distribution<a class="headerlink" href="#code-distribution" title="Permalink to this heading"></a></h2>
+<p>The source code of UppASD is distributed on <a class="reference external" href="https://github.com/UppASD/UppASD">https://github.com/UppASD/UppASD</a>
+along with documentation and a growing set of examples. To obtain the code,
+download and unpack a release</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/UppASD/UppASD/archive/refs/tags/v6.0.1.tar.gz
+tar<span class="w"> </span>xvzf<span class="w"> </span>v6.0.1.tar.gz
+<span class="nb">cd</span><span class="w"> </span>UppASD
+</pre></div>
+</div>
+<p>or clone the git repository</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/UppASD/UppASD.git
+<span class="nb">cd</span><span class="w"> </span>UppASD
+</pre></div>
+</div>
+</section>
+<section id="uppasd-on-supercomputers">
+<h2>UppASD on supercomputers<a class="headerlink" href="#uppasd-on-supercomputers" title="Permalink to this heading"></a></h2>
+<p>UppASD can be built and run on desktop and laptop computers, as well as on
+supercomputers. General advice on how to build UppASD can be found in the
+user manual. In this section is provided instructions on how to build and
+run the program on two different supercomputers, and with two different
+compiler toolchains.</p>
+<section id="uppasd-on-dardel">
+<h3>UppASD on Dardel<a class="headerlink" href="#uppasd-on-dardel" title="Permalink to this heading"></a></h3>
+<p>UppASD is available on the HPE Cray EX supercomputer
+<a class="reference external" href="https://www.pdc.kth.se/hpc-services/computing-systems/about-dardel-1.1053338">Dardel</a>
+as a centrally installed software
+<a class="reference external" href="https://www.pdc.kth.se/software/software/UppASD/index_general.html">UppASD</a>.</p>
+<p>To build UppASD on Dardel with a Gnu toolchain and the Cray compiler wrappers</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>PrgEnv-gnu/8.2.0
+make<span class="w"> </span>deps
+make<span class="w"> </span>gfortran-ftn
+</pre></div>
+</div>
+<p>Run one of the testsuites, for instance <em>asd-tests</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>asd-tests
+</pre></div>
+</div>
+<p>To set up a Python environment for the graphical user interface, the first step
+is to follow instructions on how to
+<a class="reference external" href="https://www.pdc.kth.se/software/software/python/cpe21.11/3.8.8/index_using.html">load and activate Anaconda on Dardel.</a>.
+A conda environment can then be built with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>PDC/21.11
+ml<span class="w"> </span>Anaconda3/2021.05
+<span class="nb">source</span><span class="w"> </span>~/conda.init.sh
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>ASD_GUI_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6<span class="w"> </span><span class="nv">vtk</span><span class="o">=</span><span class="m">8</span>.1.0<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>yaml<span class="w"> </span>pyyaml<span class="w"> </span>pandas<span class="w"> </span><span class="nv">jsoncpp</span><span class="o">=</span><span class="m">1</span>.8.3<span class="w"> </span><span class="nv">tbb</span><span class="o">=</span><span class="m">2020</span>.2
+conda<span class="w"> </span>activate<span class="w"> </span>ASD_GUI_env
+</pre></div>
+</div>
+<p>UppASD can be run on nodes allocated for interactive use, or as batch jobs.
+To request 4 cores on the shared partition of Dardel for one hour, use the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>salloc<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-p<span class="w"> </span>shared<span class="w"> </span>-A<span class="w"> </span>&lt;project<span class="w"> </span>name&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">project</span> <span class="pre">name</span></code> needs to be replaced with the name of an active compute project.</p>
+<p>At the UppASD Autumn School 20222, reservations have been set up for dedicated nodes.
+To request 8 cores on the reserved nodes for one hour, use the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>salloc<span class="w"> </span>-n<span class="w"> </span><span class="m">8</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-p<span class="w"> </span>shared<span class="w"> </span>-A<span class="w"> </span>edu22.uppasd<span class="w"> </span>--reservation<span class="o">=</span>uppasd-2022-10-11
+</pre></div>
+</div>
+<p>where in the name of the reservation, the date needs to be set to <em>today</em>.</p>
+<p>A typical output will look like</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>salloc:<span class="w"> </span>Granted<span class="w"> </span>job<span class="w"> </span>allocation<span class="w"> </span><span class="m">591571</span>
+salloc:<span class="w"> </span>Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>resource<span class="w"> </span>configuration
+salloc:<span class="w"> </span>Nodes<span class="w"> </span>nid001015<span class="w"> </span>are<span class="w"> </span>ready<span class="w"> </span><span class="k">for</span><span class="w"> </span>job
+</pre></div>
+</div>
+<p>Node nid001015 is now yours for the next hour. You can login to the reserved
+node via the login node</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-X<span class="w"> </span>nid001015
+</pre></div>
+</div>
+<p>To run UppASD simulation as a batch job on 16 cores, and walltime 2 hours,
+you can use the template jobscript</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1"># The -l above is required to get the full environment with modules</span>
+
+<span class="c1">#SBATCH -A &lt;project name&gt;     # Set the allocation to be charged for this job</span>
+<span class="c1">#SBATCH -J myjob              # The name of the script is myjob</span>
+<span class="c1">#SBATCH -t 02:00:00           # 2 hours wall-clock time</span>
+<span class="c1">#SBATCH -p shared             # The partition</span>
+<span class="c1">#SBATCH -N 1                  # Number of nodes</span>
+<span class="c1">#SBATCH -n 1                  # Number of tasks</span>
+<span class="c1">#SBATCH -c 16                 # Number of cpus per task</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">16</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Script initiated at `date` on `hostname`&quot;</span>
+
+<span class="c1"># The executable sd needs to be in the PATH</span>
+sd<span class="w"> </span>&gt;<span class="w"> </span>out.log
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Script finished at `date` on `hostname`&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="uppasd-on-tetralith">
+<h3>UppASD on Tetralith<a class="headerlink" href="#uppasd-on-tetralith" title="Permalink to this heading"></a></h3>
+<p>UppASD is available on the Intel Xeon based supercomputer
+<a class="reference external" href="https://www.nsc.liu.se/systems/tetralith/">Tetralith</a>
+as a centrally installed software
+<a class="reference external" href="https://www.nsc.liu.se/software/catalogue/tetralith/modules/uppasd.html">UppASD</a>.</p>
+<p>To build UppASD on Tetralith with an Intel toolchain</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>buildenv-intel/2018a-eb
+make<span class="w"> </span>deps
+make<span class="w"> </span>ifort
+</pre></div>
+</div>
+<p>Run one of the testsuites, for instance <em>asd-tests</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>asd-tests
+</pre></div>
+</div>
+<p>To set up a Python environment for the graphical user interface</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>Anaconda/2020.07-nsc1
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>ASD_GUI_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6<span class="w"> </span><span class="nv">vtk</span><span class="o">=</span><span class="m">8</span>.1.0<span class="w"> </span>numpy<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>yaml<span class="w"> </span>pyyaml<span class="w"> </span>pandas<span class="w"> </span><span class="nv">jsoncpp</span><span class="o">=</span><span class="m">1</span>.8.3<span class="w"> </span><span class="nv">tbb</span><span class="o">=</span><span class="m">2020</span>.2
+conda<span class="w"> </span>activate<span class="w"> </span>ASD_GUI_env
+<span class="c1"># Set the environment variable</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MESA_GL_VERSION_OVERRIDE</span><span class="o">=</span><span class="m">3</span>.3
+</pre></div>
+</div>
+<p>UppASD can be run on nodes allocated for interactive use, or as batch jobs.
+To request 1 node on Tetralith for 1 hour, use the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>interactive<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>-t<span class="w"> </span><span class="m">01</span>:00:00<span class="w"> </span>-A<span class="w"> </span>&lt;project<span class="w"> </span>name&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">project</span> <span class="pre">name</span></code> needs to be replaced with the name of an active compute project.</p>
+<p>To run UppASD simulation as a batch job on 32 cores, and walltime 1 hour,
+you can use the template jobscript</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1">#SBATCH -J myjob</span>
+<span class="c1">#SBATCH -t 00-01:00:00</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH -A &lt;project name&gt;</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">32</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Script initiated at `date` on `hostname`&quot;</span>
+
+<span class="c1"># The executable sd needs to be in the PATH</span>
+sd<span class="w"> </span>&gt;<span class="w"> </span>out.log
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Script finished at `date` on `hostname`&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<section id="exercise-1-build-code-first-simulations">
+<h3>Exercise 1: Build code, first simulations<a class="headerlink" href="#exercise-1-build-code-first-simulations" title="Permalink to this heading"></a></h3>
+<p>In this first exercise you will build UppASD, run a first simulation, and visually inspect the spin dynamics with the GUI.</p>
+<ul class="simple">
+<li><p>Build the UppASD executable from source on either a personal computer or on a supercomputer.</p></li>
+<li><p>Set up a Python environment for the GUI using either virtual environments or conda.</p></li>
+<li><p>Run a simulation for the two-dimensional system in <code class="docutils literal notranslate"><span class="pre">examples/SimpleSystems/fcc001</span></code>.</p></li>
+<li><p>Inspect the spin configuration for <code class="docutils literal notranslate"><span class="pre">fcc001</span></code> with the GUI. Work with either the <em>restart</em> file or the <em>moments</em> file.</p></li>
+</ul>
+</section>
+<section id="exercise-2-phase-diagram-for-bcc-fe">
+<h3>Exercise 2: Phase diagram for bcc Fe<a class="headerlink" href="#exercise-2-phase-diagram-for-bcc-fe" title="Permalink to this heading"></a></h3>
+<p>Atomistic spin dynamics simulations with Langevin dynamics can be used to investigate
+the thermal properties of materials. In this exercise you will investigate how the
+magnetic order parameter, the heat capacity, the susceptibility depends on temperature.
+Input files and scripts for bcc Fe can be found in <code class="docutils literal notranslate"><span class="pre">examples/PhaseDiagrams/bccFe-Tsweep</span></code>.</p>
+<ul class="simple">
+<li><p>Run the sweep over temperature with the <code class="docutils literal notranslate"><span class="pre">runme.sh</span></code> script. What kind of simulations is run?</p></li>
+<li><p>Examine the results by using the printM.sh and the plot.gnu scripts. The latter is a script for Gnuplot.</p></li>
+<li><p>Change the inpsd.dat so that you can the temperature sweep as an ASD simulation, instead of an MC simulation. Compare the results with each other, and with Fig. 2 of <a class="reference internal" href="../../references/#skubic2008" id="id2"><span>[Skubic2008]</span></a>.</p></li>
+<li><p>Run additional simulations for different cell sizes. Use the Binder cumulant crossing approach to determine the critical temperature.</p></li>
+</ul>
+</section>
+<section id="exercise-3-weak-and-strong-scaling">
+<h3>Exercise 3: Weak and strong scaling<a class="headerlink" href="#exercise-3-weak-and-strong-scaling" title="Permalink to this heading"></a></h3>
+<p>The UppASD code is parallelized over shared memory using OpenMP threading. In this
+exercise you will explore how the computational performance of UppASD depends
+on problem size and on the number of CPU cores. With weak scaling is meant the
+computational effiency when changing the number of cores in proportion with
+the problem size. With strong scaling is meant the computational effiency when
+changing the number of cores for a fixed problem size.</p>
+<p>In the exercise you will investigate strong and weak scaling for a simulation of
+bulk in FeCo in ordered B2 structure. Input files for the system can found in
+<code class="docutils literal notranslate"><span class="pre">examples/Mappings/FeCo/B2</span></code>.</p>
+<ul class="simple">
+<li><p>Investigate the strong scaling for <code class="docutils literal notranslate"><span class="pre">NX</span> <span class="pre">24</span></code>, <code class="docutils literal notranslate"><span class="pre">NY</span> <span class="pre">24</span></code>, <code class="docutils literal notranslate"><span class="pre">NZ</span> <span class="pre">24</span></code>, when varying the number of CPU cores <span class="math notranslate nohighlight">\(nc\)</span> in the range from 1 to 32.</p></li>
+<li><p>Investigate the weak scaling for <code class="docutils literal notranslate"><span class="pre">NX</span> <span class="pre">24</span></code>, <code class="docutils literal notranslate"><span class="pre">NY</span> <span class="pre">24</span></code>, <code class="docutils literal notranslate"><span class="pre">NX</span> <span class="pre">12</span></code><span class="math notranslate nohighlight">\(c\)</span>, where <span class="math notranslate nohighlight">\(nc\)</span> is the number CPU cores, ranging from 1 to 32.</p></li>
+</ul>
+</section>
+<section id="exercise-4-important-control-parameters">
+<h3>Exercise 4: Important control parameters<a class="headerlink" href="#exercise-4-important-control-parameters" title="Permalink to this heading"></a></h3>
+<p>The key to performing relevant ASD simulation is to ensure that the eqations of motion are
+integrated properly, and that the simulation does indeed describe the system of choice properly.
+For the equations of motion, the choice of solver and the simulation time step are the controlling parameters.</p>
+<p>In this exercise you will investigate the effect that the choice of the simulation time step has on the resulting measurables.</p>
+<p>First consider a single spin in an external field. Inputs that can be used for this system is found in <code class="docutils literal notranslate"><span class="pre">examples/SimpleSystems/SingleSpin/BASE</span></code>.</p>
+<p>Note that here you need to edit the contents of the <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file so copy the inputs to a directory outside of the example folder structure before
+performing any edits.</p>
+<p>Solvers that can be considered are the semi-implicit midpoint solver (<code class="docutils literal notranslate"><span class="pre">sde_algh</span> <span class="pre">1</span></code>), the cartesian Heun solver (<code class="docutils literal notranslate"><span class="pre">sde_algh</span> <span class="pre">4</span></code>) and the Depondt solver (<code class="docutils literal notranslate"><span class="pre">sde_algh</span> <span class="pre">5</span></code>)</p>
+<ul class="simple">
+<li><p>Investigate the conservative properties for a single spin in an effective field and how it depends on solver, field strength and simulation time step.</p></li>
+<li><p>Modify the system so you have two spins coupled with an exchange interaction J.  Do the same investigation as for the single spin but with varying exchange interaction J instead of external field.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../" class="btn btn-neutral float-left" title="UppASD tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../switching/switching/" class="btn btn-neutral float-right" title="Switching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

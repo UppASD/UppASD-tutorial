@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finite temperatures &mdash; UppASD Tutorial  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Magnon spectra and noncollinear magnetism" href="../../magnon/magnon/" />
+    <link rel="prev" title="Switching" href="../../switching/switching/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../" class="icon icon-home">
+            UppASD Tutorial
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basics/basics/">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../switching/switching/">Switching</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Finite temperatures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#statistics">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thermalization">Thermalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#phase-diagrams">Phase diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimization">Minimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#anisotropic-systems">Anisotropic systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dzyalosinskii-moriya-systems">Dzyalosinskii-Moriya systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#glassy-systems">Glassy systems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../magnon/magnon/">Magnon spectra and noncollinear magnetism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sld/sld/">Spin-lattice dynamics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../references/">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../">UppASD Tutorial</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Finite temperatures</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/UppASD/UppASD-tutorial/blob/main/content/finitetemp/finitetemp.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="finite-temperatures">
+<h1>Finite temperatures<a class="headerlink" href="#finite-temperatures" title="Permalink to this heading"></a></h1>
+<section id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this heading"></a></h2>
+<p>In this exercise we will investigate how statistics affect simulated measurables.</p>
+<p>A single spin with an uniaxial anisotropy has a bi-stable, Ising like, magnetic state. At finite temperatures the stability of the magnetic state is not finite
+but follows an exponential (Arrhenius) relaxation behaviour. As seen in the lecture, ensemble averaging can be crucial for the analysis of such systems.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Investigate the amount of statistics that is needed to say something relevant about the life time of the magnetic state of the system.</p></li>
+<li><p>Does the need of statistics change with system parameters? (temperature, anisotropy, external field)</p></li>
+<li><p>Extra: Can you fit the relaxation behaviour to an <a class="reference external" href="https://en.wikipedia.org/wiki/Arrhenius_equation">Arrhenius function</a>?</p></li>
+</ul>
+</div></blockquote>
+<p>You can do a similar analysis for a finite 1d-chain by either modifying the single spin example, or
+starting from the <a class="reference external" href="https://github.com/UppASD/UppASD/tree/master/examples/SimpleSystems/HeisChain">SimpleSystems/HeisChain</a> example.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Is there a difference by performing ensemble averaging compared to just increasing the system size?</p></li>
+<li><p>Does the exchange interaction magnitude affect the stability of the spin chains?</p></li>
+</ul>
+</div></blockquote>
+<p>An accessible article for those interested in spin chains and statistics can be found here: <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0020169308001588">A. Vindigni Inorganica Chimica Acta, 361 3731 (2008)</a>.</p>
+</section>
+<section id="thermalization">
+<h2>Thermalization<a class="headerlink" href="#thermalization" title="Permalink to this heading"></a></h2>
+<p>In this exercise the thermalization rates in spin simulations will be investigated.</p>
+<p>As mentioned in the lecture, thermalising the system before performing measurements is crucial for ensuring relevant results.
+Here we will investigate this for a simple cubic model system.</p>
+<p>The initial <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> file looks as follows</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span> <span class="n">simpcube</span>
+<span class="n">ncell</span>     <span class="mi">10</span>        <span class="mi">10</span>       <span class="mi">10</span>                 <span class="n">System</span> <span class="n">size</span>            
+<span class="n">BC</span>        <span class="n">P</span>         <span class="n">P</span>         <span class="n">P</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>         
+          <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+<span class="n">Sym</span>       <span class="mi">1</span>                                     <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+<span class="n">do_prnstruct</span> <span class="mi">1</span>
+
+<span class="n">posfile</span>      <span class="o">./</span><span class="n">posfile</span>
+<span class="n">momfile</span>      <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>     <span class="o">./</span><span class="n">jfile</span>
+
+<span class="n">Initmag</span>     <span class="mi">3</span>                                   <span class="n">Initial</span> <span class="n">config</span> <span class="n">of</span> <span class="n">moments</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">ip_mode</span>     <span class="n">S</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>
+            <span class="mi">5000</span>  <span class="mf">300.0</span> <span class="mf">1.00e-16</span> <span class="mf">0.95</span>
+
+<span class="n">mode</span>        <span class="n">S</span>
+<span class="n">Temp</span>        <span class="mf">300.00</span>          <span class="n">K</span>                    <span class="n">Temperature</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span>
+<span class="n">hfield</span>      <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>          <span class="n">Static</span> <span class="n">H</span> <span class="n">field</span>
+
+<span class="n">damping</span>     <span class="mf">0.01</span>                                 <span class="n">Damping</span> <span class="n">parameter</span> <span class="p">(</span><span class="n">gamma</span><span class="p">)</span>
+<span class="n">nstep</span>       <span class="mi">10000</span>                                <span class="n">Number</span> <span class="n">of</span> <span class="n">time</span><span class="o">-</span><span class="n">steps</span>
+<span class="n">timestep</span>    <span class="mf">1.000e-16</span>       <span class="n">s</span>                    <span class="n">The</span> <span class="n">time</span> <span class="n">step</span><span class="o">-</span><span class="n">size</span> <span class="k">for</span> <span class="n">the</span> <span class="n">SDE</span><span class="o">-</span><span class="n">solver</span>
+
+<span class="n">plotenergy</span>  <span class="mi">1</span>                                    <span class="n">Sample</span> <span class="n">energies</span>
+<span class="n">do_avrg</span>     <span class="n">Y</span>                                    <span class="n">Measure</span> <span class="n">averages</span>
+<span class="n">do_cumu</span>     <span class="n">Y</span>                                    <span class="n">Sample</span> <span class="n">cumulative</span> <span class="n">averages</span>
+<span class="n">do_spintemp</span> <span class="n">Y</span>                                    <span class="n">Measure</span> <span class="n">spin</span> <span class="n">temperature</span>
+</pre></div>
+</div>
+<p>and the almost trivial <code class="docutils literal notranslate"><span class="pre">posfile</span></code> and <code class="docutils literal notranslate"><span class="pre">momfile</span></code> are written as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">1.00</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span> 
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">jfile</span></code>, that will be changed during the exercise initially can look like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>  <span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">0.0</span>       <span class="mf">0.80000000000000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">1.0</span>       <span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">0.50000000000000</span>
+</pre></div>
+</div>
+<p>i.e. including nearest and next-nearest neighbours on the cubic lattice. Notice that since <code class="docutils literal notranslate"><span class="pre">sym</span> <span class="pre">1</span></code> is given in <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code>, the <code class="docutils literal notranslate"><span class="pre">jfile</span></code> can be kept to a minimum of two lines.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Starting with the inputs as defined above, vary the simulation method and damping (where applicable) to investigate the thermalization rate of the system.</p></li>
+<li><p>Is the thermalization faster when going from low to high temperatures or vice versa? Anything particular happening around Tc?</p></li>
+<li><p>Change the sign of the next-nearest neighbour and redo the study. Is the magnetization a good measurable for determining the thermalization now?</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="phase-diagrams">
+<h2>Phase diagrams<a class="headerlink" href="#phase-diagrams" title="Permalink to this heading"></a></h2>
+<p>Obtaining the M vs T relationship is probably the most common use case for Monte Carlo simulations on spin systems.
+In this exercise you can compare the MC functionalities of UppASD with a the ALPS package.</p>
+<p>The system in question is here the 2d square lattice with NN exchange couplings.
+To compare with other model implementations this example uses the <code class="docutils literal notranslate"><span class="pre">aunits</span> <span class="pre">Y</span></code> flag which sets the temperature unit to the exchange strength <code class="docutils literal notranslate"><span class="pre">J</span></code> instead of Kelvin.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> will here look as follows (to start with). Note the <strong>TEMP</strong> entries for initial and measurement temperatures.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span>  <span class="n">scHeis64</span> 
+<span class="n">ncell</span>     <span class="mi">64</span> <span class="mi">64</span> <span class="mi">1</span>
+<span class="n">BC</span>        <span class="n">P</span>         <span class="n">P</span>         <span class="mi">0</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+<span class="n">Sym</span>       <span class="mi">1</span>                                     <span class="n">Symmetry</span> <span class="n">of</span> <span class="n">lattice</span> <span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="mi">2</span><span class="n">d</span> <span class="n">cubic</span><span class="p">,</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">hexagonal</span><span class="p">)</span>
+
+<span class="n">aunits</span> <span class="n">Y</span>
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">do_prnstruct</span> <span class="mi">1</span>
+
+<span class="n">Mensemble</span> <span class="mi">1</span>
+<span class="n">Initmag</span>   <span class="mi">3</span>                                     <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">ip_mode</span>   <span class="n">M</span>                                     <span class="n">Initial</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">ip_temp</span>   <span class="n">TEMP</span>                                  <span class="o">--</span>
+<span class="n">ip_mcNstep</span>     <span class="mi">5000</span>                            <span class="o">--</span>
+
+<span class="n">mode</span>      <span class="n">M</span>                                     <span class="n">S</span><span class="o">=</span><span class="n">SD</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">MC</span>
+<span class="n">temp</span>      <span class="n">TEMP</span>                                  <span class="n">Measurement</span> <span class="n">phase</span> <span class="n">parameters</span>
+<span class="n">mcNstep</span>   <span class="mi">5000</span>                                <span class="o">--</span>
+
+<span class="n">do_avrg</span>   <span class="n">Y</span>                                     <span class="n">Measure</span> <span class="n">averages</span>
+<span class="n">plotenergy</span> <span class="mi">1</span>
+<span class="n">do_cumu</span> <span class="n">Y</span>
+</pre></div>
+</div>
+<p>and the <code class="docutils literal notranslate"><span class="pre">posfile</span></code> and <code class="docutils literal notranslate"><span class="pre">momfile</span></code>, and <code class="docutils literal notranslate"><span class="pre">jfile</span></code> files looks as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="mi">1</span>   <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span>                    
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">1.00000</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">1</span> <span class="mi">1</span>    <span class="mf">1.0</span>    <span class="mf">0.0</span>    <span class="mf">0.0</span>    <span class="mf">0.5000</span>
+</pre></div>
+</div>
+<p>Again, note that with <code class="docutils literal notranslate"><span class="pre">aunits</span> <span class="pre">Y</span></code> the exchange interaction in <code class="docutils literal notranslate"><span class="pre">jfile</span></code> is not defined in <code class="docutils literal notranslate"><span class="pre">mRy</span></code> but in the dimensionless energy scale of <code class="docutils literal notranslate"><span class="pre">J</span></code> (which is not Joule either).</p>
+<p>In order to obtain the full M(T) curve, several simulations are needed at consecutive temperatures.
+This is preferably scripted, like in this example where we use a simple <code class="docutils literal notranslate"><span class="pre">bash</span></code> script <code class="docutils literal notranslate"><span class="pre">runme.sh</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+for Temp in 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0
+do
+    mkdir T$Temp/
+    echo &quot;Temp: &quot; $Temp
+    cp Base/* T$Temp/
+    cd T$Temp/
+    gsed -i &quot;s/TEMP/$Temp/g&quot; inpsd.dat
+    ${SD_BINARY} &gt; out.log
+    cd ..
+done
+</pre></div>
+</div>
+<p>Here you either need to replace the <code class="docutils literal notranslate"><span class="pre">${SD_BINARY}</span></code> expression, or export the location of your UppASD binary as the environment variable with the same name.
+You also need to use the same directory structure as intended, i.e. put the input files in a directory called <cite>Base</cite> and the <code class="docutils literal notranslate"><span class="pre">runme.sh</span></code>
+script in the directory below.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Run the script and plot the resulting M(T) curve.</p></li>
+<li><p>Compare with the reference data in the <a class="reference download internal" download="" href="../../_downloads/0d5ea4a4769c2c35b954678b7b9cdec9/sc_64_ALPS.dat"><code class="xref download docutils literal notranslate"><span class="pre">sc_64_ALPS.dat</span></code></a> file</p></li>
+<li><p>Are the simulation parameters “good enough” or are more thermalization/sampling steps needed to obtain an accurate M(T) curve?</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="minimization">
+<h2>Minimization<a class="headerlink" href="#minimization" title="Permalink to this heading"></a></h2>
+<p>Ground state determination is another situation where Monte Carlo and Atomistic spin dynamics simulations are used extensively.
+For isotropic ferromagnets this is usually a trivial task but for systems with exchange frustration and/or strongly anisotropic systems
+the ground state search can prove quite demanding.</p>
+<p>In this exercise you will examine different kinds of magnetic systems with the task of finding their respective ground states.</p>
+<section id="anisotropic-systems">
+<h3>Anisotropic systems<a class="headerlink" href="#anisotropic-systems" title="Permalink to this heading"></a></h3>
+<p>The first example starts from the square lattice of the previous exercise, but this time we will add a uniaxial anisotropy to the system.
+Copy the input files from the previous exercise and add a uniaxial anisotropy with a strength of <code class="docutils literal notranslate"><span class="pre">0.4J</span></code> , where <code class="docutils literal notranslate"><span class="pre">J</span></code> still is the
+dimensionles unit of energy as earlier. An anisotropy is added by including the keyword <code class="docutils literal notranslate"><span class="pre">anisotropy</span> <span class="pre">./kfile</span></code> to <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> and
+creating the anisotropy file <code class="docutils literal notranslate"><span class="pre">kfile</span></code> as per below. Also start with the <code class="docutils literal notranslate"><span class="pre">jfile</span></code> that only had positive exchange couplings.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">0.40</span>   <span class="mf">0.00</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>  <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>Note that you can give all input files besides <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code> more descriptive names if wanted.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>With the anisotropy included, simulate the system starting from the ferromagnetic configuration by using <code class="docutils literal notranslate"><span class="pre">initmag</span> <span class="pre">3</span></code> and relax the system to a temperature approaching zero. You can visualize the structure using the GUI, or if it fails to run with the <code class="docutils literal notranslate"><span class="pre">ASD_Tools/myRestart3.py</span></code> script provided in the Github repository. <a class="reference download external" download="" href="https://raw.githubusercontent.com/UppASD/UppASD/master/ASD_Tools/myRestart3.py"><code class="xref download docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">myRestart3.py</span></code></a></p></li>
+</ul>
+</div></blockquote>
+<p>This should give you a ferromagnetic order of the full sample, as expected.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Now change the starting guess to a fully disordered state by using <code class="docutils literal notranslate"><span class="pre">initmag</span> <span class="pre">1</span></code> and redo the relaxation. What state do you end up with?</p></li>
+</ul>
+</div></blockquote>
+<p>The anisotropies in the system causes large energy barriers that can not be overcome at low temperatures.
+So unless the starting guess is good there is a risk that one ends up in a local minimum instead of the global one.
+To overcome these barriers one can employ higher temperatures which is typically done with the “Simulated annealing” (SA) approach,
+where one performs consecutive initial phase runs, starting from a high temperature and gradually reducing the temperature to the target value.</p>
+<p>In UppASD, this is preferably done using the <code class="docutils literal notranslate"><span class="pre">ip_mcanneal</span></code> or <code class="docutils literal notranslate"><span class="pre">ip_nphase</span></code> constructs. An example is seen below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip_mode</span> <span class="n">H</span>
+<span class="n">ip_mcanneal</span> <span class="mi">5</span>
+<span class="mi">1000</span> <span class="mf">2.0</span>
+<span class="mi">1000</span> <span class="mf">0.5</span>
+<span class="mi">1000</span> <span class="mf">0.1</span>
+<span class="mi">1000</span> <span class="mf">0.01</span>
+<span class="mi">1000</span> <span class="mf">0.001</span>
+</pre></div>
+</div>
+<p>There are no global recipies for the optimal number if anneal sweeps and the temperature distibution so here empirical experience is your friend.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Try different SA sequences and see if you can relax the anisotropic system to its ferromagnetic ground state.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="dzyalosinskii-moriya-systems">
+<h3>Dzyalosinskii-Moriya systems<a class="headerlink" href="#dzyalosinskii-moriya-systems" title="Permalink to this heading"></a></h3>
+<p>Also without anisotropy, ground state relaxation can prove a formidable task.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span> <span class="n">SCsurf_T</span>
+<span class="n">ncell</span>     <span class="mi">128</span> <span class="mi">128</span> <span class="mi">1</span>
+<span class="n">BC</span>        <span class="n">P</span>         <span class="n">P</span>         <span class="mi">0</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span> 
+          <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+
+<span class="n">do_prnstruct</span> <span class="mi">2</span>
+<span class="n">posfile</span>   <span class="o">./</span><span class="n">posfile</span>
+<span class="n">exchange</span>  <span class="o">./</span><span class="n">jfile</span>
+<span class="n">momfie</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">dm</span>        <span class="o">./</span><span class="n">dmfile</span>
+
+
+<span class="n">Initmag</span>   <span class="mi">1</span>                                     <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">ip_mode</span> <span class="n">N</span>
+<span class="n">ip_mcanneal</span> <span class="mi">0</span>
+
+<span class="n">mode</span>      <span class="n">S</span>                                     <span class="n">M</span> <span class="k">for</span> <span class="n">MC</span> <span class="ow">and</span> <span class="n">S</span> <span class="k">for</span> <span class="n">SD</span>
+<span class="n">temp</span>      <span class="mf">0.000</span>
+<span class="n">damping</span>   <span class="mf">0.500</span>
+<span class="n">Nstep</span>     <span class="mi">5000</span>
+<span class="n">timestep</span>  <span class="mf">1.000e-15</span>       <span class="n">s</span>                    <span class="n">The</span> <span class="n">time</span> <span class="n">step</span><span class="o">-</span><span class="n">size</span> <span class="k">for</span> <span class="n">the</span> <span class="n">SDE</span><span class="o">-</span><span class="n">solver</span>
+
+
+<span class="n">plotenergy</span>   <span class="mi">1</span>   
+<span class="n">do_avrg</span>      <span class="n">Y</span>
+<span class="n">do_cumu</span>      <span class="n">Y</span>
+</pre></div>
+</div>
+<p>and the <code class="docutils literal notranslate"><span class="pre">posfile</span></code>, <code class="docutils literal notranslate"><span class="pre">jfile</span></code>, <code class="docutils literal notranslate"><span class="pre">momfile</span></code> as below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">0.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>  <span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">0.0</span>      <span class="mf">1.00000</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">0.0</span>      <span class="mf">1.00000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0</span>       <span class="mf">1.0</span>       <span class="mf">0.0</span>      <span class="mf">1.00000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0</span>      <span class="o">-</span><span class="mf">1.0</span>       <span class="mf">0.0</span>      <span class="mf">1.00000</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">1.0</span> <span class="mf">0.1</span> <span class="mf">0.0</span> <span class="mf">1.0</span> 
+</pre></div>
+</div>
+<p>Now we also have a Dzyaloshinskii-Moriya (DM) file <code class="docutils literal notranslate"><span class="pre">dmfile</span></code> that looks like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>  <span class="mf">1.0000</span>  <span class="mf">0.0000</span> <span class="mf">0.0000</span>  <span class="mf">0.81650</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">1.0000</span>  <span class="mf">0.0000</span> <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">0.81650</span> <span class="o">-</span><span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.00000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0000</span>  <span class="mf">1.0000</span> <span class="mf">0.0000</span>  <span class="mf">0.00000</span>  <span class="mf">0.81650</span>  <span class="mf">0.00000</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">1.0000</span> <span class="mf">0.0000</span> <span class="o">-</span><span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.81650</span> <span class="o">-</span><span class="mf">0.00000</span>
+</pre></div>
+</div>
+<p>where the first five columns are the same as for a regular <code class="docutils literal notranslate"><span class="pre">jfile</span></code> i.e. atom sites and distance vector <span class="math notranslate nohighlight">\(\mathbf{R}_{ij}\)</span>.
+The remaining three columns define the DM interaction vector <span class="math notranslate nohighlight">\(\mathbf{D}_{ij}\)</span>. This system with ferromagnetic exchange and significant
+DM interactions has a spin-spiral ground state as shown below.</p>
+<figure class="align-default">
+<img alt="../../_images/gs.png" src="../../_images/gs.png" />
+</figure>
+<p>Fig. 1 Spin spiral ground state for a DM system.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For this setup, start from a random configuration with <code class="docutils literal notranslate"><span class="pre">initmag</span> <span class="pre">1</span></code> and relax the structure. What end state do you get?</p></li>
+<li><p>If you do not get the spiral state, try to obtain it with simulated annealing. How close can you come? Is the energy stabilizing?</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="glassy-systems">
+<h3>Glassy systems<a class="headerlink" href="#glassy-systems" title="Permalink to this heading"></a></h3>
+<p>As a final challenge, lets consider a spin glass system.
+A simple yet illustrative model for a spin glass system is given by the <a class="reference external" href="https://en.wikipedia.org/wiki/Spin_glass#Edwards%E2%80%93Anderson_model">Edwards-Anderson model</a>, where a nearest neighbour Hamiltonian on a cubic
+lattice, but with random exchange interactions are used.</p>
+<p>The UppASD code can model Edwards-Anderson spin glasses by the keywords <code class="docutils literal notranslate"><span class="pre">ea_model</span> <span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">ea_sigma</span> <span class="pre">XX</span></code> where <code class="docutils literal notranslate"><span class="pre">ea_sigma</span></code> contols
+the width of the Gaussian distribution of the randomized exchange interactions. Disregarding the <code class="docutils literal notranslate"><span class="pre">ea_sigma</span></code> keyword for now,
+we can define a simple cubic system with randomized exchange with the following <code class="docutils literal notranslate"><span class="pre">inpsd.dat</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simid</span> <span class="n">bccFe100</span>                                    
+<span class="n">ncell</span>     <span class="mi">10</span>        <span class="mi">10</span>       <span class="mi">10</span>                 <span class="n">System</span> <span class="n">size</span>            
+<span class="n">BC</span>        <span class="n">P</span>         <span class="n">P</span>         <span class="n">P</span>                 <span class="n">Boundary</span> <span class="n">conditions</span> <span class="p">(</span><span class="mi">0</span><span class="o">=</span><span class="n">vacuum</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">periodic</span><span class="p">)</span>
+<span class="n">cell</span>      <span class="mf">1.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>         
+          <span class="mf">0.00000</span>   <span class="mf">1.00000</span>   <span class="mf">0.00000</span>
+          <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">1.00000</span>
+<span class="n">Sym</span>       <span class="mi">0</span>
+<span class="n">do_prnstruct</span> <span class="mi">2</span>
+
+<span class="n">posfile</span>    <span class="o">./</span><span class="n">posfile</span>
+<span class="n">momfile</span>    <span class="o">./</span><span class="n">momfile</span>
+<span class="n">exchange</span>   <span class="o">./</span><span class="n">jfile</span>
+
+<span class="n">Initmag</span>   <span class="mi">1</span>                                     <span class="n">Initial</span> <span class="n">config</span> <span class="n">of</span> <span class="n">moments</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="mi">2</span><span class="o">=</span><span class="n">cone</span><span class="p">,</span> <span class="mi">3</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="p">,</span> <span class="mi">4</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">ip_mode</span>   <span class="n">N</span>
+<span class="n">ip_mcanneal</span> <span class="mi">1</span>
+          <span class="mi">10000</span> <span class="mf">100.0</span> <span class="mf">1.00e-16</span> <span class="mf">0.95</span>
+          <span class="mi">100</span> <span class="mf">100.0</span> <span class="mf">1.00e-16</span> <span class="mf">0.95</span>
+          <span class="mi">100</span> <span class="mf">100.0</span> <span class="mf">1.00e-16</span> <span class="mf">0.95</span>
+
+<span class="n">mode</span>      <span class="n">M</span>
+<span class="n">Temp</span>      <span class="mf">0.001</span>         <span class="n">K</span>                     <span class="n">Temperature</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span>
+<span class="n">hfield</span>    <span class="mf">0.00000</span>   <span class="mf">0.00000</span>   <span class="mf">0.00000</span>           <span class="n">Static</span> <span class="n">H</span> <span class="n">field</span>
+<span class="n">mcnstep</span>   <span class="mi">10000</span>                                <span class="n">Number</span> <span class="n">of</span> <span class="n">time</span><span class="o">-</span><span class="n">steps</span>
+
+<span class="n">do_avrg</span>   <span class="n">Y</span>                                     <span class="n">Measure</span> <span class="n">averages</span>
+<span class="n">plotenergy</span> <span class="mi">1</span>
+<span class="n">do_cumu</span> <span class="n">Y</span>
+
+<span class="n">ea_model</span> <span class="n">T</span>
+
+<span class="n">do_autocorr</span> <span class="n">Y</span>
+<span class="n">acfile</span> <span class="o">./</span><span class="n">acfile</span>
+</pre></div>
+</div>
+<p>While the <code class="docutils literal notranslate"><span class="pre">posfile</span></code> and <code class="docutils literal notranslate"><span class="pre">momfile</span></code> are made as easy as possible</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>   <span class="mf">0.000000</span>  <span class="mf">0.000000</span>  <span class="mf">0.000000</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span> <span class="mf">1.00</span> <span class="mf">1.0</span> <span class="mf">0.0</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>Even though the exchange interactions will be randomized, we still have to set up a Hamiltonian with existing couplings since only
+the magnitude and not the directions will be randomized. Thus we use the following <code class="docutils literal notranslate"><span class="pre">jfile</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">1</span>  <span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">0.0</span>       <span class="mf">1.00</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">0.0</span>       <span class="mf">1.00</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0</span>       <span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">1.00</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0</span>      <span class="o">-</span><span class="mf">1.0</span>       <span class="mf">0.0</span>       <span class="mf">1.00</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0</span>       <span class="mf">0.0</span>       <span class="mf">1.0</span>       <span class="mf">1.00</span>
+<span class="mi">1</span> <span class="mi">1</span>  <span class="mf">0.0</span>       <span class="mf">0.0</span>      <span class="o">-</span><span class="mf">1.0</span>       <span class="mf">1.00</span>
+</pre></div>
+</div>
+<p>With the glassy system setup. we end this exercise session with a friendly competition:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Without changing the system size and Hamiltonian, apply your thermalization and minimization skills to get the lowest possible energy for this system.</p></li>
+</ul>
+</div></blockquote>
+<p>The participant with the lowest energy will get a symbolic price during the conference dinner.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../switching/switching/" class="btn btn-neutral float-left" title="Switching" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../magnon/magnon/" class="btn btn-neutral float-right" title="Magnon spectra and noncollinear magnetism" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Uppsala University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
