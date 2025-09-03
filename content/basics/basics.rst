@@ -10,8 +10,8 @@ download and unpack a release
 
 .. code-block:: bash
 
-  wget https://github.com/UppASD/UppASD/archive/refs/tags/v6.0.1.tar.gz
-  tar xvzf v6.0.1.tar.gz
+  wget https://github.com/UppASD/UppASD/archive/refs/tags/v6.0.2.tar.gz
+  tar xvzf v6.0.2.tar.gz
   cd UppASD
 
 or clone the git repository
@@ -36,34 +36,37 @@ UppASD on Dardel
 UppASD is available on the HPE Cray EX supercomputer
 `Dardel <https://www.pdc.kth.se/hpc-services/computing-systems/about-dardel-1.1053338>`_
 as a centrally installed software
-`UppASD  <https://www.pdc.kth.se/software/software/UppASD/index_general.html>`_.
+`UppASD  <https://support.pdc.kth.se/doc/applications/uppasd/>`_.
 
 To build UppASD on Dardel with a Gnu toolchain and the Cray compiler wrappers
 
 .. code-block:: bash
 
-  ml PrgEnv-gnu/8.2.0
-  make deps
-  make gfortran-ftn
+  ml PrgEnv-gnu/8.6.0
+  ml cmake/4.0.1
+  mkdir buildGnu
+  cd buildGnu
+  cmake ..
+  make -j 8
 
-Run one of the testsuites, for instance *asd-tests*
-
-.. code-block:: bash
-
-  make asd-tests
-
-To set up a Python environment for the graphical user interface, the first step
-is to follow instructions on how to
-`load and activate Anaconda on Dardel. <https://www.pdc.kth.se/software/software/python/cpe21.11/3.8.8/index_using.html>`_.
-A conda environment can then be built with
+Run one of the testsuites, for instance *test*
 
 .. code-block:: bash
 
+  make test
+
+To set up a Python environment for the graphical user interface, the preferred route is
+to use Python venv or virtualenv and install with pip.
+
+.. code-block:: bash
+
+  ml cray-python/3.11.7
+  python -m venv asd_gui_env
+  . asd_gui_env/bin/activate
+  pip install numpy matplotlib pyyaml pandas pyqt6==6.4.2 pyqt6-qt6==6.4.2 vtk
+  cd ASD_GUI
+  pip install .
   ml PDC/21.11
-  ml Anaconda3/2021.05
-  source ~/conda.init.sh
-  conda create --name ASD_GUI_env python=3.6 vtk=8.1.0 numpy scipy matplotlib yaml pyyaml pandas jsoncpp=1.8.3 tbb=2020.2
-  conda activate ASD_GUI_env
 
 UppASD can be run on nodes allocated for interactive use, or as batch jobs.
 To request 4 cores on the shared partition of Dardel for one hour, use the command
@@ -73,15 +76,6 @@ To request 4 cores on the shared partition of Dardel for one hour, use the comma
   salloc -n 4 -t 1:00:00 -p shared -A <project name>
 
 where ``project name`` needs to be replaced with the name of an active compute project.
-
-At the UppASD Autumn School 20222, reservations have been set up for dedicated nodes.
-To request 8 cores on the reserved nodes for one hour, use the command
-
-.. code-block:: bash
-
-  salloc -n 8 -t 1:00:00 -p shared -A edu22.uppasd --reservation=uppasd-2022-10-11
-
-where in the name of the reservation, the date needs to be set to *today*.
 
 A typical output will look like
 
@@ -103,9 +97,7 @@ you can use the template jobscript
 
 .. code-block:: bash
 
-  #!/bin/bash -l
-  # The -l above is required to get the full environment with modules
-
+  #!/bin/bash
   #SBATCH -A <project name>     # Set the allocation to be charged for this job
   #SBATCH -J myjob              # The name of the script is myjob
   #SBATCH -t 02:00:00           # 2 hours wall-clock time
@@ -135,25 +127,26 @@ To build UppASD on Tetralith with an Intel toolchain
 
 .. code-block:: bash
 
-  ml buildenv-intel/2018a-eb
-  make deps
-  make ifort
+  ml buildenv-intel/2023a-eb
+  mkdir buildGnu
+  cd buildGnu
+  cmake ..
+  make -j 8
 
-Run one of the testsuites, for instance *asd-tests*
+Run one of the testsuites, for instance *test*
 
 .. code-block:: bash
 
-  make asd-tests
+  make test
 
 To set up a Python environment for the graphical user interface
 
 .. code-block:: bash
 
-  ml Anaconda/2020.07-nsc1
-  conda create --name ASD_GUI_env python=3.6 vtk=8.1.0 numpy scipy matplotlib yaml pyyaml pandas jsoncpp=1.8.3 tbb=2020.2
-  conda activate ASD_GUI_env
-  # Set the environment variable
-  export MESA_GL_VERSION_OVERRIDE=3.3
+  ml Python/3.11.5-env-hpc1-gcc-2023b-eb
+  python -m venv asd_gui_env
+  . asd_gui_env/bin/activate
+  pip install asd_gui
 
 UppASD can be run on nodes allocated for interactive use, or as batch jobs.
 To request 1 node on Tetralith for 1 hour, use the command
