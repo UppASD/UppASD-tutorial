@@ -66,7 +66,6 @@ to use Python venv or virtualenv and install with pip.
   pip install numpy matplotlib pyyaml pandas pyqt6==6.4.2 pyqt6-qt6==6.4.2 vtk
   cd ASD_GUI
   pip install .
-  ml PDC/21.11
 
 UppASD can be run on nodes allocated for interactive use, or as batch jobs.
 To request 4 cores on the shared partition of Dardel for one hour, use the command
@@ -192,7 +191,26 @@ In this first exercise you will build UppASD, run a first simulation, and visual
 
 * Run a simulation for the two-dimensional system in ``examples/SimpleSystems/fcc001``.
 
-* Inspect the spin configuration for ``fcc001`` with the GUI. Work with either the *restart* file or the *moments* file.
+.. code-block:: bash
+
+  # Work on own computer or in interactive session on a supercomputer
+
+  # Go to the fcc directory
+  cd examples/SimpleSystems/fcc001
+
+  # Set number of OpenMP threads.
+  export OMP_NUM_THREADS=8   # value depending on hardware and on use case
+
+  # Launch the calculation with the sd executable. From the fcc001 directory
+  # the relative path is
+  ../../../bin/sd
+
+* Inspect the spin configuration for ``fcc001`` with the GUI. Work with either the *restart.MLfcc001.out* file or the *moments.MLfcc001.out* file.
+
+.. code-block:: bash
+
+  # Start the GUI by typing
+  asd_gui
 
 Exercise 2: Phase diagram for bcc Fe
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
