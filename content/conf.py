@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "UppASD Tutorial"
-copyright = "2022, Uppsala University"
+copyright = "2025, Uppsala University"
 author = "The contributors"
 github_user = "UppASD"
 github_repo_name = "UppASD-tutorial"  # auto-detected from dirname if blank
