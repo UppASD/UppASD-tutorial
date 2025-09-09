@@ -3,3 +3,6 @@
 /venv*
 .jupyter_cache
 jupyter_execute
+*~
+*.out
+meminfo
