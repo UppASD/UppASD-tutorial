@@ -2,33 +2,34 @@ Magnon spectra and noncollinear magnetism
 =========================================
 
 
-Tutorial 1: Fe in bcc and fcc crystal structures
+Tutorial 1: bcc Fe at different temperature
 ------------------------------------------------
 
 Collinear magnon spectra and influence of uniaxial anisotropy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This example shows how to calculate the spin wave spectrum of the standard examples Fe bcc and Fe fcc and to understand the influence of the number of atoms per unit cell on the spectra together with the influence of the uniaxial anisotropy. Files are found in Fe folder.
+This example shows how to calculate the spin wave spectrum of the standard example bcc Fe and to understand the influence of the temperature on the spectra together with the influence of the uniaxial anisotropy. Files are found in the ``bccFeT1K`` and ``bccFeT300K`` folders.
 
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an Fe bcc system is created.
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that a simulation of a  Fe bcc system is set up.
 
 ::
 
   simid bccFe100
-  ncell     10        10       10                 System size
+  ncell     20       20      20                   System size
   BC        P         P         P                 Boundary conditions (0=vacuum, P=periodic)
-  cell      1.00000   0.00000   0.00000
-            0.00000   1.00000   0.00000
-            0.00000   0.00000   1.00000
-  Sym       0      Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
-  posfile    ./posfile
-  momfile    ./momfile
-  exchange   ./jfile
+  cell         -0.5000000000    0.5000000000    0.5000000000
+                0.5000000000   -0.5000000000    0.5000000000
+                0.5000000000    0.5000000000   -0.5000000000
+  Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+
+  posfile   ./posfile
+  momfile   ./momfile
+  exchange  ./jASD2S
   anisotropy ./kfile
-  do_prnstruct 2          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
+  maptype 2
 
 .. figure:: figures/tutorial1/fig1.png
 
@@ -37,32 +38,25 @@ Fig 1. Lattice and magnetic texture.
 Thermalizing the system
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the lines below, the systems is driven to the ground state.
+Using the lines below, the system is brought to thermal equilibrium by means of Heat bath Monte Carlo.
 
 ::
 
-  ip_mode   M
-  ip_mcanneal 1
-  10000 0.001 1.00e-16 0.95
+  ip_mode   H                                     Initial phase parameters
+  ip_mcanneal 1                                   --
+  10000 1.0 1.00e-16 0.3                          --
 
-  mode      M
-  Temp      0.001          K                      Temperature of the system
-  hfield    0.00000   0.00000   0.00000           Static H field
-  mcNstep   50000                                 MC steps
+Linear spin wave spectra
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. figure:: figures/tutorial1/fig2.png
-
-Fig 2. Energy versus number of iterations.
-
-Spin wave spectrum
-^^^^^^^^^^^^^^^^^^
-We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra (AMS)) at the list of Q points ``qfile``. Use ``qmaker`` script.
+Below the critical temperature bcc Fe has long range collinear ordering of spins. We calculate the adiabatic magnon spectra (AMS) using linear spin wave theory for collinear spin textures at the list of q points specified in the ``qfile.kpath``. Note that the spin wave is calculated for the T=0 K ground state as specified in the ``momfile``.  The list of q points were calculated from the ``preQ.py`` script which analyses the space group symmetry of the crystal cell,
 
 ::
 
-  do_ams Y                         Collinear Adiabatic magnon spectra
-  qpoints D                        Direct coordinates
-  qfile ./qfile                    Path along the high symmetry points in the reciprocal space
+  do_ams Y                                        Collinear Adiabatic magnon spectra
+  do_magdos Y                                     Calculate magnon density of states
+  qpoints D                                       Direct coordinates
+  qfile ./qfile.kpath                             q points
 
 **The first Brilluoin zone of a body centered cubic lattice**
 
@@ -81,7 +75,7 @@ Fig 5. High symmetry points.
 Plotting the spectrum
 ^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2.
+Use the UppASD graphical interface ``ASD_GUI`` or the ``postQ.py`` script to plot the linear spin wave spectra and the dynamical structure factor.
 
 .. figure:: figures/tutorial1/fig6.png
 

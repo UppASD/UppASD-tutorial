@@ -6,11 +6,11 @@ cell         -0.5000000000    0.5000000000    0.5000000000
               0.5000000000    0.5000000000   -0.5000000000
 Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
 
-posfile   ./posfile
-momfile   ./momfile
-exchange  ./jASD2S
-anisotropy ./kfile
-maptype 2
+posfile   ./posfile                             Atomic positions
+momfile   ./momfile                             Local atomic moments
+exchange  ./jASD2S                              Exchange interactions
+anisotropy ./kfile                              Single site anisotropy
+maptype 2                                       Use maptype to map up exchange couplings
 
 do_prnstruct 0
 SDEalgh   1                                     SDE solver: 1=midpoint, 2=heun, 3=heun3, 4=Heun_proper, 5=Depondt
@@ -30,18 +30,19 @@ do_avrg   Y                                     Measure averages
 do_cumu Y
 plotenergy 1
 
-do_sc Q
-sc_emax 40.0
-sc_eres 0.05
-do_ams Y
-do_magdos Y
-qpoints D
-qfile ./qfile.kpath
+do_sc Q                                         Sample the dynamic structure factor
+sc_emax 40.0                                    Maximum sampling energy
+sc_eres 0.05                                    Minimum sampling energy
 do_sc_local_axis Y
-sc_window_fun 2
-sc_average F
+sc_window_fun 2                                 Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
+sc_average F                                    Averaging of spin correlation
 
-do_stiffness Y
+do_ams Y                                        Collinear Adiabatic magnon spectra
+do_magdos Y                                     Calculate magnon density of states
+qpoints D                                       Direct coordinates
+qfile ./qfile.kpath                             q points
+
+do_stiffness Y                                  Calculation of spin wave stiffness
 eta_max 18
 eta_min 12
-alat 2.83e-10
+alat 2.83e-10                                   Length scale for lattice vectors
