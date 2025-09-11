@@ -1,5 +1,5 @@
-simid bccFe100                                    
-ncell     20       20      20                System size            
+simid bccFe100
+ncell     20       20      20                   System size
 BC        P         P         P                 Boundary conditions (0=vacuum, P=periodic)
 cell         -0.5000000000    0.5000000000    0.5000000000
               0.5000000000   -0.5000000000    0.5000000000
@@ -17,11 +17,11 @@ SDEalgh   1                                     SDE solver: 1=midpoint, 2=heun, 
 Initmag   3                                     Initial config of moments (1=random, 2=cone, 3=spec., 4=file)
 
 ip_mode   H                                     Initial phase parameters
-ip_mcanneal 1                                 --
-10000 300.0 1.00e-16 0.3                      --
+ip_mcanneal 1                                   --
+10000 300.0 1.00e-16 0.3                          --
 
 mode      S                                     S=SD, M=MC
-temp      300.0                                 Measurement phase parameters
+temp      300.0                                   Measurement phase parameters
 Nstep  40000
 damping 1.0e-4
 timestep 1.0e-16
@@ -45,4 +45,3 @@ do_stiffness Y
 eta_max 18
 eta_min 12
 alat 2.83e-10
-
