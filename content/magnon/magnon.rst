@@ -1,44 +1,6 @@
 Magnon spectra and noncollinear magnetism
 =========================================
 
-Tutorial 0: Spin wave stiffness
--------------------------------
-
-The spin wave stiffness and the related property exchange stiffness provides the bridge between atomistic spin dynamics and micromagnetism. 
-
-A setup for bcc Fe where the stiffness can be calculated can be seen below
-
-.. literalinclude:: Stiffness/inpsd.dat
-
-Notice that we actually have no ``ip_mode`` nor ``mode`` sections, because here we are actually not interested in running any simulation.
-
-The ``posfile`` and ``momfile`` are here as follows
-
-.. literalinclude:: Stiffness/posfile
-
-.. literalinclude:: Stiffness/momfile
-
-The exchange interaction file ``jASD2S`` can be downloaded from :download:`here <https://raw.githubusercontent.com/UppASD/UppASD/master/examples/Mappings/bccFe-variants/jASD2S>` .
-
- * Calculate the spin wave stiffness for the system and examine how the results depend on the choice of ``eta_max`` and ``eta_min``. 
-
-The output from the stiffness calculations are found in the ``asd_micro.bccFe100.out`` file.
-
-
-Tutorial 0b: Spin wave scripts
-------------------------------
-
-Even though the calculation of magnon spectra will be practiced on in more detail enough, 
-one can also use the setup above to quickly showcase the functionality of the ``preQ.py`` and ``postQ.py`` scripts.
-
-These scripts are available in the repository but are continiously evolving. Up-to-date scripts are provided here: :download:`preQ.py <./Stiffness/preQ.py>` and :download:`postQ.py <./Stiffness/postQ.py>`
-
- * Use the ``preQ.py`` script to setup a k-space path for the spin wave dispersion in bcc Fe, run the system, and plot the resulting ``ams.png`` by using ``postQ.py``.
-
-Optional: 
- * The ``preQ.py`` script provides several k-space paths. Compare the calculated magnon DOS ``magdos.bccFe100.out`` when using either ``qpoints D`` and ``qfile ./qfile.kpath`` or ``qpoints R`` and ``qfile ./qfile.reduced``.
-
-
 
 Tutorial 1: Fe in bcc and fcc crystal structures
 ------------------------------------------------
@@ -82,7 +44,7 @@ Using the lines below, the systems is driven to the ground state.
   ip_mode   M
   ip_mcanneal 1
   10000 0.001 1.00e-16 0.95
-  
+
   mode      M
   Temp      0.001          K                      Temperature of the system
   hfield    0.00000   0.00000   0.00000           Static H field
@@ -129,7 +91,7 @@ Questions and exercises:
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Does the spectra follow the analytical expression?
-2. Why the spectra is shift it up? 
+2. Why the spectra is shift it up?
 3. Plot the spectra without the gap around the center zone.
 4. Why there are two branches, 1 acoustic and 1 optical?
 5. Plot the spectrum for Fe fcc. Why now there is just 1 branch? Is it following the analytical expression?
@@ -137,7 +99,7 @@ Questions and exercises:
 .. figure:: figures/tutorial1/fig7.png
 
 Fig 7. Adiabatic magnon spectra of Fe FCC.
- 
+
 Tutorial 2: FM Heisenberg nearest-neighbour spin chain
 ------------------------------------------------------
 
@@ -158,8 +120,8 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   cell      1.00000   0.00000   0.00000
            0.00000   1.00000   0.00000
            0.00000   0.00000   1.00000
-  Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)  
-  
+  Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
+
   posfile   ./posfile                             Position file
   exchange  ./jfile                               Exchange file
   momfile   ./momfile                             Moment file
@@ -177,11 +139,11 @@ Using the lines below, the systems is driven to the ground state by spin dynamic
 
   Mensemble 1                                     Number of samples in ensemble averaging
   Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
-  
+
   ip_mode   S                                     Initial phase parameters
   ip_nphase 1
   20000 1.0e-3 1e-16 4.0
-  
+
   mode      S                                     S=SD, M=MC
   temp      1.0e-3                                Measurement phase parameters
   damping   0.0010                                --
@@ -201,7 +163,7 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
 
   do_ams Y                         Collinear Adiabatic magnon spectra
   do_magdos N                      Generate magnon density of states
-  
+
   qpoints F                        Flag for q-point generation (F=file,A=automatic,C=full cell)
   qfile   ./qfile                  Path along the high symmetry points in the reciprocal space
 
@@ -250,7 +212,7 @@ Questions and exercises:
 
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory?
 
- 
+
 Tutorial 3: AFM Heisenberg nearest-neighbour spin chain
 -------------------------------------------------------
 
@@ -273,7 +235,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
              0.00000   1.00000   0.00000
             0.00000   0.00000   2.000000
   Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
-  
+
   posfile   ./posfile
   exchange  ./jfile
   momfile   ./momfile
@@ -294,7 +256,7 @@ Using the lines below, the systems is driven to the ground state by spin dynamic
   ip_mode   S                                     Initial phase parameters
   ip_nphase 1
   20000 1.0e-3 1e-16 4.0
-  
+
   mode      S                                     S=SD, M=MC
   temp      1.0e-3                                Measurement phase parameters
   damping   0.0010                                --
@@ -314,7 +276,7 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
 
   do_ams Y                      Collinear Adiabatic magnon spectra
   do_magdos N                   Generate magnon density of states
-  
+
   qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
@@ -372,7 +334,7 @@ Questions and exercises:
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory? Why is linear around the center zone?
 2. Calculate analytically the Energy/spin and show it is the same as the numerical result.
 
- 
+
 Tutorial 4: FM Heisenberg nearest-neighbour spin chain with DM interactions
 ---------------------------------------------------------------------------
 
@@ -395,7 +357,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
             0.00000   1.00000   0.00000
             0.00000   0.00000   4.00000
   Sym       0                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
-  
+
   posfile   ./posfile
   exchange  ./jfile
   momfile   ./momfile
@@ -419,7 +381,7 @@ Using the lines below, the systems is driven to the ground state by MonteCarlo.
   ip_mode   M
   ip_mcanneal 1
   100000 1.0e-3
-  
+
   mode      S                                     S=SD, M=MC
   temp      1.0e-3                                Measurement phase parameters
   damping   0.0010                                --
@@ -439,7 +401,7 @@ We calculate the non-collinear  and collinear spin wave spectrum at the list of 
 
   do_ams Y                      Collinear Adiabatic magnon spectra
   do_diamag Y                   Non-Collinear Adiabatic magnon spectra
-  
+
   qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
@@ -497,7 +459,7 @@ Questions and exercises:
 1. Do you understand why Collinear AMS failed in this case?
 
 
- 
+
 Tutorial 5: Kagome system with DM interactions
 ----------------------------------------------
 
@@ -519,9 +481,9 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   cell     1.000000000000    0.000000000000    0.000000000000
           -0.500000000000    0.866025403784    0.000000000000
            0.000000000000    0.000000000000    10.00000000000
-  
+
   Sym        0
-  
+
   posfile    ./posfile
   posfiletype D               C=Cartesian or D=direct coordinates in posfile
   momfile    ./momfile
@@ -545,7 +507,7 @@ Using the lines below, and using a momfile with previous minimization, the syste
   ip_mcanneal 2
   10000 100.0001
   10000 0.0001
-  
+
   mode      S                                     S=SD, M=MC
   temp      0.0001
   Nstep     60000
@@ -561,7 +523,7 @@ We calculate the non-collinear spin wave spectrum (in this case, a collinear adi
 
   do_ams Y                      Collinear Adiabatic magnon spectra
   do_diamag Y                   Non-Collinear Adiabatic magnon spectra
-  
+
   qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
@@ -591,13 +553,13 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
   do_sc  Q
   sc_nstep 500
   sc_step   90
-  do_sc_local_axis B             Perform SQW along local quantization axis (SA) (Y/N/B) 
+  do_sc_local_axis B             Perform SQW along local quantization axis (SA) (Y/N/B)
                                  B--> B_effxSA
-  sc_window_fun 2                Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 
+  sc_window_fun 2                Choice of FFT window function (1=box, 2=Hann, 3=Hamming,
                                  4=Blackman-Harris)
   sc_average N                   Averaging of S(q,w): (F)ull, (E)ven, or (N)one
   do_sc_tens N                   Print the tensorial values s(q,w) (Y/N)
-  
+
   qpoints D
   qfile ./qfile
 
@@ -633,14 +595,14 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   cell     1.000000000000    0.000000000000    0.000000000000
           -0.500000000000    0.866025403784    0.000000000000
            0.000000000000    0.000000000000    10.00000000000
-  
+
   Sym        3                Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
-  
+
   posfile    ./posfile
   posfiletype D                C=Cartesian or D=direct coordinates
   momfile    ./momfile
   exchange   ./jfile
-  
+
   maptype 2
   do_jtensor 1
 
@@ -666,7 +628,7 @@ Using the lines below the system is evolved in time. Notice that in the initial 
   10000 10.0001  1.0e-16 5.0
   20000 1.0001   1.0e-16 5.0
   50000 0.00000 1.0e-16 5.0
-  
+
   mode      S                                     S=SD, M=MC
   temp      0.1
   Nstep     59500
@@ -674,7 +636,7 @@ Using the lines below the system is evolved in time. Notice that in the initial 
   timestep  1e-16
   qm_nvec 0 0 1                             Unit-vector perpendicular to spins
   qm_svec 0 1 0                             Direction of the spin
-  
+
 Spin wave spectrum
 ^^^^^^^^^^^^^^^^^^
 
@@ -683,14 +645,14 @@ We calculate the non-collinear spin wave spectrum (in this case, a collinear adi
 ::
 
   do_diamag Y                   Non-Collinear Adiabatic magnon spectra
-  
+
   qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
-  
+
   nc_qvect 0.330000 0.571577 0.000000   Ordering wave vector
-  nc_nvect 0.0 0.0 1.0                  Pitch-vector along z and the moments rotate 
-                                        in the xy-plane 
+  nc_nvect 0.0 0.0 1.0                  Pitch-vector along z and the moments rotate
+                                        in the xy-plane
   qm_nvec 0 0 1                             Unit-vector perpendicular to spins
   qm_svec 0 1 0                             Direction of the spin
 
@@ -719,9 +681,9 @@ Use the UppASD graphical interface (ASDGUI) or the script enclosed in this cours
   do_sc  Q
   sc_nstep 700
   sc_step   85
-  do_sc_local_axis B             Perform SQW along local quantization axis (SA) (Y/N/B) 
+  do_sc_local_axis B             Perform SQW along local quantization axis (SA) (Y/N/B)
                                  B--> B_effxSA
-  sc_window_fun 2                Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 
+  sc_window_fun 2                Choice of FFT window function (1=box, 2=Hann, 3=Hamming,
                                  4=Blackman-Harris)
 
 .. figure:: figures/tutorial6/fig4.png
@@ -755,3 +717,41 @@ Eq 4. Excitation energy for spin waves in an isotropic antiferromagnet.
 .. figure:: figures/equations/fig5.png
 
 Eq 5. Excitation energy for spin waves in an isotropic ferromagnet.
+
+
+Tutorial 7: Spin wave stiffness
+-------------------------------
+
+The spin wave stiffness and the related property exchange stiffness provides the bridge between atomistic spin dynamics and micromagnetism.
+
+A setup for bcc Fe where the stiffness can be calculated can be seen below
+
+.. literalinclude:: Stiffness/inpsd.dat
+
+Notice that we actually have no ``ip_mode`` nor ``mode`` sections, because here we are actually not interested in running any simulation.
+
+The ``posfile`` and ``momfile`` are here as follows
+
+.. literalinclude:: Stiffness/posfile
+
+.. literalinclude:: Stiffness/momfile
+
+The exchange interaction file ``jASD2S`` can be downloaded from :download:`here <https://raw.githubusercontent.com/UppASD/UppASD/master/examples/Mappings/bccFe-variants/jASD2S>` .
+
+ * Calculate the spin wave stiffness for the system and examine how the results depend on the choice of ``eta_max`` and ``eta_min``.
+
+The output from the stiffness calculations are found in the ``asd_micro.bccFe100.out`` file.
+
+
+Tutorial 0b: Spin wave scripts
+------------------------------
+
+Even though the calculation of magnon spectra will be practiced on in more detail enough,
+one can also use the setup above to quickly showcase the functionality of the ``preQ.py`` and ``postQ.py`` scripts.
+
+These scripts are available in the repository but are continiously evolving. Up-to-date scripts are provided here: :download:`preQ.py <https://raw.githubusercontent.com/UppASD/UppASD/refs/heads/master/ASD_Tools/preQ.py>` and :download:`postQ.py <https://raw.githubusercontent.com/UppASD/UppASD/refs/heads/master/ASD_Tools/postQ.py>`
+
+ * Use the ``preQ.py`` script to setup a k-space path for the spin wave dispersion in bcc Fe, run the system, and plot the resulting ``ams.png`` by using ``postQ.py``.
+
+Optional:
+ * The ``preQ.py`` script provides several k-space paths. Compare the calculated magnon DOS ``magdos.bccFe100.out`` when using either ``qpoints D`` and ``qfile ./qfile.kpath`` or ``qpoints R`` and ``qfile ./qfile.reduced``.
