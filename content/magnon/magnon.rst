@@ -2,7 +2,7 @@ Magnon spectra and noncollinear magnetism
 =========================================
 
 
-Tutorial 1: bcc Fe at different temperature
+Exercise 1: bcc Fe at different temperature
 ------------------------------------------------
 
 Collinear magnon spectra and influence of uniaxial anisotropy
@@ -13,7 +13,7 @@ This example shows how to calculate the spin wave spectrum of the standard examp
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that a simulation of a  Fe bcc system is set up.
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that a simulation of an Fe bcc system is set up.
 
 ::
 
@@ -58,7 +58,7 @@ Below the critical temperature bcc Fe has long range collinear ordering of spins
   qpoints D                                       Direct coordinates
   qfile ./qfile.kpath                             q points
 
-**The first Brilluoin zone of a body centered cubic lattice**
+**The first Brillouin zone of a body centered cubic lattice**
 
 .. figure:: figures/tutorial1/fig3.png
 
@@ -66,7 +66,7 @@ Fig 3. Primitive and reciprocal lattice vectors in bcc.
 
 .. figure:: figures/tutorial1/fig4.png
 
-Fig 4. BCC 1st Brilluoin zone.
+Fig 4. BCC 1st Brillouin zone.
 
 .. figure:: figures/tutorial1/fig5.png
 
@@ -94,13 +94,13 @@ Questions and exercises:
 
 Fig 7. Adiabatic magnon spectra of Fe FCC.
 
-Tutorial 2: FM Heisenberg nearest-neighbour spin chain
+Exercise 2: FM Heisenberg nearest-neighbour spin chain
 ------------------------------------------------------
 
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic. Files are found in HeisChain folder.
+The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic. Files are found in ``HeisChain`` folder.
 
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -112,46 +112,41 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   ncell     1         1         100               System size (in terms of unit cells)
   BC        0         0         P                 Boundary conditions (0=vacuum,P=periodic)
   cell      1.00000   0.00000   0.00000
-           0.00000   1.00000   0.00000
-           0.00000   0.00000   1.00000
+            0.00000   1.00000   0.00000
+            0.00000   0.00000   1.00000
   Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
 
   posfile   ./posfile                             Position file
   exchange  ./jfile                               Exchange file
   momfile   ./momfile                             Moment file
-  do_prnstruct 1          Flag to print lattice structure (0=off/1=on/2=print only coordinates)
+  do_prnstruct 1                                  Flag to print lattice structure (0=off/1=on/2=print only coordinates)
+
+  Mensemble 1                                     Number of samples in ensemble averaging
+  Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
 
 .. figure:: figures/tutorial2/fig1.png
 
 Fig 1. Crystal and magnetic texture.
 
-Spin dynamics
-^^^^^^^^^^^^^
+**The first Brillouin zone of a simple cubic lattice**
 
-Using the lines below, the systems is driven to the ground state by spin dynamics.
-::
+.. figure:: figures/tutorial2/fig3.png
 
-  Mensemble 1                                     Number of samples in ensemble averaging
-  Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
+Fig 3. Primitive and reciprocal lattice vectors in sc.
 
-  ip_mode   S                                     Initial phase parameters
-  ip_nphase 1
-  20000 1.0e-3 1e-16 4.0
+.. figure:: figures/tutorial2/fig4.png
 
-  mode      S                                     S=SD, M=MC
-  temp      1.0e-3                                Measurement phase parameters
-  damping   0.0010                                --
-  Nstep     40000                                 --
-  timestep  1.000e-15                             --
+Fig 4. SC 1st Brillouin zone.
 
-.. figure:: figures/tutorial2/fig2.png
+.. figure:: figures/tutorial2/fig5.png
 
-Fig 2. Energy versus number of iterations.
+Fig 5. High symmetry points.
 
-Spin wave spectrum
-^^^^^^^^^^^^^^^^^^
 
-We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+Calculation of spin wave spectrum
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points contained in the ``qfile``. The spin wave spectra is calculated as excititions from the T=0 K ferromagnetic ground state.
 
 ::
 
@@ -161,45 +156,50 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
   qpoints F                        Flag for q-point generation (F=file,A=automatic,C=full cell)
   qfile   ./qfile                  Path along the high symmetry points in the reciprocal space
 
-**The first Brilluoin zone of a simple cubic lattice**
 
-.. figure:: figures/tutorial2/fig3.png
+Spin dynamics
+^^^^^^^^^^^^^
 
-Fig 3. Primitive and reciprocal lattice vectors in sc.
-
-.. figure:: figures/tutorial2/fig4.png
-
-Fig 4. SC 1st Brilluoin zone.
-
-.. figure:: figures/tutorial2/fig5.png
-
-Fig 5. High symmetry points.
-
-Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
-
-.. figure:: figures/tutorial2/fig6.png
-
-Fig 6. Adiabatic magnon spectra.
-
-Plotting S(q,w)
-^^^^^^^^^^^^^^^
-
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
-
+Using the lines below, the systems is equilibrated in spin dynamics simulations to be in thermal equilibrium with a small temperature T=0.001 K.
 ::
 
+  ip_mode   S                                     Initial phase parameters
+  ip_nphase 1
+  20000 1.0e-3 1e-16 4.0
+
+.. figure:: figures/tutorial2/fig2.png
+
+Fig 2. Energy versus number of iterations.
+
+The dynamical structure factor is sampled in spin dynamics simulation at the same temperature T=0.001 K as used in the initial phase used to thermalize the system. The time step is 1 fs, and a small damping 0.0010 is used.
+::
+
+  mode      S                                     S=SD, M=MC
+  temp      1.0e-3                                Measurement phase parameters
+  damping   0.0010                                --
+  Nstep     40000                                 --
+  timestep  1.000e-15                             --
+
+  do_sc Q                                         Measure spin correlation
+  sc_window_fun  2                                Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
   do_sc Q           Measure spin correlation
   sc_window_fun  2  Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
   sc_nstep 5000     Number of steps to sample
   sc_step 8        Number of time steps between each sampling
 
 
+Plotting adiabatic magnon spectrum spectra and the dynamic structure factor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the UppASD graphical interface (ASD_GUI) or the ``postQ.py`` script to plot the adiabatic magnon spectra and the dynamical structure factor.
+
+.. figure:: figures/tutorial2/fig6.png
+
+Fig 6. Adiabatic magnon spectra is output to the file ams.png.
+
 .. figure:: figures/tutorial2/fig7.png
 
-Fig 7. Structure factor together with AMS.
+Fig 7. Adiabatic magnon spectra together with dynamic structure factor is output to ams_sqw.png.
 
 Questions and exercises:
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -207,7 +207,7 @@ Questions and exercises:
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory?
 
 
-Tutorial 3: AFM Heisenberg nearest-neighbour spin chain
+Exercise 3: AFM Heisenberg nearest-neighbour spin chain
 -------------------------------------------------------
 
 Collinear adiabatic magnon spectra and S(q,w)
@@ -275,7 +275,7 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
 
-**The first Brilluoin zone of a simple cubic lattice**
+**The first Brillouin zone of a simple cubic lattice**
 
 .. figure:: figures/tutorial3/fig3.png
 
@@ -283,7 +283,7 @@ Fig 3. Primitive and reciprocal lattice vectors in sc.
 
 .. figure:: figures/tutorial3/fig4.png
 
-Fig 4. SC 1st Brilluoin zone.
+Fig 4. SC 1st Brillouin zone.
 
 .. figure:: figures/tutorial3/fig5.png
 
@@ -292,7 +292,7 @@ Fig 5. High symmetry points.
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
 
 1. Use only the primitive cell.
 
@@ -309,7 +309,7 @@ Fig 7. Adiabatic magnon spectra.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
 ::
 
@@ -329,7 +329,7 @@ Questions and exercises:
 2. Calculate analytically the Energy/spin and show it is the same as the numerical result.
 
 
-Tutorial 4: FM Heisenberg nearest-neighbour spin chain with DM interactions
+Exercise 4: FM Heisenberg nearest-neighbour spin chain with DM interactions
 ---------------------------------------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
@@ -401,7 +401,7 @@ We calculate the non-collinear  and collinear spin wave spectrum at the list of 
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
 
 
-**The first Brilluoin zone of a simple cubic lattice**
+**The first Brillouin zone of a simple cubic lattice**
 
 .. figure:: figures/tutorial4/fig3.png
 
@@ -409,7 +409,7 @@ Fig 3. Primitive and reciprocal lattice vectors in sc.
 
 .. figure:: figures/tutorial4/fig4.png
 
-Fig 4. SC 1st Brilluoin zone.
+Fig 4. SC 1st Brillouin zone.
 
 .. figure:: figures/tutorial4/fig5.png
 
@@ -418,7 +418,7 @@ Fig 5. High symmetry points.
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
 
 1. Collinear AMS
 
@@ -435,7 +435,7 @@ Fig 7. Non-collinear Adiabatic magnon spectra.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS and option 5 S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS and option 5 S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
 ::
 
@@ -454,7 +454,7 @@ Questions and exercises:
 
 
 
-Tutorial 5: Kagome system with DM interactions
+Exercise 5: Kagome system with DM interactions
 ----------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
@@ -522,16 +522,16 @@ We calculate the non-collinear spin wave spectrum (in this case, a collinear adi
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
 
-**The first Brilluoin zone of a hexagonal lattice**
+**The first Brillouin zone of a hexagonal lattice**
 
 .. figure:: figures/tutorial5/fig2.png
 
-Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.
+Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brillouin zone and High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.
 
 .. figure:: figures/tutorial5/fig3.png
 
@@ -540,7 +540,7 @@ Fig 3. Non-Collinear AMS.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.
 
 ::
 
@@ -568,7 +568,7 @@ Questions and exercises:
 2. Seems linear around Gamma point but J is FM? Why is that? Shouldn´t be parabolic?
 
 
-Tutorial 6: Triangular system with AFM interactions
+Exercise 6: Triangular system with AFM interactions
 ---------------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
@@ -650,16 +650,16 @@ We calculate the non-collinear spin wave spectrum (in this case, a collinear adi
   qm_nvec 0 0 1                             Unit-vector perpendicular to spins
   qm_svec 0 1 0                             Direction of the spin
 
-**The first Brilluoin zone of a hexagonal lattice**
+**The first Brillouin zone of a hexagonal lattice**
 
 .. figure:: figures/tutorial6/fig2.png
 
-Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brilluoin zone and High symmetry points.
+Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brillouin zone and High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”
 
 .. figure:: figures/tutorial6/fig3.png
 
@@ -668,7 +668,7 @@ Fig 3. Non-Collinear AMS.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASDGUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.
+Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.
 
 ::
 
@@ -713,7 +713,7 @@ Eq 4. Excitation energy for spin waves in an isotropic antiferromagnet.
 Eq 5. Excitation energy for spin waves in an isotropic ferromagnet.
 
 
-Tutorial 7: Spin wave stiffness
+Exercise 7: Spin wave stiffness
 -------------------------------
 
 The spin wave stiffness and the related property exchange stiffness provides the bridge between atomistic spin dynamics and micromagnetism.
