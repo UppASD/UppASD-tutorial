@@ -329,7 +329,16 @@ Use the UppASD graphical interface ``ASD_GUI`` or the ``postQ.py`` script to plo
 
 .. figure:: figures/tutorial1/fig6.png
 
-Fig 6. Adiabatic magnon spectra.
+Fig 6. Adiabatic magnon spectra
+
+.. figure:: figures/tutorial1/ams_sqwT1.png
+
+Fig 7. Adiabatic magnon spectra and dynamic structure factor sampled at T=1 K
+
+.. figure:: figures/tutorial1/ams_sqwT300.png
+
+Fig 8. Adiabatic magnon spectra and dynamic structure factor sampled at T=300 K
+
 
 Questions and exercises:
 ^^^^^^^^^^^^^^^^^^^^^^^^
