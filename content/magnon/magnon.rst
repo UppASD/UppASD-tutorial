@@ -246,6 +246,20 @@ Collinear magnon spectra and influence of uniaxial anisotropy
 
 This example shows how to calculate the spin wave spectrum of the standard example bcc Fe and to understand the influence of the temperature on the spectra together with the influence of the uniaxial anisotropy. Files are found in the ``bccFeT1K`` and ``bccFeT300K`` folders.
 
+Spin wave scripts
+^^^^^^^^^^^^^^^^^
+
+Even though the calculation of magnon spectra will be practiced on in more detail enough,
+one can also use the setup above to quickly showcase the functionality of the ``preQ.py`` and ``postQ.py`` scripts.
+
+These scripts are available in the repository but are continiously evolving. Up-to-date scripts are provided here: :download:`preQ.py <https://raw.githubusercontent.com/UppASD/UppASD/refs/heads/master/ASD_Tools/preQ.py>` and :download:`postQ.py <https://raw.githubusercontent.com/UppASD/UppASD/refs/heads/master/ASD_Tools/postQ.py>`
+
+ * Use the ``preQ.py`` script to setup a k-space path for the spin wave dispersion in bcc Fe, run the system, and plot the resulting ``ams.png`` by using ``postQ.py``.
+
+Optional:
+ * The ``preQ.py`` script provides several k-space paths. Compare the calculated magnon DOS ``magdos.bccFe100.out`` when using either ``qpoints D`` and ``qfile ./qfile.kpath`` or ``qpoints R`` and ``qfile ./qfile.reduced``.
+
+
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -612,17 +626,3 @@ The exchange interaction file ``jASD2S`` can be downloaded from :download:`here 
  * Calculate the spin wave stiffness for the system and examine how the results depend on the choice of ``eta_max`` and ``eta_min``.
 
 The output from the stiffness calculations are found in the ``asd_micro.bccFe100.out`` file.
-
-
-Tutorial 0b: Spin wave scripts
-------------------------------
-
-Even though the calculation of magnon spectra will be practiced on in more detail enough,
-one can also use the setup above to quickly showcase the functionality of the ``preQ.py`` and ``postQ.py`` scripts.
-
-These scripts are available in the repository but are continiously evolving. Up-to-date scripts are provided here: :download:`preQ.py <https://raw.githubusercontent.com/UppASD/UppASD/refs/heads/master/ASD_Tools/preQ.py>` and :download:`postQ.py <https://raw.githubusercontent.com/UppASD/UppASD/refs/heads/master/ASD_Tools/postQ.py>`
-
- * Use the ``preQ.py`` script to setup a k-space path for the spin wave dispersion in bcc Fe, run the system, and plot the resulting ``ams.png`` by using ``postQ.py``.
-
-Optional:
- * The ``preQ.py`` script provides several k-space paths. Compare the calculated magnon DOS ``magdos.bccFe100.out`` when using either ``qpoints D`` and ``qfile ./qfile.kpath`` or ``qpoints R`` and ``qfile ./qfile.reduced``.
