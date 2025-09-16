@@ -8,12 +8,12 @@ Exercise 2: FM Heisenberg nearest-neighbour spin chain
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following tutorial shows every step necessary to calculate spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction, the direction is arbitrary since the Hamiltonian is isotropic. Files are found in ``HeisChain`` folder.
+The following tutorial shows every step necessary to calculate adiabatic spin wave spectrum and dynamic structure factor S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction. The global orientation of the spins is arbitrary since the Hamiltonian is isotropic. Files are found in ``HeisChain`` folder. Some blocks of the `ìnpsd.dat``file are inlined in the following to highlight the key words that control calculation of adiabatic magnon spectra and calculation of the dynamic structure factor.
 
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D Heisenberg chain is created.
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that a 1D Heisenberg chain is created. The chain extends over 100 sites along the z direction. Have a look on the posfile and momfile. The nearest neighbor ferromagnetic exchange coupling is contained in the jfile.
 ::
 
   simid     HeisWire                              System name
@@ -36,7 +36,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 
 Fig 1. Crystal and magnetic texture.
 
-**The first Brillouin zone of a simple cubic lattice**
+**The first Brillouin zone of a simple cubic (sc) lattice**
 
 .. figure:: figures/tutorial2/fig3.png
 
@@ -44,7 +44,7 @@ Fig 3. Primitive and reciprocal lattice vectors in sc.
 
 .. figure:: figures/tutorial2/fig4.png
 
-Fig 4. SC 1st Brillouin zone.
+Fig 4. sc 1st Brillouin zone.
 
 .. figure:: figures/tutorial2/fig5.png
 
@@ -65,8 +65,8 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
   qfile   ./qfile                  Path along the high symmetry points in the reciprocal space
 
 
-Spin dynamics
-^^^^^^^^^^^^^
+Spin dynamics and sampling of the dynamic structure factor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using the lines below, the systems is equilibrated in spin dynamics simulations to be in thermal equilibrium with a small temperature T=0.001 K.
 ::
@@ -93,7 +93,7 @@ The dynamical structure factor is sampled in spin dynamics simulation at the sam
   do_sc Q           Measure spin correlation
   sc_window_fun  2  Choice of FFT window function (1=box, 2=Hann, 3=Hamming, 4=Blackman-Harris)
   sc_nstep 5000     Number of steps to sample
-  sc_step 8        Number of time steps between each sampling
+  sc_step 8         Number of time steps between each sampling
 
 
 Plotting adiabatic magnon spectrum spectra and the dynamic structure factor
@@ -121,12 +121,12 @@ Exercise 3: AFM Heisenberg nearest-neighbour spin chain
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary a magnetic supercell 2x1x1 of the crystal cell and define both spin directions in the supercell. Files are found in HeisChainAF folder.
+The following tutorial shows every step necessary to calculate the spin wave spectrum and S(q,w) through the simple example of the antiferromagnetic spin chain. Notice that AMS in this case does not work for the primitive unit cell and it is necessary to set up a 1x1x2 magnetic supercell of from the crystal unit cell and define both spin directions in the supercell. The chain has 200 spins along the z direction. Files are found in HeisChainAF folder.
 
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D AFM Heisenberg chain is created. Have a look to posfile and momfile.
+Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D AFM Heisenberg chain is created. Have a look on the posfile and momfile. The nearest neighbor antiferromagnetic exchange coupling is contained in the jfile.
 
 ::
 
@@ -134,7 +134,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
   ncell     1         1         100               System size
   BC        0         0         P                 Boundary conditions (0=vacuum,P=periodic)
   cell      1.00000   0.00000   0.00000
-             0.00000   1.00000   0.00000
+            0.00000   1.00000   0.00000
             0.00000   0.00000   2.000000
   Sym       1                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
 
@@ -208,7 +208,7 @@ Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this cour
 
 Fig 6. Adiabatic magnon spectra.
 
-2. Use the magnetic supercell 2x1x1 of the crystal cell
+2. Use the magnetic supercell 1x1x2 of the crystal cell
 
 .. figure:: figures/tutorial3/fig7.png
 
