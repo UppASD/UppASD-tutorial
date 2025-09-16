@@ -2,7 +2,7 @@ Magnon spectra and noncollinear magnetism
 =========================================
 
 
-Exercise 2: FM Heisenberg nearest-neighbour spin chain
+Exercise 1: FM Heisenberg nearest-neighbour spin chain
 ------------------------------------------------------
 
 Collinear adiabatic magnon spectra and S(q,w)
@@ -115,7 +115,7 @@ Questions and exercises:
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory?
 
 
-Exercise 3: AFM Heisenberg nearest-neighbour spin chain
+Exercise 2: AFM Heisenberg nearest-neighbour spin chain
 -------------------------------------------------------
 
 Collinear adiabatic magnon spectra and S(q,w)
@@ -237,130 +237,8 @@ Questions and exercises:
 2. Calculate analytically the Energy/spin and show it is the same as the numerical result.
 
 
-Exercise 4: FM Heisenberg nearest-neighbour spin chain with DM interactions
----------------------------------------------------------------------------
 
-Non-Collinear adiabatic magnon spectra and S(q,w)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The following tutorial serves as introduction to non-collinear AMS and shows every step necessary to calculate non-collinear spin wave spectrum and S(q,w) through the simple example of the ferromagnetic spin chain with DM interaction. Notice that AMS in this case does not work because the magnetic ground-state texture is non-collinear. Files are found in HeisChainDM folder.
-
-Crystal & magnetic structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Using the lines below with the indicated files, the crystal and magnetic structure are readily available, so that an 1D helical Heisenberg spin spiral is created. Have a look to posfile and momfile. Notice the system could be set up with just 1 atom per unit cell but, in this example, we use 4 atoms per unit cell just to help you to understand how to set up the dmfile for systems which have more than one atom per unit cell.
-
-::
-
-  simid     HeisWire
-  ncell     1         1         100               System size
-  BC        0         0         P                 Boundary conditions (0=vacuum,P=periodic)
-  cell      1.00000   0.00000   0.00000
-            0.00000   1.00000   0.00000
-            0.00000   0.00000   4.00000
-  Sym       0                                     Symmetry of lattice (0 for no, 1 for cubic, 2 for 2d cubic, 3 for hexagonal)
-
-  posfile   ./posfile
-  exchange  ./jfile
-  momfile   ./momfile
-  dm        ./dmfile
-  do_prnstruct 1                                  Print lattice structure (0=no, 1=yes)
-  maptype 2
-  Mensemble 1                                     Number of samples in ensemble averaging
-  Initmag   3                                     (1=random, 2=cone, 3=spec., 4=file)
-
-.. figure:: figures/tutorial4/fig1.png
-
-Fig 1. Crystal and magnetic texture.
-
-Spin dynamics
-^^^^^^^^^^^^^
-
-Using the lines below, the systems is driven to the ground state by MonteCarlo.
-
-::
-
-  ip_mode   M
-  ip_mcanneal 1
-  100000 1.0e-3
-
-  mode      S                                     S=SD, M=MC
-  temp      1.0e-3                                Measurement phase parameters
-  damping   0.0010                                --
-  Nstep     128000                                 --
-  timestep  1.000e-15                             --
-
-.. figure:: figures/tutorial4/fig2.png
-
-Fig 2. Energy versus number of iterations.
-
-Spin wave spectrum
-^^^^^^^^^^^^^^^^^^
-
-We calculate the non-collinear  and collinear spin wave spectrum at the list of Q points (qfile) for comparison. Use qmaker script.
-
-::
-
-  do_ams Y                      Collinear Adiabatic magnon spectra
-  do_diamag Y                   Non-Collinear Adiabatic magnon spectra
-
-  qpoints D                     Flag q-point generation(F=file,A=automa.,C=full cell,D=external
-                                file with direct coordinates)
-  qfile   ./qfile               Path along the high symmetry points in the reciprocal space
-
-
-**The first Brillouin zone of a simple cubic lattice**
-
-.. figure:: figures/tutorial4/fig3.png
-
-Fig 3. Primitive and reciprocal lattice vectors in sc.
-
-.. figure:: figures/tutorial4/fig4.png
-
-Fig 4. SC 1st Brillouin zone.
-
-.. figure:: figures/tutorial4/fig5.png
-
-Fig 5. High symmetry points.
-
-Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
-
-1. Collinear AMS
-
-.. figure:: figures/tutorial4/fig6.png
-
-Fig 6. Collinear Adiabatic magnon spectra.
-
-2. Non-Collinear AMS
-
-.. figure:: figures/tutorial4/fig7.png
-
-Fig 7. Non-collinear Adiabatic magnon spectra.
-
-Plotting S(q,w)
-^^^^^^^^^^^^^^^
-
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS and option 5 S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
-
-::
-
-  do_sc Q                                         Measure spin correlation
-  sc_nstep 8000                                   Number of steps to sample
-  sc_step  16                                     Number of time steps between each sampling
-
-.. figure:: figures/tutorial4/fig8.png
-
-Fig 8. Structure factor together with non-Collinear AMS and collinear AMS.
-
-Questions and exercises:
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Do you understand why Collinear AMS failed in this case?
-
-Exercise 1: bcc Fe at different temperature
+Exercise 3: bcc Fe at different temperature
 ------------------------------------------------
 
 Collinear magnon spectra and influence of uniaxial anisotropy
@@ -452,7 +330,8 @@ Questions and exercises:
 
 Fig 7. Adiabatic magnon spectra of Fe FCC.
 
-Exercise 5: Kagome system with DM interactions
+
+Exercise 4: Kagome system with DM interactions
 ----------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
@@ -566,7 +445,7 @@ Questions and exercises:
 2. Seems linear around Gamma point but J is FM? Why is that? Shouldn´t be parabolic?
 
 
-Exercise 6: Triangular system with AFM interactions
+Exercise 5: Triangular system with AFM interactions
 ---------------------------------------------------
 
 Non-Collinear adiabatic magnon spectra and S(q,w)
@@ -711,7 +590,7 @@ Eq 4. Excitation energy for spin waves in an isotropic antiferromagnet.
 Eq 5. Excitation energy for spin waves in an isotropic ferromagnet.
 
 
-Exercise 7: Spin wave stiffness
+Exercise 6: Spin wave stiffness
 -------------------------------
 
 The spin wave stiffness and the related property exchange stiffness provides the bridge between atomistic spin dynamics and micromagnetism.
