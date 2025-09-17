@@ -8,7 +8,7 @@ Exercise 1: FM Heisenberg nearest-neighbour spin chain
 Collinear adiabatic magnon spectra and S(q,w)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following tutorial shows every step necessary to calculate adiabatic spin wave spectrum and dynamic structure factor S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction. The global orientation of the spins is arbitrary since the Hamiltonian is isotropic. Files are found in ``HeisChain`` folder. Some blocks of the `ìnpsd.dat``file are inlined in the following to highlight the key words that control calculation of adiabatic magnon spectra and calculation of the dynamic structure factor.
+The following tutorial shows every step necessary to calculate adiabatic spin wave spectrum and dynamic structure factor S(q,w) through the simple example of the ferromagnetic spin chain. Notice that the classical magnetic ground state of the Hamiltonian defined in this example is where every spin have the same direction. The global orientation of the spins is arbitrary since the Hamiltonian is isotropic. Files are found in ``HeisChain`` folder. Some blocks of the `ìnpsd.dat`` file are inlined in the following to highlight the key words that control calculation of adiabatic magnon spectra and calculation of the dynamic structure factor.
 
 Crystal & magnetic structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -34,21 +34,19 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 
 .. figure:: figures/tutorial2/fig1.png
 
-Fig 1. Crystal and magnetic texture.
-
-**The first Brillouin zone of a simple cubic (sc) lattice**
+*Crystal and magnetic texture*
 
 .. figure:: figures/tutorial2/fig3.png
 
-Fig 3. Primitive and reciprocal lattice vectors in sc.
+*Primitive and reciprocal lattice vectors in simple cubic (sc) lattice*
 
 .. figure:: figures/tutorial2/fig4.png
 
-Fig 4. sc 1st Brillouin zone.
+*Simple cubic lattice 1st Brillouin zone*
 
 .. figure:: figures/tutorial2/fig5.png
 
-Fig 5. High symmetry points.
+*High symmetry points*
 
 
 Calculation of spin wave spectrum
@@ -103,16 +101,17 @@ Use the UppASD graphical interface (ASD_GUI) or the ``postQ.py`` script to plot 
 
 .. figure:: figures/tutorial2/fig6.png
 
-Fig 6. Adiabatic magnon spectra is output to the file ams.png.
+*Adiabatic magnon spectra is output to the file ams.png*
 
 .. figure:: figures/tutorial2/fig7.png
 
-Fig 7. Adiabatic magnon spectra together with dynamic structure factor is output to ams_sqw.png.
+*Adiabatic magnon spectra together with dynamic structure factor is output to ams_sqw.png.*
 
 Questions and exercises:
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Does it follows the analytical expression predicted by Linear Spin Wave Theory?
+2. The line width of the dynamical structure factor is narrow. Redo the calculation by increasing the value for the ``damping`` parameter to 0.01 or 0.1. How is the line width affected?
 
 
 Exercise 2: AFM Heisenberg nearest-neighbour spin chain
@@ -146,7 +145,7 @@ Using the lines below with the indicated files, the crystal and magnetic structu
 
 .. figure:: figures/tutorial3/fig1.png
 
-Fig 1. Crystal and magnetic texture.
+*Crystal and magnetic texture*
 
 Spin dynamics
 ^^^^^^^^^^^^^
@@ -167,12 +166,12 @@ Using the lines below, the systems is driven to the ground state by spin dynamic
 
 .. figure:: figures/tutorial3/fig2.png
 
-Fig 2. Energy versus number of iterations.
+*Energy versus number of iterations*
 
 Spin wave spectrum
 ^^^^^^^^^^^^^^^^^^
 
-We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile).
 
 ::
 
@@ -183,19 +182,6 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
                                 file with direct coordinates)
   qfile   ./qfile               Path along the high symmetry points in the reciprocal space
 
-**The first Brillouin zone of a simple cubic lattice**
-
-.. figure:: figures/tutorial3/fig3.png
-
-Fig 3. Primitive and reciprocal lattice vectors in sc.
-
-.. figure:: figures/tutorial3/fig4.png
-
-Fig 4. SC 1st Brillouin zone.
-
-.. figure:: figures/tutorial3/fig5.png
-
-Fig 5. High symmetry points.
 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -299,7 +285,7 @@ Using the lines below, the system is brought to thermal equilibrium by means of 
 Linear spin wave spectra
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Below the critical temperature bcc Fe has long range collinear ordering of spins. We calculate the adiabatic magnon spectra (AMS) using linear spin wave theory for collinear spin textures at the list of q points specified in the ``qfile.kpath``. Note that the spin wave is calculated for the T=0 K ground state as specified in the ``momfile``.  The list of q points were calculated from the ``preQ.py`` script which analyses the space group symmetry of the crystal cell,
+Below the critical temperature bcc Fe has long range collinear ordering of spins. We calculate the adiabatic magnon spectra (AMS) using linear spin wave theory for collinear spin textures at the list of q points specified in the ``qfile.kpath``. Note that the spin wave spectra is calculated for the T=0 K ground state as specified in the ``momfile``.  The list of q points were calculated from the ``preQ.py`` script which analyses the space group symmetry of the crystal cell.
 
 ::
 
@@ -343,15 +329,8 @@ Fig 8. Adiabatic magnon spectra and dynamic structure factor sampled at T=300 K
 Questions and exercises:
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Does the spectra follow the analytical expression?
-2. Why the spectra is shift it up?
-3. Plot the spectra without the gap around the center zone.
-4. Why there are two branches, 1 acoustic and 1 optical?
-5. Plot the spectrum for Fe fcc. Why now there is just 1 branch? Is it following the analytical expression?
-
-.. figure:: figures/tutorial1/fig7.png
-
-Fig 7. Adiabatic magnon spectra of Fe FCC.
+1. Why is there a small energy gap at the Gamma point?
+2. Compare the dynamical structure factor for T=1 K and T=300 K. How do they differ?
 
 
 Exercise 4: Kagome system with DM interactions
@@ -411,7 +390,7 @@ Using the lines below, and using a momfile with previous minimization, the syste
 Spin wave spectrum
 ^^^^^^^^^^^^^^^^^^
 
-We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile).
 
 ::
 
@@ -534,7 +513,7 @@ Using the lines below the system is evolved in time. Notice that in the initial 
 Spin wave spectrum
 ^^^^^^^^^^^^^^^^^^
 
-We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile). Use qmaker script.
+We calculate the non-collinear spin wave spectrum (in this case, a collinear adiabatic magnon spectra) at the list of Q points (qfile).
 
 ::
 
