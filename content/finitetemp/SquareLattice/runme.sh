@@ -6,7 +6,7 @@ do
     echo "Temp: " $Temp
     cp Base/* T$Temp/
     cd T$Temp/
-    gsed -i "s/TEMP/$Temp/g" inpsd.dat
+    sed -i "s/TEMP/$Temp/g" inpsd.dat
     ${SD_BINARY} > out.log
     cd ..
 done

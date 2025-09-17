@@ -187,5 +187,3 @@ With the glassy system setup. we end this exercise session with a friendly compe
 
  * Without changing the system size and Hamiltonian, apply your thermalization and minimization skills to get the lowest possible energy for this system.
 
-The participant with the lowest energy will get a symbolic price during the conference dinner.
-
