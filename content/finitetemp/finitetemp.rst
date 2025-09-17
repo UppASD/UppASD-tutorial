@@ -28,9 +28,10 @@ An accessible article for those interested in spin chains and statistics can be 
 
 Thermalization
 --------------
-In this exercise the thermalization rates in spin simulations will be investigated. 
+In this exercise the thermalization rates in spin simulations will be investigated.
+The input files can be found in the directory ``finitetemp/SimpleCubic``.
 
-As mentioned in the lecture, thermalising the system before performing measurements is crucial for ensuring relevant results. 
+Thermalising the system before performing measurements is crucial for ensuring relevant results. 
 Here we will investigate this for a simple cubic model system.
 
 The initial ``inpsd.dat`` file looks as follows 
@@ -54,40 +55,42 @@ i.e. including nearest and next-nearest neighbours on the cubic lattice. Notice 
 
  * Change the sign of the next-nearest neighbour and redo the study. Is the magnetization a good measurable for determining the thermalization now?
 
-Phase diagrams
---------------
-Obtaining the M vs T relationship is probably the most common use case for Monte Carlo simulations on spin systems. 
-In this exercise you can compare the MC functionalities of UppASD with a the ALPS package. 
 
-The system in question is here the 2d square lattice with NN exchange couplings. 
-To compare with other model implementations this example uses the ``aunits Y`` flag which sets the temperature unit to the exchange strength ``J`` instead of Kelvin.
+Phase diagram for bcc Fe
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Atomistic spin dynamics simulations with Langevin dynamics can be used to investigate
+the thermal properties of materials. In this exercise you will investigate how the
+magnetic order parameter, the heat capacity, the susceptibility depends on temperature.
+Input files and scripts for bcc Fe can be found in ``examples/PhaseDiagrams/bccFe-Tsweep``.
 
 The ``inpsd.dat`` will here look as follows (to start with). Note the **TEMP** entries for initial and measurement temperatures.
 
-.. literalinclude:: SquareLattice/Base/inpsd.dat
+.. literalinclude:: bccFe-Tsweep/Base/inpsd.dat
 
 and the ``posfile`` and ``momfile``, and ``jfile`` files looks as 
 
-.. literalinclude:: SquareLattice/Base/posfile
-.. literalinclude:: SquareLattice/Base/momfile
-.. literalinclude:: SquareLattice/Base/jfile
-
-Again, note that with ``aunits Y`` the exchange interaction in ``jfile`` is not defined in ``mRy`` but in the dimensionless energy scale of ``J`` (which is not Joule either).
+.. literalinclude:: /Base/posfile
+.. literalinclude:: bccFe-Tsweep/Base/momfile
+.. literalinclude:: bccFe-Tsweep/Base/jfile
 
 In order to obtain the full M(T) curve, several simulations are needed at consecutive temperatures. 
 This is preferably scripted, like in this example where we use a simple ``bash`` script ``runme.sh``
 
-.. literalinclude:: SquareLattice/runme.sh
+.. literalinclude:: bccFe-Tsweep/runme.sh
 
 Here you either need to replace the ``${SD_BINARY}`` expression, or export the location of your UppASD binary as the environment variable with the same name.
 You also need to use the same directory structure as intended, i.e. put the input files in a directory called `Base` and the ``runme.sh``
 script in the directory below. 
 
- * Run the script and plot the resulting M(T) curve. 
+* Run the sweep over temperature with the ``runme.sh`` script. What kind of simulations is run?
 
- * Compare with the reference data in the :download:`sc_64_ALPS.dat <SquareLattice/sc_64_ALPS.dat>` file
+* Examine the results by using the printM.sh and the plot.gnu scripts. The latter is a script for Gnuplot.
 
- * Are the simulation parameters "good enough" or are more thermalization/sampling steps needed to obtain an accurate M(T) curve?
+* Change the inpsd.dat so that you can the temperature sweep as a Monte Carlo simulation, instead of an ASD simulation. Compare the results with each other, and with Fig. 2 of [Skubic2008]_.
+
+  * Run additional simulations for different cell sizes. Use the Binder cumulant crossing approach to determine the critical temperature.
+
 
 
 Minimization
