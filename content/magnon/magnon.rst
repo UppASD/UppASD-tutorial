@@ -97,7 +97,7 @@ The dynamical structure factor is sampled in spin dynamics simulation at the sam
 Plotting adiabatic magnon spectrum spectra and the dynamic structure factor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the ``postQ.py`` script to plot the adiabatic magnon spectra and the dynamical structure factor.
+Use the UppASD graphical interface ``asd_gui`` or the ``postQ.py`` script to plot the adiabatic magnon spectra and the dynamical structure factor.
 
 .. figure:: figures/tutorial2/fig6.png
 
@@ -186,7 +186,7 @@ We calculate the spin wave spectrum (in this case, a collinear adiabatic magnon 
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
+Use the UppASD graphical interface ``asd_gui`` or the script enclosed in this course (plotsqw_course). Use option 2. File to print out “ams.HeisWire.out”.
 
 1. Use only the primitive cell.
 
@@ -203,7 +203,7 @@ Fig 7. Adiabatic magnon spectra.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
+Use the UppASD graphical interface ``asd_gui`` or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w) or option 3 for S(q,w) with AMS. File to print out “sqw.HeisWire.out”.
 
 ::
 
@@ -311,7 +311,7 @@ Fig 5. High symmetry points.
 Plotting the spectrum
 ^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface ``ASD_GUI`` or the ``postQ.py`` script to plot the linear spin wave spectra and the dynamical structure factor.
+Use the UppASD graphical interface ````asd_gui```` or the ``postQ.py`` script to plot the linear spin wave spectra and the dynamical structure factor.
 
 .. figure:: figures/tutorial1/fig6.png
 
@@ -410,7 +410,7 @@ Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brillouin zone a
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.
+Use the UppASD graphical interface ``asd_gui`` or the script enclosed in this course (plotsqw_course). Use option 4. File to print out “ncams.kagome_T.out”.
 
 .. figure:: figures/tutorial5/fig3.png
 
@@ -419,7 +419,7 @@ Fig 3. Non-Collinear AMS.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.
+Use the UppASD graphical interface ``asd_gui`` or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 4 for S(q,w) with NC_AMS. File to print out “ncams.kagome_T.out” and “sqw.kagome_T.out”.
 
 ::
 
@@ -538,7 +538,7 @@ Fig 2. Primitive and reciprocal lattice vectors in hcp with 1st Brillouin zone a
 Plotting adiabatic magnon spectrum in the framework of Linear Spin Wave Theory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”
+Use the UppASD graphical interface ``asd_gui`` or the script enclosed in this course (plotsqw_course). Use option 7. File to print out “ncams.kagome_T.out”, “ncams+q.triang_T.out” and “ncams-q.triang_T.out”
 
 .. figure:: figures/tutorial6/fig3.png
 
@@ -547,7 +547,7 @@ Fig 3. Non-Collinear AMS.
 Plotting S(q,w)
 ^^^^^^^^^^^^^^^
 
-Use the UppASD graphical interface (ASD_GUI) or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.
+Use the UppASD graphical interface ``asd_gui`` or the script enclosed in this course (plotsqw_course). Use option 1 for S(q,w), option 6 for S(q,w) with NC_AMS+Q. File to print out “ncams.kagome_T.out”, “sqw.kagome_T.out”,” ncams+q.triang_T.out” and “ncams-q.triang_T.out”.
 
 ::
 

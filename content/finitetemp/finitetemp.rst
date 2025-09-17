@@ -85,11 +85,11 @@ script in the directory below.
 
 * Run the sweep over temperature with the ``runme.sh`` script. What kind of simulations is run?
 
-* Examine the results by using the printM.sh and the plot.gnu scripts. The latter is a script for Gnuplot.
+* Examine the results by using the ``printM.sh`` bash script and the plotMT.py Python script.
 
 * Change the inpsd.dat so that you can the temperature sweep as a Monte Carlo simulation, instead of an ASD simulation. Compare the results with each other, and with Fig. 2 of [Skubic2008]_.
 
-  * Run additional simulations for different cell sizes. Use the Binder cumulant crossing approach to determine the critical temperature.
+* Run additional simulations for different cell sizes. Use the Binder cumulant crossing approach to determine the critical temperature.
 
 
 
